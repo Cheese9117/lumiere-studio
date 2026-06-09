@@ -1,6 +1,6 @@
 # 💄 Lumière Studio — Landing Page
 
-> Sitio web de una página para un salón de belleza de lujo en Medellín. Diseño *Rose & Stone*, bilingüe (ES/EN), con sistema de reservas integrado y chatbot de WhatsApp.
+> Sitio web de una página para un salón de belleza de lujo en Medellín. Diseño *Rose & Stone*, bilingüe (ES/EN), con sistema de reservas integrado vía WhatsApp.
 
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
@@ -17,9 +17,9 @@
 
 ## ¿Qué es este proyecto?
 
-Landing page completa y lista para producción para **Lumière Studio**, salón de belleza premium en Medellín. Construida como un único archivo HTML autocontenido — sin dependencias externas, sin frameworks, sin build steps.
+Landing page completa y lista para producción para **Lumière Studio**, salón de belleza premium en Medellín. Sin frameworks, sin build steps — HTML semántico, CSS modular y JS vanilla puro.
 
-El diseño sigue la dirección *Rose & Stone*: fondo crema cálido, acentos en rosa empolvado y verde salvia, tipografía de lujo con Cormorant Garamond + DM Sans. El objetivo fue crear una página que se sienta premium sin intimidar — aspiracional pero cercana.
+El diseño sigue la dirección *Rose & Stone*: fondo crema cálido, acentos en rosa empolvado y verde salvia, tipografía de lujo con Cormorant Garamond + DM Sans.
 
 ---
 
@@ -27,30 +27,30 @@ El diseño sigue la dirección *Rose & Stone*: fondo crema cálido, acentos en r
 
 ### UX & Diseño
 - **Split hero** con entrada animada en CSS puro
-- **Ritual strips** — bandas cinematográficas con citas en cursiva como respiro visual
-- **Galería masonry** con zoom y overlay de servicio al hover (solo CSS)
-- **Testimonials carousel** con autoplay y control por puntos/flechas
-- **Animaciones de scroll** con `IntersectionObserver` — sutiles, no dramáticas
+- **Ritual strips** — bandas cinematográficas con citas en cursiva
+- **Galería masonry** con zoom y overlay al hover
+- **Testimonials carousel** con autoplay, swipe en móvil y control por flechas/puntos
+- **Animaciones de scroll** con `IntersectionObserver`
 - **Mobile-first** completamente responsive
 
 ### Funcional
-- **Cambio de idioma ES / EN** instantáneo sin recargar página — todo el contenido en un objeto JS, preferencia guardada en `localStorage`
-- **Formulario de reserva** con validación en español y estado de confirmación animado
+- **Cambio de idioma ES / EN** instantáneo, preferencia guardada en `localStorage`
+- **Formulario de reserva** con validación — redirige a WhatsApp con datos pre-llenados (`wa.me`)
 - **Botón de WhatsApp flotante** con tooltip y animación de pulso
 - **Back-to-top** que aparece después de 300px de scroll
-- **Nav** que se comprime y agrega backdrop blur al hacer scroll
+- **Nav** con backdrop blur al hacer scroll
 
 ### Secciones
 | Sección | Descripción |
 |---|---|
-| Hero | Titular + CTA principal + tarjeta visual flotante |
+| Hero | Titular + CTA + tarjeta visual flotante |
 | Trust bar | 4.9★ Google · 4.000+ clientas · 6 años · Cruelty-free |
-| Servicios | 6 servicios con precios en COP, hover con sombra rosa |
+| Servicios | 6 servicios con precios en COP |
 | ¿Por qué nosotras? | 3 columnas: consulta, productos premium, ambiente |
 | Equipo | 3 estilistas con avatar y especialidad |
-| Testimonios | Carousel con 4 reseñas de clientas reales |
-| Galería | 6 celdas masonry con placeholders de gradiente |
-| Reservar | Formulario inline + botón directo a WhatsApp |
+| Testimonios | Carousel con 4 reseñas |
+| Galería | 6 celdas masonry |
+| Reservar | Formulario + botón directo a WhatsApp |
 | Footer | Logo, links, contacto, redes sociales |
 
 ---
@@ -67,46 +67,59 @@ El diseño sigue la dirección *Rose & Stone*: fondo crema cálido, acentos en r
 --bg-stone:  #EDE5DC   /* Fondo ritual strips */
 ```
 
-**Tipografía:**
-- Display: `Cormorant Garamond` — elegante, editorial
-- Cuerpo: `DM Sans` — limpia, legible, moderna
+**Tipografía:** `Cormorant Garamond` (display) · `DM Sans` (cuerpo)
 
 ---
 
 ## 📁 Estructura
 
 ```
-/projects/lumiere-studio/
-└── index.html     # Todo el sitio — HTML + CSS + JS en un solo archivo
+/
+├── index.html          # Estructura semántica HTML5
+├── css/
+│   ├── reset.css       # Box-sizing, resets, scrollbar
+│   ├── variables.css   # Design tokens (colores, espaciado, sombras)
+│   ├── typography.css  # Reglas de fuente para cada componente
+│   ├── layout.css      # Grid/flexbox, mobile-first
+│   ├── components.css  # Botones, cards, formularios, nav
+│   ├── animations.css  # Keyframes, scroll reveal
+│   └── responsive.css  # Breakpoints 600px+ y 900px+
+└── js/
+    ├── config.js       # Número WA, ajustes, contenido ES/EN completo
+    ├── language.js     # Toggle de idioma, data-i18n, localStorage
+    ├── animations.js   # IntersectionObserver scroll reveal
+    ├── carousel.js     # Autoplay + swipe + dots + prev/next
+    ├── booking.js      # Validación de formulario + redirect wa.me
+    └── main.js         # Entry point, nav, menú móvil, back-top
 ```
 
 ---
 
 ## ⚡ Decisiones técnicas
 
-**¿Por qué un solo archivo?**
-El cliente necesitaba algo que pudiera entregar, hospedar en GitHub Pages y modificar sin necesidad de un servidor ni proceso de build. Un archivo HTML autocontenido es la solución más directa para ese caso de uso.
-
 **¿Por qué sin frameworks?**
-Para una landing page estática, React o Next.js agregarían complejidad sin beneficio real. CSS custom properties + `IntersectionObserver` + JS vanilla es más que suficiente y carga instantáneamente.
+Para una landing page estática, React o Next.js agregarían complejidad sin beneficio real. CSS custom properties + `IntersectionObserver` + JS vanilla carga instantáneamente.
 
 **¿Por qué i18n en JS puro?**
-El cambio de idioma necesitaba ser instantáneo y sin recarga. Un objeto JS con todas las cadenas indexadas por clave es simple, mantenible y no requiere ninguna librería.
+El cambio de idioma es instantáneo y sin recarga. Un objeto `TRANSLATIONS` indexado por clave en `config.js` es simple, mantenible y no requiere ninguna librería.
+
+**Reservas sin backend:**
+El formulario construye una URL `wa.me/57XXXXXXXXXX?text=...` con los datos del formulario URL-encoded y redirige al usuario a WhatsApp — funciona en cualquier hosting estático.
 
 ---
 
-## 🚀 Uso
+## 🚀 Correr localmente
 
 ```bash
 # Opción 1 — abre directo en el navegador
-open projects/lumiere-studio/index.html
+open index.html
 
 # Opción 2 — servidor local
 npx serve .
-# Luego abre: http://localhost:3000/projects/lumiere-studio/
+# Luego abre: http://localhost:3000
 ```
 
-O simplemente visita la demo en vivo: **[cheese9117.github.io/lumiere-studio](https://cheese9117.github.io/lumiere-studio)**
+O simplemente visita la demo: **[cheese9117.github.io/lumiere-studio](https://cheese9117.github.io/lumiere-studio)**
 
 ---
 

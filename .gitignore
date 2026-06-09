@@ -41,3 +41,6 @@ logs/
 # Package manager locks (keep one)
 # package-lock.json
 # yarn.lock
+
+# Claude Code session data
+.claude/
