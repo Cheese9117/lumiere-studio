@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barbería Elite — Asistente Virtual</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d0d0d;
+      --surface:   #141414;
+      --card:      #1a1a1a;
+      --border:    #2a2a2a;
+      --accent:    #c9a84c;
+      --accent2:   #e8c96a;
+      --text:      #f0ece4;
+      --muted:     #888;
+      --bot-bubble:#1f1f1f;
+      --user-bubble:linear-gradient(135deg,#c9a84c,#e8c96a);
+      --radius:    18px;
+      --shadow:    0 8px 40px rgba(0,0,0,.6);
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow: hidden;
+    }
+
+    /* ── Layout ───────────────────────────────────── */
+    .app {
+      display: flex;
+      height: 100vh;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ── Sidebar ──────────────────────────────────── */
+    .sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      padding: 28px 20px;
+      gap: 24px;
+      overflow-y: auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg,#c9a84c,#7a5c1e);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(201,168,76,.35);
+    }
+    .brand-text h1 { font-size: 17px; font-weight: 700; letter-spacing: .4px; }
+    .brand-text p  { font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 2px; }
+
+    .divider { height: 1px; background: var(--border); }
+
+    .section-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .info-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .info-card h3 { font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+    .info-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-row span:first-child { color: var(--muted); }
+    .info-row span:last-child  { color: var(--text); font-weight: 500; }
+    .price { color: var(--accent) !important; font-weight: 700 !important; }
+
+    .hours-row {
+      display: flex; justify-content: space-between;
+      font-size: 12px; padding: 4px 0;
+      color: var(--muted);
+    }
+    .hours-row span:last-child { color: var(--text); }
+
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(34,197,94,.12);
+      border: 1px solid rgba(34,197,94,.25);
+      color: #4ade80;
+      font-size: 11px; font-weight: 600;
+      padding: 4px 10px; border-radius: 20px;
+      margin-top: 8px;
+    }
+    .status-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #4ade80;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: .5; transform: scale(1.4); }
+    }
+
+    .quick-btn-group { display: flex; flex-direction: column; gap: 6px; }
+    .quick-btn {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-size: 12px;
+      padding: 9px 14px;
+      text-align: left;
+      cursor: pointer;
+      transition: border-color .2s, background .2s, transform .15s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .quick-btn:hover {
+      border-color: var(--accent);
+      background: rgba(201,168,76,.08);
+      transform: translateX(3px);
+    }
+    .quick-btn .qicon { font-size: 15px; }
+
+    /* ── Chat area ────────────────────────────────── */
+    .chat-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .chat-header {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+    .avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg,#c9a84c,#7a5c1e);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(201,168,76,.2);
+    }
+    .chat-header-info h2 { font-size: 15px; font-weight: 600; }
+    .chat-header-info p  { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .typing-indicator { display: none; align-items: center; gap: 4px; }
+    .typing-indicator.active { display: flex; }
+    .typing-indicator span {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+      animation: bounce .9s infinite;
+    }
+    .typing-indicator span:nth-child(2) { animation-delay: .15s; }
+    .typing-indicator span:nth-child(3) { animation-delay: .30s; }
+    @keyframes bounce {
+      0%,80%,100% { transform: translateY(0); }
+      40%          { transform: translateY(-6px); }
+    }
+
+    /* ── Messages ─────────────────────────────────── */
+    .messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px 24px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      scroll-behavior: smooth;
+    }
+    .messages::-webkit-scrollbar { width: 4px; }
+    .messages::-webkit-scrollbar-track { background: transparent; }
+    .messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+    .msg { display: flex; align-items: flex-end; gap: 10px; animation: fadeUp .3s ease; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .msg.user { flex-direction: row-reverse; }
+
+    .msg-avatar {
+      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px;
+    }
+    .msg.bot  .msg-avatar { background: linear-gradient(135deg,#c9a84c,#7a5c1e); }
+    .msg.user .msg-avatar { background: #2a2a2a; }
+
+    .bubble {
+      max-width: 68%;
+      padding: 12px 16px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      line-height: 1.6;
+      word-wrap: break-word;
+    }
+    .msg.bot  .bubble {
+      background: var(--bot-bubble);
+      border: 1px solid var(--border);
+      border-bottom-left-radius: 4px;
+      color: var(--text);
+    }
+    .msg.user .bubble {
+      background: var(--user-bubble);
+      border-bottom-right-radius: 4px;
+      color: #1a1000;
+      font-weight: 500;
+    }
+
+    .bubble strong { color: var(--accent2); }
+    .msg.user .bubble strong { color: #1a1000; }
+
+    .bubble .price-tag {
+      display: inline-block;
+      background: rgba(201,168,76,.15);
+      border: 1px solid rgba(201,168,76,.3);
+      color: var(--accent2);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 1px 8px;
+      border-radius: 6px;
+      margin-left: 4px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .service-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+    }
+    .service-card:hover { border-color: var(--accent); background: rgba(201,168,76,.07); }
+    .service-card .s-name { font-size: 13px; font-weight: 600; }
+    .service-card .s-price { font-size: 16px; font-weight: 700; color: var(--accent); margin-top: 4px; }
+    .service-card .s-time { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    .chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .chip {
+      background: rgba(201,168,76,.1);
+      border: 1px solid rgba(201,168,76,.25);
+      color: var(--accent2);
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+      user-select: none;
+    }
+    .chip:hover { background: rgba(201,168,76,.22); transform: scale(1.04); }
+
+    .timestamp { font-size: 10px; color: var(--muted); text-align: center; margin: 4px 0; }
+
+    /* ── Input bar ────────────────────────────────── */
+    .input-bar {
+      padding: 16px 24px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+    }
+    .input-wrap {
+      flex: 1;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      transition: border-color .2s;
+    }
+    .input-wrap:focus-within { border-color: var(--accent); }
+
+    #userInput {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-size: 14px;
+      padding: 13px 0;
+      resize: none;
+      font-family: inherit;
+      line-height: 1.4;
+      max-height: 120px;
+      overflow-y: auto;
+    }
+    #userInput::placeholder { color: var(--muted); }
+
+    .send-btn {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg,#c9a84c,#7a5c1e);
+      border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: transform .15s, box-shadow .2s;
+      box-shadow: 0 4px 14px rgba(201,168,76,.3);
+    }
+    .send-btn:hover  { transform: scale(1.08); box-shadow: 0 6px 20px rgba(201,168,76,.45); }
+    .send-btn:active { transform: scale(.95); }
+    .send-btn svg { fill: #1a1000; width: 18px; height: 18px; }
+
+    /* ── Mobile ───────────────────────────────────── */
+    .mobile-header {
+      display: none;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 18px;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .mobile-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; }
+    .menu-btn {
+      width: 36px; height: 36px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-direction: column; gap: 4px;
+    }
+    .menu-btn span { width: 16px; height: 2px; background: var(--text); border-radius: 2px; }
+
+    .overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.6);
+      z-index: 99;
+    }
+    .overlay.active { display: block; }
+
+    @media (max-width: 720px) {
+      .sidebar {
+        position: fixed; left: -300px; top: 0; bottom: 0; z-index: 100;
+        width: 280px;
+        transition: left .3s ease;
+      }
+      .sidebar.open { left: 0; }
+      .mobile-header { display: flex; }
+      .chat-header   { display: none; }
+      .app { flex-direction: column; }
+      .bubble { max-width: 85%; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<div class="app">
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+      <div class="brand-icon">✂️</div>
+      <div class="brand-text">
+        <h1>Barbería Elite</h1>
+        <p>Est. 2018 · Medellín</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div>
+      <div class="section-label">Servicios</div>
+      <div class="info-card">
+        <div class="info-row"><span>Corte de cabello</span><span class="price">$15 USD</span></div>
+        <div class="info-row"><span>Arreglo de barba</span><span class="price">$10 USD</span></div>
+        <div class="info-row"><span>Combo completo</span><span class="price">$22 USD</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">Horarios</div>
+      <div class="info-card">
+        <div class="hours-row"><span>Lun – Vie</span><span>9:00 am – 8:00 pm</span></div>
+        <div class="hours-row"><span>Sábado</span><span>9:00 am – 8:00 pm</span></div>
+        <div class="hours-row"><span>Domingo</span><span>Cerrado</span></div>
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          Abierto ahora
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">Ubicación</div>
+      <div class="info-card">
+        <div class="info-row"><span>Ciudad</span><span>Medellín, Colombia</span></div>
+        <div class="info-row"><span>Barrio</span><span>El Poblado</span></div>
+        <div class="info-row"><span>Teléfono</span><span>+57 300 123 4567</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">Preguntas rápidas</div>
+      <div class="quick-btn-group">
+        <button class="quick-btn" onclick="sendQuick('¿Cuáles son los servicios y precios?')"><span class="qicon">💈</span>Servicios y precios</button>
+        <button class="quick-btn" onclick="sendQuick('¿Cómo puedo reservar una cita?')"><span class="qicon">📅</span>Reservar cita</button>
+        <button class="quick-btn" onclick="sendQuick('¿Cuánto tiempo de espera hay?')"><span class="qicon">⏱️</span>Tiempo de espera</button>
+        <button class="quick-btn" onclick="sendQuick('¿Dónde están ubicados?')"><span class="qicon">📍</span>Ubicación</button>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ── Chat ── -->
+  <div class="chat-area">
+
+    <!-- Mobile top bar -->
+    <div class="mobile-header">
+      <div class="mobile-brand">
+        <span>✂️</span> Barbería Elite
+      </div>
+      <div class="menu-btn" onclick="openSidebar()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <!-- Desktop header -->
+    <div class="chat-header">
+      <div class="avatar">✂️</div>
+      <div class="chat-header-info">
+        <h2>Asistente Virtual — Barbería Elite</h2>
+        <div class="typing-indicator" id="typingIndicator">
+          <span></span><span></span><span></span>
+          <span style="font-size:11px;color:var(--muted);margin-left:4px;">escribiendo…</span>
+        </div>
+        <p id="headerStatus">En línea · Responde al instante</p>
+      </div>
+    </div>
+
+    <div class="messages" id="messages"></div>
+
+    <div class="input-bar">
+      <div class="input-wrap">
+        <textarea id="userInput" rows="1" placeholder="Escribe tu pregunta aquí…" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+      </div>
+      <button class="send-btn" onclick="sendMessage()" title="Enviar">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ── Knowledge base ───────────────────────────────────────────────────────────
+const KB = {
+  services: {
+    keywords: ['servicio','precio','cuánto','costo','cobran','corte','barba','combo','tarifa','valor','ofrecen','hay'],
+    response: () => ({
+      text: `¡Claro! En <strong>Barbería Elite</strong> manejamos estos servicios:`,
+      extra: 'services',
+      chips: ['¿Incluye lavado?','¿Hay descuentos?','Quiero el combo']
+    })
+  },
+  booking: {
+    keywords: ['cita','reserva','reservar','agendar','turno','appointment','programar','separar'],
+    response: () => ({
+      text: `¡Con gusto te ayudo a reservar! 📅\n\nPuedes agendar tu cita de estas formas:\n\n• <strong>WhatsApp:</strong> escríbenos al <strong>+57 300 123 4567</strong>\n• <strong>Teléfono:</strong> llámanos en horario de atención\n• <strong>En persona:</strong> ven directamente a la barbería\n\nAtendemos <strong>lunes a sábado de 9:00 am a 8:00 pm</strong>. Te recomendamos reservar con al menos <strong>1 hora de anticipación</strong> para garantizar tu espacio. ✨`,
+      chips: ['¿Cuánto tiempo toma?','¿Aceptan grupos?','Ver ubicación']
+    })
+  },
+  hours: {
+    keywords: ['hora','horario','abren','cierran','abierto','cerrado','atienden','disponible','cuando'],
+    response: () => ({
+      text: `Nuestro horario de atención es:\n\n🕘 <strong>Lunes a Sábado:</strong> 9:00 am – 8:00 pm\n🚫 <strong>Domingo:</strong> Cerrado\n\nActualmente <strong>¡estamos abiertos!</strong> Si vienes hoy, el mejor momento para evitar esperas es antes de las 12 pm o después de las 5 pm. 😊`,
+      chips: ['¿Tiempo de espera?','Reservar cita','¿Dónde están?']
+    })
+  },
+  location: {
+    keywords: ['ubica','dirección','dónde','donde','barrio','medellín','medellin','llegar','sede','lugar'],
+    response: () => ({
+      text: `¡Nos encuentras fácil! 📍\n\n<strong>Barbería Elite</strong> está ubicada en el barrio <strong>El Poblado, Medellín, Colombia</strong>.\n\nEstamos a pocas cuadras del Parque El Poblado, con fácil acceso en metro (estación El Poblado) y zonas de parqueo cerca.\n\n¿Necesitas indicaciones más específicas? Escríbenos por WhatsApp al <strong>+57 300 123 4567</strong> 🏙️`,
+      chips: ['¿Tienen parqueadero?','Ver horarios','Reservar cita']
+    })
+  },
+  wait: {
+    keywords: ['espera','demora','tiempo','cuánto tarda','tardará','tarda','duración','minutos'],
+    response: () => {
+      const hour = new Date().getHours();
+      let wait, tip;
+      if (hour < 11)       { wait = '5–10 min'; tip = 'Perfecto momento para venir, casi sin esperas 🌅'; }
+      else if (hour < 14)  { wait = '15–25 min'; tip = 'Hora pico del mediodía, pero nos movemos rápido ⚡'; }
+      else if (hour < 17)  { wait = '5–15 min'; tip = 'Buen momento, flujo tranquilo 👌'; }
+      else                 { wait = '20–35 min'; tip = 'Hora pico de la tarde, te recomendamos reservar cita 📲'; }
+      return {
+        text: `⏱️ El tiempo de espera estimado <strong>en este momento</strong> es de aproximadamente <strong>${wait}</strong>.\n\n${tip}\n\nCada servicio tiene su duración:\n• Corte de cabello: ~<strong>25 min</strong>\n• Arreglo de barba: ~<strong>20 min</strong>\n• Combo completo: ~<strong>40 min</strong>\n\n¿Quieres reservar y evitar la fila? 😎`,
+        chips: ['Reservar cita','Ver precios','¿Cómo llegar?']
+      };
+    }
+  },
+  combo: {
+    keywords: ['combo','completo','los dos','cabello y barba','todo'],
+    response: () => ({
+      text: `¡El <strong>Combo Completo</strong> es nuestra opción más popular! 🔥\n\nIncluye:\n✅ Corte de cabello profesional\n✅ Arreglo y perfilado de barba\n✅ Aplicación de productos premium\n\n💰 Todo por solo <strong>$22 USD</strong> — ahorras $3 frente a los servicios por separado.\n\nDura aproximadamente <strong>40 minutos</strong> y sales listo para lo que sea. 💪`,
+      chips: ['Reservar combo','¿Qué productos usan?','Ver horarios']
+    })
+  },
+  parking: {
+    keywords: ['parqueo','parqueadero','estacionar','carro','moto'],
+    response: () => ({
+      text: `Sí, hay varias opciones de parqueo cerca 🚗\n\nA media cuadra encontrarás un parqueadero cubierto de pago. También hay zonas de parqueo en la vía con esquemas por horas.\n\nSi llegas en moto, hay espacio justo frente a la barbería.\n\n¿Necesitas más info sobre cómo llegar?`,
+      chips: ['Ver ubicación','Reservar cita','Ver horarios']
+    })
+  },
+  products: {
+    keywords: ['producto','pomada','cera','shampoo','crema','gel','marca'],
+    response: () => ({
+      text: `Usamos productos <strong>premium de alta calidad</strong> 💎\n\nTrabajamos con marcas reconocidas como:\n• <strong>American Crew</strong> para acabados profesionales\n• <strong>Layrite</strong> para fijación y brillo\n• <strong>Proraso</strong> para el afeitado y barba\n\nTodos nuestros productos son importados y cuidadosamente seleccionados para cada tipo de cabello y piel. 🌿`,
+      chips: ['Ver servicios','¿Cuánto cuesta?','Reservar cita']
+    })
+  },
+  discount: {
+    keywords: ['descuento','oferta','promoción','promo','especial','rebaja','gratis'],
+    response: () => ({
+      text: `¡Tenemos algunas promos especiales! 🎉\n\n• <strong>Primera visita:</strong> 10% de descuento presentando este chat\n• <strong>Estudiantes:</strong> $2 de descuento con carné vigente\n• <strong>Cumpleañero:</strong> Corte gratis el día de tu cumpleaños 🎂\n• <strong>Grupo de 3+:</strong> 15% de descuento para cada uno\n\nMenciona la promo al llegar o al reservar tu cita. ¡No se acumulan descuentos! 😊`,
+      chips: ['Reservar ahora','Ver servicios','¿Cómo llegar?']
+    })
+  },
+  wash: {
+    keywords: ['lavado','lavar','shampoo','incluye','incluido'],
+    response: () => ({
+      text: `¡Buena pregunta! 🙌\n\nEl <strong>Corte de cabello</strong> incluye:\n✅ Lavado con shampoo profesional\n✅ Acondicionador si se requiere\n✅ Secado y estilizado\n\nEl <strong>Combo completo</strong> incluye todo lo anterior más el arreglo completo de barba con vapor caliente.\n\nEl <strong>Arreglo de barba</strong> no incluye lavado de cabello, pero puedes agregarlo por solo <strong>$3 adicionales</strong>. 😊`,
+      chips: ['¿Qué productos usan?','Ver precios','Reservar cita']
+    })
+  },
+  groups: {
+    keywords: ['grupo','varios','familia','amigos','equipo','juntos','múltiple'],
+    response: () => ({
+      text: `¡Claro que sí! Atendemos grupos con gusto 👥\n\nPara grupos de <strong>3 o más personas</strong>:\n• Descuento del <strong>15%</strong> por persona\n• Pueden coordinar horarios seguidos para no esperar\n• Recomendamos <strong>reservar con anticipación</strong> para tenerlo todo listo\n\nEscríbenos por WhatsApp al <strong>+57 300 123 4567</strong> con el tamaño del grupo y el día preferido. ¡Lo coordinamos todo! 🤝`,
+      chips: ['¿Hay descuentos?','Reservar ahora','Ver horarios']
+    })
+  },
+  greeting: {
+    keywords: ['hola','buenas','hey','saludos','buenos días','buenas tardes','buenas noches','hi'],
+    response: () => {
+      const hour = new Date().getHours();
+      const greeting = hour < 12 ? '¡Buenos días' : hour < 18 ? '¡Buenas tardes' : '¡Buenas noches';
+      return {
+        text: `${greeting}! 👋 Bienvenido a <strong>Barbería Elite</strong>.\n\nSoy tu asistente virtual. Puedo ayudarte con:\n\n💈 Servicios y precios\n📅 Reserva de citas\n📍 Ubicación y horarios\n⏱️ Tiempos de espera\n\n¿En qué te puedo ayudar hoy?`,
+        chips: ['Ver servicios','Reservar cita','¿Cuánto espero?','¿Dónde están?']
+      };
+    }
+  },
+  thanks: {
+    keywords: ['gracias','thank','excelente','perfecto','genial','listo','ok','buenísimo','chevere','chévere'],
+    response: () => ({
+      text: `¡Con mucho gusto! 😊 Recuerda que en <strong>Barbería Elite</strong> siempre estamos para servirte.\n\n¿Hay algo más en lo que pueda ayudarte?`,
+      chips: ['Reservar cita','Ver horarios','Ver precios']
+    })
+  }
+};
+
+const fallbacks = [
+  '🤔 Hmm, no estoy seguro de entender tu pregunta. ¿Puedes reformularla? Puedo ayudarte con servicios, precios, reservas, horarios y ubicación.',
+  'Disculpa, no tengo información sobre eso aún. ¿Te puedo ayudar con algo sobre nuestros servicios, citas u horarios? 😊',
+  '¡Buena pregunta! Pero eso está fuera de mi conocimiento por ahora. Lo que sí puedo decirte es sobre nuestros servicios, precios y cómo reservar tu cita. 💈'
+];
+let fallbackIdx = 0;
+
+function findIntent(input) {
+  const lower = input.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  for (const [, intent] of Object.entries(KB)) {
+    if (intent.keywords.some(k => lower.includes(k.normalize('NFD').replace(/[̀-ͯ]/g, '')))) {
+      return intent.response();
+    }
+  }
+  return null;
+}
+
+// ── DOM helpers ──────────────────────────────────────────────────────────────
+const messagesEl = document.getElementById('messages');
+const inputEl    = document.getElementById('userInput');
+const typingEl   = document.getElementById('typingIndicator');
+const statusEl   = document.getElementById('headerStatus');
+
+function scrollBottom() {
+  setTimeout(() => messagesEl.scrollTo({ top: messagesEl.scrollHeight, behavior: 'smooth' }), 50);
+}
+
+function formatText(t) {
+  return t.replace(/\n/g, '<br>');
+}
+
+function addTimestamp() {
+  const now = new Date();
+  const t = now.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' });
+  const el = document.createElement('div');
+  el.className = 'timestamp';
+  el.textContent = t;
+  messagesEl.appendChild(el);
+}
+
+function addMessage(role, content, extra, chips) {
+  const wrap = document.createElement('div');
+  wrap.className = `msg ${role}`;
+
+  const av = document.createElement('div');
+  av.className = 'msg-avatar';
+  av.textContent = role === 'bot' ? '✂️' : '👤';
+
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble';
+  bubble.innerHTML = formatText(content);
+
+  if (extra === 'services') {
+    const grid = document.createElement('div');
+    grid.className = 'service-grid';
+    const svcs = [
+      { name: 'Corte de cabello', price: '$15', time: '~25 min', q: '¿Qué incluye el corte?' },
+      { name: 'Arreglo de barba', price: '$10', time: '~20 min', q: '¿Qué incluye la barba?' },
+      { name: 'Combo completo',   price: '$22', time: '~40 min', q: 'Cuéntame del combo' },
+    ];
+    svcs.forEach(s => {
+      const card = document.createElement('div');
+      card.className = 'service-card';
+      card.innerHTML = `<div class="s-name">${s.name}</div><div class="s-price">${s.price} USD</div><div class="s-time">${s.time}</div>`;
+      card.onclick = () => sendQuick(s.q);
+      if (s.name === 'Combo completo') card.style.gridColumn = '1/-1';
+      grid.appendChild(card);
+    });
+    bubble.appendChild(grid);
+  }
+
+  if (chips && chips.length) {
+    const row = document.createElement('div');
+    row.className = 'chip-row';
+    chips.forEach(c => {
+      const chip = document.createElement('span');
+      chip.className = 'chip';
+      chip.textContent = c;
+      chip.onclick = () => sendQuick(c);
+      row.appendChild(chip);
+    });
+    bubble.appendChild(row);
+  }
+
+  wrap.appendChild(av);
+  wrap.appendChild(bubble);
+  messagesEl.appendChild(wrap);
+  scrollBottom();
+}
+
+function setTyping(on) {
+  typingEl.classList.toggle('active', on);
+  if (statusEl) statusEl.style.display = on ? 'none' : '';
+}
+
+// ── Core send logic ──────────────────────────────────────────────────────────
+let msgCount = 0;
+
+async function sendMessage(text) {
+  const raw = (text !== undefined ? text : inputEl.value).trim();
+  if (!raw) return;
+
+  if (text === undefined) { inputEl.value = ''; autoResize(inputEl); }
+
+  if (msgCount % 5 === 0 && msgCount > 0) addTimestamp();
+  addMessage('user', raw);
+  msgCount++;
+
+  setTyping(true);
+
+  const delay = 600 + Math.random() * 800;
+  await new Promise(r => setTimeout(r, delay));
+
+  setTyping(false);
+
+  const result = findIntent(raw);
+  if (result) {
+    addMessage('bot', result.text, result.extra, result.chips);
+  } else {
+    const fb = fallbacks[fallbackIdx % fallbacks.length];
+    fallbackIdx++;
+    addMessage('bot', fb, null, ['Ver servicios','Reservar cita','Horarios']);
+  }
+  msgCount++;
+}
+
+function sendQuick(q) {
+  sendMessage(q);
+  closeSidebar();
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+}
+
+// ── Sidebar mobile ───────────────────────────────────────────────────────────
+function openSidebar()  { document.getElementById('sidebar').classList.add('open'); document.getElementById('overlay').classList.add('active'); }
+function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('active'); }
+
+// ── Boot ─────────────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  addTimestamp();
+  setTimeout(() => {
+    setTyping(true);
+    setTimeout(() => {
+      setTyping(false);
+      const hour = new Date().getHours();
+      const greeting = hour < 12 ? '¡Buenos días' : hour < 18 ? '¡Buenas tardes' : '¡Buenas noches';
+      addMessage('bot',
+        `${greeting}! ✂️ Bienvenido a <strong>Barbería Elite</strong>, Medellín.\n\nSoy tu asistente virtual. Estoy aquí para ayudarte con todo lo que necesites:\n\n💈 Servicios y precios\n📅 Reserva de citas\n📍 Cómo llegar\n⏱️ Tiempos de espera\n🎉 Promociones\n\n¿En qué puedo ayudarte hoy?`,
+        null,
+        ['Ver servicios','Reservar cita','¿Cuánto espero?','¿Dónde están?']
+      );
+    }, 1200);
+  }, 400);
+});
+</script>
+</body>
+</html>
