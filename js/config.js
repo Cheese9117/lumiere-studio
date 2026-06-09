@@ -1,30 +1,17 @@
 'use strict';
 
-/**
- * config.js — Lumière Studio
- *
- * Central configuration: WhatsApp number, site settings,
- * and all i18n string content for ES / EN language toggle.
- *
- * To update text: find the key and edit the value in both `es` and `en`.
- * To change the WhatsApp number: update WHATSAPP_NUMBER below.
- */
-
-// --- Site-wide settings ---
 const CONFIG = {
-  WHATSAPP_NUMBER: '573001234567',
-  CAROUSEL_INTERVAL_MS: 5500,
-  BACK_TOP_THRESHOLD_PX: 300,
+  WHATSAPP_NUMBER:         '573001234567',
+  CAROUSEL_INTERVAL_MS:    5500,
+  BACK_TOP_THRESHOLD_PX:   300,
   NAV_SCROLL_THRESHOLD_PX: 50,
-  REVEAL_THRESHOLD: 0.1,
-  STORAGE_KEY: 'lumiere_lang',
-  DEFAULT_LANG: 'es',
+  REVEAL_THRESHOLD:        0.1,
+  STORAGE_KEY:             'lumiere_lang',
+  DEFAULT_LANG:            'es',
 };
 
-// --- Bilingual content (ES / EN) ---
 const TRANSLATIONS = {
   es: {
-    // Nav
     nav_servicios:  'Servicios',
     nav_nosotras:   'Nosotras',
     nav_equipo:     'Equipo',
@@ -32,7 +19,6 @@ const TRANSLATIONS = {
     nav_galeria:    'Galería',
     nav_cta:        'Reservar',
 
-    // Hero
     hero_eyebrow:    'Salón de Belleza Premium · Medellín',
     hero_title_1:    'Tu belleza,',
     hero_title_2:    'nuestra pasión',
@@ -43,19 +29,16 @@ const TRANSLATIONS = {
     cta_reservar:    'Reservar ahora',
     cta_servicios:   'Ver servicios',
 
-    // Trust bar
     trust_1_bold: '4.9★ en Google',
     trust_2:      '4.000+ clientas felices',
     trust_3:      '6 años en Medellín',
     trust_4:      'Productos libres de crueldad',
 
-    // Services section
     services_label:   'Nuestros servicios',
     services_title_1: 'Lo que hacemos',
     services_title_2: 'para vos',
     services_desc:    'Cada servicio está diseñado con cuidado, usando los mejores productos y las técnicas más actuales.',
 
-    // Service cards
     s1_name:  'Corte y Estilizado',
     s1_price: '$45.000 – $80.000 COP',
     s1_desc:  'Corte personalizado según tu rostro y estilo, con secado y estilizado profesional incluido.',
@@ -76,11 +59,9 @@ const TRANSLATIONS = {
     s6_desc:  'Diseño y depilación de cejas, laminado, tinte y extensión de pestañas para una mirada perfecta.',
     service_book: 'Reservar →',
 
-    // Ritual strips
     ritual_1: 'Cada visita es un momento tuyo',
     ritual_2: 'Porque merecés sentirte increíble cada día',
 
-    // Why us
     why_label:   '¿Por qué Lumière?',
     why_title_1: 'Más que un salón,',
     why_title_2: 'una experiencia',
@@ -91,19 +72,17 @@ const TRANSLATIONS = {
     why3_title:  'Ambiente íntimo y relajado',
     why3_desc:   'Nuestro espacio fue diseñado para que te sientas en casa: tranquila, cómoda y completamente en paz.',
 
-    // Team
     team_label:   'Conocé al equipo',
     team_title_1: 'Las artistas',
     team_title_2: 'detrás de tu look',
     team_desc:    'Mujeres apasionadas, expertas en su arte y con ganas de hacer que cada clienta salga feliz.',
-    t1_role:  'Colorista & Estilista Jefe',
-    t1_exp:   '10 años de experiencia · Certificada en París',
-    t2_role:  'Especialista en Tratamientos',
-    t2_exp:   '7 años de experiencia · Experta en queratina',
-    t3_role:  'Nail Artist & Maquilladora',
-    t3_exp:   '5 años de experiencia · Especialista en nail art',
+    t1_role: 'Colorista & Estilista Jefe',
+    t1_exp:  '10 años de experiencia · Certificada en París',
+    t2_role: 'Especialista en Tratamientos',
+    t2_exp:  '7 años de experiencia · Experta en queratina',
+    t3_role: 'Nail Artist & Maquilladora',
+    t3_exp:  '5 años de experiencia · Especialista en nail art',
 
-    // Testimonials
     testi_label:   'Lo que dicen ellas',
     testi_title_1: 'Clientas que',
     testi_title_2: 'volvieron a brillar',
@@ -116,7 +95,6 @@ const TRANSLATIONS = {
     t4_text:    '"Llevo tres años viniendo y no cambio Lumière por nada. Siempre me tratan con calor, el espacio es hermoso y los resultados son constantes. Es mi lugar de confianza en Medellín. ¡Las quiero mucho!"',
     t4_service: 'Clienta frecuente',
 
-    // Gallery
     gallery_label:   'Nuestro trabajo',
     gallery_title_1: 'Galería',
     gallery_title_2: 'de transformaciones',
@@ -127,7 +105,6 @@ const TRANSLATIONS = {
     gl5: 'Tratamientos',
     gl6: 'Cejas & Pestañas',
 
-    // Booking
     book_label:   'Agendá tu cita',
     book_title_1: '¿Lista para',
     book_title_2: 'tu transformación?',
@@ -135,7 +112,6 @@ const TRANSLATIONS = {
     book_wa:      'Escríbenos por WhatsApp',
     book_or:      'O llámanos:',
 
-    // Form
     form_title:               'Reservar cita',
     form_name:                'Tu nombre',
     form_name_placeholder:    'Ej: Laura Gómez',
@@ -150,25 +126,21 @@ const TRANSLATIONS = {
     err_date:    'Selecciona una fecha.',
     err_time:    'Selecciona una hora.',
 
-    // Confirmation
     confirm_title: '¡Cita enviada!',
     confirm_text:  'Te redirigimos a WhatsApp para confirmar tu cita. ¡Nos vemos pronto! 🌸',
 
-    // Footer
-    footer_tagline: 'Tu espacio de belleza y bienestar en el corazón de Medellín. Donde cada detalle importa.',
-    footer_links:   'Links',
-    footer_contact: 'Contacto',
+    footer_tagline:      'Tu espacio de belleza y bienestar en el corazón de Medellín. Donde cada detalle importa.',
+    footer_links:        'Links',
+    footer_contact:      'Contacto',
     footer_address_html: 'Calle 10 # 43E-40, El Poblado<br>Medellín, Antioquia',
     footer_hours_html:   'Mar – Sáb: 9am – 7pm<br>Dom: 10am – 4pm',
-    footer_copy:    `© ${new Date().getFullYear()} Lumière Studio. Todos los derechos reservados.`,
-    footer_made:    'Hecho con amor en Medellín 🌸',
+    footer_copy:         `© ${new Date().getFullYear()} Lumière Studio. Todos los derechos reservados.`,
+    footer_made:         'Hecho con amor en Medellín 🌸',
 
-    // WhatsApp
     wa_tooltip: 'Escríbenos',
   },
 
   en: {
-    // Nav
     nav_servicios:  'Services',
     nav_nosotras:   'About',
     nav_equipo:     'Team',
@@ -176,7 +148,6 @@ const TRANSLATIONS = {
     nav_galeria:    'Gallery',
     nav_cta:        'Book Now',
 
-    // Hero
     hero_eyebrow:    'Premium Beauty Salon · Medellín',
     hero_title_1:    'Your beauty,',
     hero_title_2:    'our passion',
@@ -187,19 +158,16 @@ const TRANSLATIONS = {
     cta_reservar:    'Book now',
     cta_servicios:   'Our services',
 
-    // Trust bar
     trust_1_bold: '4.9★ on Google',
     trust_2:      '4,000+ happy clients',
     trust_3:      '6 years in Medellín',
     trust_4:      'Cruelty-free products',
 
-    // Services section
     services_label:   'Our services',
     services_title_1: 'What we do',
     services_title_2: 'for you',
     services_desc:    'Every service is crafted with care, using premium products and the latest techniques.',
 
-    // Service cards
     s1_name:  'Cut & Styling',
     s1_price: '$45,000 – $80,000 COP',
     s1_desc:  'Personalized cut tailored to your face shape and style, including professional blow-dry and finish.',
@@ -220,11 +188,9 @@ const TRANSLATIONS = {
     s6_desc:  'Brow design and waxing, lamination, tinting, and lash extensions for a perfect gaze.',
     service_book: 'Book →',
 
-    // Ritual strips
     ritual_1: 'Every visit is your moment',
     ritual_2: 'Because you deserve to feel incredible every day',
 
-    // Why us
     why_label:   'Why Lumière?',
     why_title_1: 'More than a salon,',
     why_title_2: 'an experience',
@@ -235,19 +201,17 @@ const TRANSLATIONS = {
     why3_title:  'Intimate, relaxed setting',
     why3_desc:   'Our space was designed to make you feel at home: calm, comfortable, and completely at ease.',
 
-    // Team
     team_label:   'Meet the team',
     team_title_1: 'The artists',
     team_title_2: 'behind your look',
     team_desc:    'Passionate women, experts in their craft, dedicated to making every client leave happy.',
-    t1_role:  'Lead Colorist & Stylist',
-    t1_exp:   '10 years experience · Certified in Paris',
-    t2_role:  'Hair Treatment Specialist',
-    t2_exp:   '7 years experience · Keratin expert',
-    t3_role:  'Nail Artist & Makeup Artist',
-    t3_exp:   '5 years experience · Nail art specialist',
+    t1_role: 'Lead Colorist & Stylist',
+    t1_exp:  '10 years experience · Certified in Paris',
+    t2_role: 'Hair Treatment Specialist',
+    t2_exp:  '7 years experience · Keratin expert',
+    t3_role: 'Nail Artist & Makeup Artist',
+    t3_exp:  '5 years experience · Nail art specialist',
 
-    // Testimonials
     testi_label:   'What they say',
     testi_title_1: 'Clients who',
     testi_title_2: 'found their glow',
@@ -260,7 +224,6 @@ const TRANSLATIONS = {
     t4_text:    '"I\'ve been coming for three years and I wouldn\'t trade Lumière for anything. They always treat me warmly, the space is beautiful, and the results are consistently amazing. My trusted spot in Medellín!"',
     t4_service: 'Loyal client',
 
-    // Gallery
     gallery_label:   'Our work',
     gallery_title_1: 'Gallery',
     gallery_title_2: 'of transformations',
@@ -271,7 +234,6 @@ const TRANSLATIONS = {
     gl5: 'Treatments',
     gl6: 'Brows & Lashes',
 
-    // Booking
     book_label:   'Schedule your visit',
     book_title_1: 'Ready for',
     book_title_2: 'your transformation?',
@@ -279,7 +241,6 @@ const TRANSLATIONS = {
     book_wa:      'Message us on WhatsApp',
     book_or:      'Or call us:',
 
-    // Form
     form_title:               'Book appointment',
     form_name:                'Your name',
     form_name_placeholder:    'e.g. Laura Gómez',
@@ -294,20 +255,17 @@ const TRANSLATIONS = {
     err_date:    'Please select a date.',
     err_time:    'Please select a time.',
 
-    // Confirmation
     confirm_title: 'Booking sent!',
     confirm_text:  "We're redirecting you to WhatsApp to confirm your appointment. See you soon! 🌸",
 
-    // Footer
-    footer_tagline: 'Your beauty and wellness space in the heart of Medellín. Where every detail matters.',
-    footer_links:   'Links',
-    footer_contact: 'Contact',
+    footer_tagline:      'Your beauty and wellness space in the heart of Medellín. Where every detail matters.',
+    footer_links:        'Links',
+    footer_contact:      'Contact',
     footer_address_html: 'Calle 10 # 43E-40, El Poblado<br>Medellín, Antioquia',
     footer_hours_html:   'Tue – Sat: 9am – 7pm<br>Sun: 10am – 4pm',
-    footer_copy:    `© ${new Date().getFullYear()} Lumière Studio. All rights reserved.`,
-    footer_made:    'Made with love in Medellín 🌸',
+    footer_copy:         `© ${new Date().getFullYear()} Lumière Studio. All rights reserved.`,
+    footer_made:         'Made with love in Medellín 🌸',
 
-    // WhatsApp
     wa_tooltip: 'Message us',
   },
 };

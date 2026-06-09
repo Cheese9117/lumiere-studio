@@ -4,9 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Security -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
   <!-- Primary meta -->
   <title>Lumière Studio — Salón de Belleza Premium · Medellín</title>
   <meta name="description" content="Lumière Studio, salón de belleza premium en Medellín. Cortes, color, manicure, maquillaje y más. Reserva tu cita hoy." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://cheese9117.github.io/lumiere-studio/" />
 
   <!-- Open Graph -->
   <meta property="og:type"        content="website" />
@@ -495,6 +502,9 @@
                 autocomplete="name"
                 data-i18n-placeholder="form_name_placeholder"
                 placeholder="Ej: Laura Gómez"
+                maxlength="80"
+                spellcheck="false"
+                autocorrect="off"
               />
             </div>
 
@@ -625,8 +635,9 @@
   <!-- ═══════════════════════════════════════════
        SCRIPTS (deferred, in dependency order)
   ════════════════════════════════════════════ -->
-  <script src="js/config.js"    defer></script>
-  <script src="js/language.js"  defer></script>
+  <script src="utils/sanitize.js" defer></script>
+  <script src="js/config.js"     defer></script>
+  <script src="js/language.js"   defer></script>
   <script src="js/animations.js" defer></script>
   <script src="js/carousel.js"  defer></script>
   <script src="js/booking.js"   defer></script>
