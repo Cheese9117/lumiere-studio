@@ -1,0 +1,129 @@
+/* =============================================================
+   ANIMATIONS — Lumière Studio
+   All keyframes, transitions, and scroll-triggered reveal classes.
+   ============================================================= */
+
+/* ──────────────────────────────
+   HERO ENTRANCE (CSS-only, fires once on load)
+────────────────────────────── */
+.hero-left {
+  animation: heroSlideLeft 0.9s 0.2s both ease-out;
+}
+
+.hero-right {
+  animation: heroSlideRight 0.9s 0.4s both ease-out;
+}
+
+@keyframes heroSlideLeft {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes heroSlideRight {
+  from { opacity: 0; transform: translateX(28px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ──────────────────────────────
+   FLOATING ICON (hero card)
+────────────────────────────── */
+.hero-card-icon {
+  animation: floatIcon 4s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* ──────────────────────────────
+   FLOATING RATING CARD
+────────────────────────────── */
+.hero-float-card {
+  animation: floatCard 5s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* ──────────────────────────────
+   AVAILABILITY DOT PULSE
+────────────────────────────── */
+.badge-dot {
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.4); opacity: 0.7; }
+}
+
+/* ──────────────────────────────
+   WHATSAPP BUTTON PULSE
+────────────────────────────── */
+.wa-float {
+  transition: transform 0.25s ease;
+  animation: waPulse 3s ease-in-out infinite;
+}
+
+.wa-float:hover {
+  transform: scale(1.1);
+  animation: none;
+}
+
+@keyframes waPulse {
+  0%, 100% { box-shadow: 0 4px 18px rgba(37, 211, 102, 0.45); }
+  50%       { box-shadow: 0 4px 28px rgba(37, 211, 102, 0.7); }
+}
+
+/* ──────────────────────────────
+   BOOKING CONFIRMATION CHECK
+────────────────────────────── */
+.booking-confirm.show .confirm-check {
+  animation: checkPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes checkPop {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* ──────────────────────────────
+   SCROLL REVEAL
+   Applied via IntersectionObserver in animations.js.
+   Elements start invisible; .visible class triggers transition.
+────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Staggered delays for sibling reveals */
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+.reveal-d4 { transition-delay: 0.4s; }
+
+/* ──────────────────────────────
+   MOBILE MENU SLIDE
+────────────────────────────── */
+/* Handled in layout.css via transform; transition defined here for clarity */
+.mobile-menu {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ──────────────────────────────
+   CAROUSEL SLIDE
+   Transition on the track itself, controlled by JS transform.
+────────────────────────────── */
+.carousel-track {
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
