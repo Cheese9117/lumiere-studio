@@ -28,6 +28,7 @@ function initNav() {
 // ─── Mobile menu ──────────────────────────────────────────────────────────────
 function initMobileMenu() {
   const menu      = document.getElementById('mobile-menu');
+  const overlay   = document.getElementById('mobile-menu-overlay');
   const openBtn   = document.getElementById('hamburger');
   const closeBtn  = document.getElementById('mobile-close');
 
@@ -35,16 +36,19 @@ function initMobileMenu() {
 
   function openMenu() {
     menu.classList.add('open');
+    if (overlay) overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
 
   function closeMenu() {
     menu.classList.remove('open');
+    if (overlay) overlay.classList.remove('open');
     document.body.style.overflow = '';
   }
 
   if (openBtn)  openBtn.addEventListener('click', openMenu);
   if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+  if (overlay)  overlay.addEventListener('click', closeMenu);
 
   // Close when a link inside the menu is clicked
   menu.querySelectorAll('a').forEach((link) => {
@@ -112,15 +116,23 @@ function initWaFloat() {
 
 // ─── Entry point ──────────────────────────────────────────────────────────────
 function init() {
-  initLanguage();   // language.js — must run before anything so text is set
+  initLanguage();     // language.js — must run before anything so text is set
+  initHeroReveal();   // hero-reveal.js — wraps hero words after translation
   initNav();
   initMobileMenu();
   initSmoothScroll();
   initBackTop();
   initWaFloat();
-  initReveal();     // animations.js
-  initCarousel();   // carousel.js
-  initBooking();    // booking.js
+  initReveal();       // animations.js
+  initGalleryReveal(); // animations.js
+  initCarousel();     // carousel.js
+  initBooking();      // booking.js
+  initCursor();       // cursor.js
+  initScrollProgress(); // scroll-progress.js
+  initCounters();     // counters.js
+  initLightbox();     // lightbox.js
+  initFilters();      // filter.js
+  initEasterEgg();    // particles.js
 }
 
 if (document.readyState === 'loading') {

@@ -27,6 +27,14 @@
   --wa-green:    #25D366;   /* WhatsApp brand green */
   --error:       #d97066;   /* Form validation errors */
 
+  /* --- RGB channels (for rgba() overlays) --- */
+  --text-rgb:    30, 20, 16;
+
+  /* --- Cursor & motion --- */
+  --cursor-size:    20px;
+  --cursor-lag:     0.08s;
+  --marquee-speed:  32s;
+
   /* --- Border radius --- */
   --radius:      14px;
   --radius-sm:   8px;
@@ -35,6 +43,7 @@
   /* --- Shadows --- */
   --shadow-sm:   0 4px 16px rgba(30, 20, 16, 0.08);
   --shadow-rose: 0 12px 36px rgba(196, 137, 122, 0.22);
+  --shadow-gold: 0 16px 40px rgba(184, 149, 106, 0.35);
 
   /* --- Spacing scale --- */
   --space-xs:    0.4rem;

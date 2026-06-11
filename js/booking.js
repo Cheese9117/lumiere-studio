@@ -3,14 +3,9 @@
 /**
  * booking.js — Lumière Studio
  *
- * Booking form: client-side validation + WhatsApp redirect.
- *
- * On valid submit:
- *  1. Show brief confirmation screen.
- *  2. Build a wa.me URL with all form data pre-filled as a message.
- *  3. Open WhatsApp in a new tab after a short delay.
- *
- * No backend required — works on any static host.
+ * 3-step booking form (Datos → Servicio → Confirmar) with per-step
+ * validation, a review summary on the final step, and a WhatsApp
+ * redirect on submit. No backend required — works on any static host.
  */
 
 function initBooking() {
@@ -18,6 +13,11 @@ function initBooking() {
   const confirm = document.getElementById('booking-confirm');
 
   if (!form) return;
+
+  const stepPanels = form.querySelectorAll('.form-step');
+  const stepIndicators = form.querySelectorAll('.form-steps li[data-step]');
+  const totalSteps = stepPanels.length;
+  let currentStep = 1;
 
   // ─── Helpers ──────────────────────────────────────────────────────────────
   function getField(id) {
@@ -33,37 +33,90 @@ function initBooking() {
     form.querySelectorAll('.invalid').forEach((el) => el.classList.remove('invalid'));
   }
 
-  function validate() {
-    const lang = document.documentElement.lang || CONFIG.DEFAULT_LANG;
-    const t    = TRANSLATIONS[lang] || TRANSLATIONS[CONFIG.DEFAULT_LANG];
+  // ─── Step navigation ──────────────────────────────────────────────────────
+  function goToStep(step) {
+    currentStep = step;
 
-    const nombre   = getField('f-nombre');
-    const servicio = getField('f-servicio');
-    const fecha    = getField('f-fecha');
-    const hora     = getField('f-hora');
+    stepPanels.forEach((panel) => {
+      panel.classList.toggle('active', Number(panel.dataset.stepPanel) === step);
+    });
 
+    stepIndicators.forEach((li) => {
+      const n = Number(li.dataset.step);
+      li.classList.toggle('active', n === step);
+      li.classList.toggle('done', n < step);
+    });
+
+    if (step === totalSteps) buildSummary();
+  }
+
+  function validateStep(step) {
+    clearErrors();
     let valid = true;
 
-    clearErrors();
+    if (step === 1) {
+      const nombre = getField('f-nombre');
+      const fecha = getField('f-fecha');
 
-    if (!nombre || !nombre.value.trim()) {
-      setError(nombre, true);
-      valid = false;
+      if (!nombre || !nombre.value.trim()) {
+        setError(nombre, true);
+        valid = false;
+      }
+      if (!fecha || !fecha.value) {
+        setError(fecha, true);
+        valid = false;
+      }
     }
-    if (!servicio || !servicio.value) {
-      setError(servicio, true);
-      valid = false;
-    }
-    if (!fecha || !fecha.value) {
-      setError(fecha, true);
-      valid = false;
-    }
-    if (!hora || !hora.value) {
-      setError(hora, true);
-      valid = false;
+
+    if (step === 2) {
+      const servicio = getField('f-servicio');
+      const hora = getField('f-hora');
+
+      if (!servicio || !servicio.value) {
+        setError(servicio, true);
+        valid = false;
+      }
+      if (!hora || !hora.value) {
+        setError(hora, true);
+        valid = false;
+      }
     }
 
     return valid;
+  }
+
+  function validateAll() {
+    return validateStep(1) && validateStep(2);
+  }
+
+  // ─── Review summary (step 3) ─────────────────────────────────────────────
+  function buildSummary() {
+    const summary = document.getElementById('booking-summary');
+    if (!summary) return;
+
+    const lang = document.documentElement.lang || CONFIG.DEFAULT_LANG;
+    const t = TRANSLATIONS[lang] || TRANSLATIONS[CONFIG.DEFAULT_LANG];
+
+    const rows = [
+      [t.form_name, getField('f-nombre').value.trim()],
+      [t.form_service, getField('f-servicio').selectedOptions[0]?.text || ''],
+      [t.form_date, getField('f-fecha').value],
+      [t.form_time, getField('f-hora').value],
+    ];
+
+    summary.innerHTML = '';
+
+    rows.forEach(([label, value]) => {
+      const row = document.createElement('p');
+      row.className = 'booking-summary-item';
+
+      const strong = document.createElement('strong');
+      strong.textContent = `${label}: `;
+
+      row.appendChild(strong);
+      row.appendChild(document.createTextNode(value));
+      summary.appendChild(row);
+    });
   }
 
   // ─── Build WhatsApp URL ───────────────────────────────────────────────────
@@ -78,28 +131,36 @@ function initBooking() {
     return `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
   }
 
+  // ─── Step nav buttons ─────────────────────────────────────────────────────
+  form.querySelectorAll('.form-next').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (validateStep(currentStep)) goToStep(Math.min(currentStep + 1, totalSteps));
+    });
+  });
+
+  form.querySelectorAll('.form-back').forEach((btn) => {
+    btn.addEventListener('click', () => goToStep(Math.max(currentStep - 1, 1)));
+  });
+
   // ─── Submit handler ───────────────────────────────────────────────────────
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    if (!validate()) return;
+    if (!validateAll()) return;
 
     const nombre   = getField('f-nombre').value.trim();
-    const servicio = getField('f-servicio').value;
+    const servicio = getField('f-servicio').selectedOptions[0]?.text || '';
     const fecha    = getField('f-fecha').value;
     const hora     = getField('f-hora').value;
 
-    // Show confirmation UI
     if (confirm) {
-      form.style.display   = 'none';
+      form.style.display = 'none';
       confirm.style.display = 'block';
-      // Trigger CSS animation via class (see animations.css .booking-confirm.show)
       requestAnimationFrame(() => confirm.classList.add('show'));
     }
 
-    // Open WhatsApp after a short delay so user sees the confirmation
     setTimeout(() => {
-      window.open(buildWhatsAppURL(nombre, servicio, fecha, hora), '_blank');
+      window.open(buildWhatsAppURL(nombre, servicio, fecha, hora), '_blank', 'noopener,noreferrer');
     }, 800);
   });
 
@@ -115,4 +176,6 @@ function initBooking() {
     const today = new Date().toISOString().split('T')[0];
     fechaField.min = today;
   }
+
+  goToStep(1);
 }

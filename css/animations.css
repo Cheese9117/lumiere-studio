@@ -10,30 +10,29 @@
   animation: heroSlideLeft 0.9s 0.2s both ease-out;
 }
 
-.hero-right {
-  animation: heroSlideRight 0.9s 0.4s both ease-out;
-}
-
 @keyframes heroSlideLeft {
   from { opacity: 0; transform: translateX(-28px); }
   to   { opacity: 1; transform: none; }
 }
 
-@keyframes heroSlideRight {
-  from { opacity: 0; transform: translateX(28px); }
-  to   { opacity: 1; transform: none; }
-}
-
 /* ──────────────────────────────
-   FLOATING ICON (hero card)
+   HERO TEXT REVEAL
+   Words are wrapped in spans by hero-reveal.js after the language
+   is applied. Each word clips in from the bottom, staggered by --i.
 ────────────────────────────── */
-.hero-card-icon {
-  animation: floatIcon 4s ease-in-out infinite;
+.reveal-word {
+  display: inline-block;
+  clip-path: inset(0 0 100% 0);
+  opacity: 0;
+  animation: wordReveal 0.7s ease forwards;
+  animation-delay: calc(var(--i, 0) * 100ms);
 }
 
-@keyframes floatIcon {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-10px); }
+@keyframes wordReveal {
+  to {
+    clip-path: inset(0 0 0% 0);
+    opacity: 1;
+  }
 }
 
 /* ──────────────────────────────
@@ -126,4 +125,29 @@
 ────────────────────────────── */
 .carousel-track {
   transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ──────────────────────────────
+   EASTER EGG — GOLDEN PARTICLE BURST
+   Particles are created by particles.js with random --dx / --dy
+   custom properties, then removed after the animation ends.
+────────────────────────────── */
+.particle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  pointer-events: none;
+  z-index: 9998;
+  animation: particleBurst 1s ease-out forwards;
+}
+
+@keyframes particleBurst {
+  to {
+    transform: translate(var(--dx), var(--dy)) scale(0);
+    opacity: 0;
+  }
 }

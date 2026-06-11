@@ -39,6 +39,12 @@ function applyLang(lang) {
     if (key in dict) el.placeholder = dict[key];
   });
 
+  // aria-label needs a separate attribute too
+  document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+    const key = el.dataset.i18nAria;
+    if (key in dict) el.setAttribute('aria-label', dict[key]);
+  });
+
   // Update <html lang="...">
   document.documentElement.lang = lang;
 

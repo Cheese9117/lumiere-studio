@@ -19,6 +19,8 @@ const CONFIG = {
   REVEAL_THRESHOLD: 0.1,
   STORAGE_KEY: 'lumiere_lang',
   DEFAULT_LANG: 'es',
+  EASTER_EGG_WORD: 'belleza',
+  PARTICLE_COUNT: 20,
 };
 
 // --- Bilingual content (ES / EN) ---
@@ -33,10 +35,10 @@ const TRANSLATIONS = {
     nav_cta:        'Reservar',
 
     // Hero
-    hero_eyebrow:    'Salón de Belleza Premium · Medellín',
-    hero_title_1:    'Tu belleza,',
-    hero_title_2:    'nuestra pasión',
-    hero_sub:        'Un espacio íntimo donde cada visita es un ritual. Venís como clienta, salís sintiéndote la mejor versión de vos misma.',
+    hero_eyebrow:    'Salón de belleza · Laureles, Medellín',
+    hero_title_1:    'Acá el tiempo',
+    hero_title_2:    'se toma con calma',
+    hero_sub:        'Entrás con el día encima y el pelo cansado, y salís oliendo a aceite de argán, con el cabello liviano y la sensación de que alguien por fin te puso atención de verdad.',
     hero_badge:      'Disponible hoy',
     hero_float_main: '4.9 en Google',
     hero_float_sub:  '+400 reseñas',
@@ -44,52 +46,58 @@ const TRANSLATIONS = {
     cta_servicios:   'Ver servicios',
 
     // Trust bar
-    trust_1_bold: '4.9★ en Google',
-    trust_2:      '4.000+ clientas felices',
-    trust_3:      '6 años en Medellín',
-    trust_4:      'Productos libres de crueldad',
+    trust_1_label: 'en Google',
+    trust_2_label: 'clientas felices',
+    trust_3_label: 'años en Medellín',
+    trust_4:       'Productos libres de crueldad',
 
     // Services section
     services_label:   'Nuestros servicios',
     services_title_1: 'Lo que hacemos',
     services_title_2: 'para vos',
-    services_desc:    'Cada servicio está diseñado con cuidado, usando los mejores productos y las técnicas más actuales.',
+    services_desc:    'Cada servicio empieza con una conversación. De ahí salen los detalles que hacen la diferencia.',
+
+    // Service filters
+    filter_all:      'Todos',
+    filter_cabello:  'Cabello',
+    filter_unas:     'Uñas',
+    filter_estetica: 'Estética',
 
     // Service cards
     s1_name:  'Corte y Estilizado',
     s1_price: '$45.000 – $80.000 COP',
-    s1_desc:  'Corte personalizado según tu rostro y estilo, con secado y estilizado profesional incluido.',
+    s1_desc:  'Cortamos en seco primero, para ver cómo cae tu pelo de verdad antes de definir la línea. Salís con un corte que se peina solo, sin pelear con la plancha todas las mañanas.',
     s2_name:  'Coloración y Mechas',
     s2_price: '$120.000 – $250.000 COP',
-    s2_desc:  'Coloración completa, balayage, mechas y técnicas de color que se adaptan perfectamente a tu cabello.',
+    s2_desc:  'Hacemos siempre una prueba de mechón antes de aplicar el color, para que no haya sorpresas con el tono. El brillo dura semanas porque trabajamos con fórmulas que no resecan.',
     s3_name:  'Tratamientos Capilares',
     s3_price: '$60.000 – $150.000 COP',
-    s3_desc:  'Keratina, hidratación profunda y nutrición capilar para un cabello suave, brillante y saludable.',
+    s3_desc:  'Si tu pelo quedó como paja después del verano o de tanta plancha, esto lo revive de raíz. Salís con el cabello suave al tacto y sin ese frizz que no hay forma de peinar.',
     s4_name:  'Manicure y Pedicure',
     s4_price: '$35.000 – $65.000 COP',
-    s4_desc:  'Cuidado completo de manos y pies con esmaltes semipermanentes, nail art y spa de uñas.',
+    s4_desc:  'Empezamos limando en seco para cuidar la cutícula, nada de cortes a lo bruto. El esmaltado semipermanente aguanta hasta tres semanas sin descascararse en las puntas.',
     s5_name:  'Maquillaje Profesional',
     s5_price: '$80.000 – $120.000 COP',
-    s5_desc:  'Maquillaje social, de noche o para eventos especiales. Natural o glamuroso, según lo que necesités.',
+    s5_desc:  'Usamos bases que aguantan sudor, abrazos y flash de cámara sin sentirse pesadas. Te vas viéndote vos misma, solo que con mejor luz.',
     s6_name:  'Cejas y Pestañas',
     s6_price: '$40.000 – $70.000 COP',
-    s6_desc:  'Diseño y depilación de cejas, laminado, tinte y extensión de pestañas para una mirada perfecta.',
+    s6_desc:  'Diseñamos la forma según el hueso de tu ceja, no según una plantilla. Te cambia la mirada sin que se note que te hiciste algo.',
     service_book: 'Reservar →',
 
     // Ritual strips
-    ritual_1: 'Cada visita es un momento tuyo',
-    ritual_2: 'Porque merecés sentirte increíble cada día',
+    ritual_1: 'Acá nadie te apura — tu cita es tuya, de principio a fin.',
+    ritual_2: 'Porque un buen corte te puede cambiar el ánimo de la semana entera.',
 
     // Why us
     why_label:   '¿Por qué Lumière?',
     why_title_1: 'Más que un salón,',
     why_title_2: 'una experiencia',
-    why1_title:  'Consulta personalizada',
-    why1_desc:   'Antes de cualquier servicio, conversamos sobre lo que querés y lo que mejor le va a tu cabello, piel o estilo.',
-    why2_title:  'Productos premium',
-    why2_desc:   'Solo usamos marcas de alta gama, libres de crueldad y con ingredientes que realmente cuidan tu cabello y piel.',
-    why3_title:  'Ambiente íntimo y relajado',
-    why3_desc:   'Nuestro espacio fue diseñado para que te sientas en casa: tranquila, cómoda y completamente en paz.',
+    why1_title:  'Antes de tocarte el pelo, hablamos',
+    why1_desc:   'Nos sentamos con vos, te preguntamos qué te gustó y qué no de tu último corte, y de ahí armamos el plan juntas. Nada de sorpresas cuando ya es tarde para cambiar de opinión.',
+    why2_title:  'Lo que usamos en vos, lo usamos en nosotras',
+    why2_desc:   'Trabajamos con líneas profesionales libres de crueldad animal — del nivel de Olaplex y Kérastase. Tu cabello y tu piel lo notan desde la primera sesión.',
+    why3_title:  'Un espacio que no se siente sala de espera',
+    why3_desc:   'Somos pocas sillas, música bajita y algo calientico mientras esperás. Nada de filas ni de sentirte un número más en la agenda.',
 
     // Team
     team_label:   'Conocé al equipo',
@@ -107,35 +115,40 @@ const TRANSLATIONS = {
     testi_label:   'Lo que dicen ellas',
     testi_title_1: 'Clientas que',
     testi_title_2: 'volvieron a brillar',
-    t1_text:    '"Valentina me hizo el balayage más lindo que he visto en mi vida. Le conté exactamente lo que quería y me entendió al tiro. El ambiente del salón es súper acogedor, nada intimidante. ¡Definitivamente vuelvo!"',
+    testi_rating_score: '4.9',
+    testi_rating_text:  'basado en +400 reseñas de Google',
+    t1_text:    '"Le mostré una foto de Pinterest a Valentina y le dije: algo así, pero que no se vea forzado. Me hizo un balayage que parece que el sol me lo hubiera pintado. Llevo meses recibiendo cumplidos y todavía no necesito retoque."',
     t1_service: 'Coloración y Mechas',
-    t2_text:    '"Llevaba meses con el cabello destruido por el calor. Daniela me hizo una hidratación profunda y quedé con el pelo como nunca. Muy profesional, me explicó todo el proceso y me dijo cómo cuidarlo en casa. ¡Gracias!"',
+    t2_text:    '"Tenía el pelo frito de tanta plancha y ya ni sabía qué hacer con él. Daniela me hizo el tratamiento de keratina y quedé que ni yo me lo creía: se seca solo y queda liso sin necesidad de plancharlo. Vale cada peso."',
     t2_service: 'Tratamiento Capilar',
-    t3_text:    '"Me hicieron el maquillaje para mi grado y quedé preciosa. Camila se tomó el tiempo de entender el look que quería sin apresurarse. El resultado superó todas mis expectativas. ¡Mis fotos quedaron increíbles!"',
+    t3_text:    '"Fui para el maquillaje de grado de mi hija con los nervios en el cuello. Camila me preguntó cuánto maquillaje uso normalmente y me dejó natural pero con un brillo que se notó hasta en las fotos. Lloré, pero de la buena."',
     t3_service: 'Maquillaje Profesional',
-    t4_text:    '"Llevo tres años viniendo y no cambio Lumière por nada. Siempre me tratan con calor, el espacio es hermoso y los resultados son constantes. Es mi lugar de confianza en Medellín. ¡Las quiero mucho!"',
+    t4_text:    '"Vivo en Belén pero igual cojo bus hasta Laureles, porque acá sí me conocen: saben que no me gusta el agua muy caliente en el lavado y que prefiero las uñas cortas. Esos detalles son los que a una la hacen volver."',
     t4_service: 'Clienta frecuente',
 
     // Gallery
     gallery_label:   'Nuestro trabajo',
     gallery_title_1: 'Galería',
     gallery_title_2: 'de transformaciones',
-    gl1: 'Corte & Estilizado',
-    gl2: 'Coloración',
-    gl3: 'Nail Art',
-    gl4: 'Maquillaje',
-    gl5: 'Tratamientos',
-    gl6: 'Cejas & Pestañas',
+    gl1: 'Interior del salón',
+    gl2: 'Coloración y mechas',
+    gl3: 'Corte y Estilizado',
+    gl4: 'Manicure y Nail Art',
+    gl5: 'Estilizado profesional',
+    gl6: 'Brushing y secado',
 
     // Booking
     book_label:   'Agendá tu cita',
-    book_title_1: '¿Lista para',
-    book_title_2: 'tu transformación?',
-    book_desc:    'Escribinos por WhatsApp y te confirmamos la cita en menos de una hora. También podés completar el formulario y te contactamos nosotras.',
+    book_title_1: 'Separá tu',
+    book_title_2: 'espacio acá',
+    book_desc:    'Mandanos un mensaje por WhatsApp con el día y la hora que te quede mejor, y te confirmamos en menos de una hora. Si preferís, llená el formulario y nosotras te escribimos.',
     book_wa:      'Escríbenos por WhatsApp',
     book_or:      'O llámanos:',
 
-    // Form
+    // Form / step indicator
+    step_1: 'Datos',
+    step_2: 'Servicio',
+    step_3: 'Confirmar',
     form_title:               'Reservar cita',
     form_name:                'Tu nombre',
     form_name_placeholder:    'Ej: Laura Gómez',
@@ -144,6 +157,8 @@ const TRANSLATIONS = {
     form_date:                'Fecha',
     form_time:                'Hora',
     form_time_placeholder:    'Selecciona hora',
+    form_next:                'Siguiente',
+    form_back:                'Atrás',
     form_submit:              'Confirmar reserva',
     err_name:    'Por favor ingresa tu nombre.',
     err_service: 'Por favor selecciona un servicio.',
@@ -155,16 +170,21 @@ const TRANSLATIONS = {
     confirm_text:  'Te redirigimos a WhatsApp para confirmar tu cita. ¡Nos vemos pronto! 🌸',
 
     // Footer
-    footer_tagline: 'Tu espacio de belleza y bienestar en el corazón de Medellín. Donde cada detalle importa.',
+    footer_tagline: 'A cinco cuadras del parque de Laureles, con la puerta abierta de martes a sábado. Vení y tomate un café mientras te consentimos.',
     footer_links:   'Links',
     footer_contact: 'Contacto',
-    footer_address_html: 'Calle 10 # 43E-40, El Poblado<br>Medellín, Antioquia',
+    footer_address_html: 'Carrera 70 # 44A-23, Laureles<br>Medellín, Antioquia',
     footer_hours_html:   'Mar – Sáb: 9am – 7pm<br>Dom: 10am – 4pm',
     footer_copy:    `© ${new Date().getFullYear()} Lumière Studio. Todos los derechos reservados.`,
     footer_made:    'Hecho con amor en Medellín 🌸',
 
     // WhatsApp
     wa_tooltip: 'Escríbenos',
+
+    // Lightbox
+    lightbox_close: 'Cerrar',
+    lightbox_prev:  'Imagen anterior',
+    lightbox_next:  'Imagen siguiente',
   },
 
   en: {
@@ -177,10 +197,10 @@ const TRANSLATIONS = {
     nav_cta:        'Book Now',
 
     // Hero
-    hero_eyebrow:    'Premium Beauty Salon · Medellín',
-    hero_title_1:    'Your beauty,',
-    hero_title_2:    'our passion',
-    hero_sub:        'An intimate space where every visit is a ritual. You arrive as a client, you leave feeling like the best version of yourself.',
+    hero_eyebrow:    'Beauty salon · Laureles, Medellín',
+    hero_title_1:    'Around here, time',
+    hero_title_2:    'slows down',
+    hero_sub:        'You walk in carrying the whole day, and you walk out smelling of argan oil, with lighter hair and the feeling that someone finally paid real attention to you.',
     hero_badge:      'Available today',
     hero_float_main: '4.9 on Google',
     hero_float_sub:  '+400 reviews',
@@ -188,52 +208,58 @@ const TRANSLATIONS = {
     cta_servicios:   'Our services',
 
     // Trust bar
-    trust_1_bold: '4.9★ on Google',
-    trust_2:      '4,000+ happy clients',
-    trust_3:      '6 years in Medellín',
-    trust_4:      'Cruelty-free products',
+    trust_1_label: 'on Google',
+    trust_2_label: 'happy clients',
+    trust_3_label: 'years in Medellín',
+    trust_4:       'Cruelty-free products',
 
     // Services section
     services_label:   'Our services',
     services_title_1: 'What we do',
     services_title_2: 'for you',
-    services_desc:    'Every service is crafted with care, using premium products and the latest techniques.',
+    services_desc:    'Every service starts with a conversation. That\'s where the details that make the difference come from.',
+
+    // Service filters
+    filter_all:      'All',
+    filter_cabello:  'Hair',
+    filter_unas:     'Nails',
+    filter_estetica: 'Beauty',
 
     // Service cards
     s1_name:  'Cut & Styling',
     s1_price: '$45,000 – $80,000 COP',
-    s1_desc:  'Personalized cut tailored to your face shape and style, including professional blow-dry and finish.',
+    s1_desc:  'We cut on dry hair first, to see how it really falls before shaping the line. You leave with a cut that styles itself, no fighting the flat iron every morning.',
     s2_name:  'Color & Highlights',
     s2_price: '$120,000 – $250,000 COP',
-    s2_desc:  'Full color, balayage, highlights, and color techniques perfectly adapted to your hair.',
+    s2_desc:  'We always run a strand test before applying any color, so there are no surprises with the tone. The shine lasts for weeks because we use formulas that don\'t dry out your hair.',
     s3_name:  'Hair Treatments',
     s3_price: '$60,000 – $150,000 COP',
-    s3_desc:  'Keratin, deep hydration, and hair nutrition for soft, shiny, and healthy hair.',
+    s3_desc:  'If your hair feels like straw after summer or too much heat styling, this brings it back to life from the root. You leave with soft hair and none of that frizz you can\'t tame.',
     s4_name:  'Manicure & Pedicure',
     s4_price: '$35,000 – $65,000 COP',
-    s4_desc:  'Complete hand and foot care with gel polish, nail art, and nail spa treatments.',
+    s4_desc:  'We start by dry-filing to protect the cuticle, never rough cutting. The gel polish holds up to three weeks without chipping at the tips.',
     s5_name:  'Professional Makeup',
     s5_price: '$80,000 – $120,000 COP',
-    s5_desc:  'Social, evening, or special event makeup. Natural or glamorous — whatever you need.',
+    s5_desc:  'We use bases that hold up to sweat, hugs, and camera flash without feeling heavy. You leave looking like yourself, just with better lighting.',
     s6_name:  'Brows & Lashes',
     s6_price: '$40,000 – $70,000 COP',
-    s6_desc:  'Brow design and waxing, lamination, tinting, and lash extensions for a perfect gaze.',
+    s6_desc:  'We design the shape around your own brow bone, not a template. It changes your whole look without anyone noticing you had work done.',
     service_book: 'Book →',
 
     // Ritual strips
-    ritual_1: 'Every visit is your moment',
-    ritual_2: 'Because you deserve to feel incredible every day',
+    ritual_1: 'No one rushes you here — your appointment is yours, start to finish.',
+    ritual_2: 'Because a good haircut can change the mood of your whole week.',
 
     // Why us
     why_label:   'Why Lumière?',
     why_title_1: 'More than a salon,',
     why_title_2: 'an experience',
-    why1_title:  'Personalized consultation',
-    why1_desc:   'Before any service, we talk about what you want and what works best for your hair, skin, or style.',
-    why2_title:  'Premium products',
-    why2_desc:   'We only use high-end, cruelty-free brands with ingredients that genuinely care for your hair and skin.',
-    why3_title:  'Intimate, relaxed setting',
-    why3_desc:   'Our space was designed to make you feel at home: calm, comfortable, and completely at ease.',
+    why1_title:  'Before we touch your hair, we talk',
+    why1_desc:   'We sit down with you, ask what you liked and didn\'t about your last cut, and build the plan together from there. No surprises once it\'s too late to change your mind.',
+    why2_title:  'What we use on you, we use on ourselves',
+    why2_desc:   'We work with cruelty-free professional lines — Olaplex and Kérastase level. Your hair and skin notice from the very first session.',
+    why3_title:  'A space that doesn\'t feel like a waiting room',
+    why3_desc:   'A handful of chairs, low music, and something warm to drink while you wait. No lines, no feeling like just another slot in the schedule.',
 
     // Team
     team_label:   'Meet the team',
@@ -251,35 +277,40 @@ const TRANSLATIONS = {
     testi_label:   'What they say',
     testi_title_1: 'Clients who',
     testi_title_2: 'found their glow',
-    t1_text:    '"Valentina did the most beautiful balayage I\'ve ever seen. I told her exactly what I wanted and she nailed it. The salon atmosphere is super welcoming, nothing intimidating at all. Definitely coming back!"',
+    testi_rating_score: '4.9',
+    testi_rating_text:  'based on 400+ Google reviews',
+    t1_text:    '"I showed Valentina a photo from Pinterest and said: something like this, but not too obvious. She did a balayage that looks like the sun painted it. I\'ve been getting compliments for months and still don\'t need a touch-up."',
     t1_service: 'Color & Highlights',
-    t2_text:    '"My hair had been damaged by heat for months. Daniela did a deep hydration treatment and my hair has never felt better. Very professional — she explained everything and told me how to care for it at home."',
+    t2_text:    '"My hair was fried from too much heat styling and I didn\'t know what to do with it anymore. Daniela did the keratin treatment and I couldn\'t believe it — it air-dries straight, no flat iron needed. Worth every peso."',
     t2_service: 'Hair Treatment',
-    t3_text:    '"They did my graduation makeup and I looked stunning. Camila took the time to understand the look I wanted without rushing. The result exceeded all my expectations. My photos turned out incredible!"',
+    t3_text:    '"I came in for my daughter\'s graduation makeup, nerves and all. Camila asked how much makeup I usually wear and kept it natural but with a glow that showed up in every photo. I cried — the good kind."',
     t3_service: 'Professional Makeup',
-    t4_text:    '"I\'ve been coming for three years and I wouldn\'t trade Lumière for anything. They always treat me warmly, the space is beautiful, and the results are consistently amazing. My trusted spot in Medellín!"',
+    t4_text:    '"I live across town but I still take the bus to Laureles, because here they actually know me — they know I don\'t like the water too hot during a wash and that I keep my nails short. Little things like that are what bring you back."',
     t4_service: 'Loyal client',
 
     // Gallery
     gallery_label:   'Our work',
     gallery_title_1: 'Gallery',
     gallery_title_2: 'of transformations',
-    gl1: 'Cut & Styling',
-    gl2: 'Color',
-    gl3: 'Nail Art',
-    gl4: 'Makeup',
-    gl5: 'Treatments',
-    gl6: 'Brows & Lashes',
+    gl1: 'Salon interior',
+    gl2: 'Color and highlights',
+    gl3: 'Cut and styling',
+    gl4: 'Manicure and nail art',
+    gl5: 'Professional styling',
+    gl6: 'Blow-dry finish',
 
     // Booking
-    book_label:   'Schedule your visit',
-    book_title_1: 'Ready for',
-    book_title_2: 'your transformation?',
-    book_desc:    "Message us on WhatsApp and we'll confirm your appointment within the hour. Or fill out the form and we'll reach out to you.",
+    book_label:   'Book your visit',
+    book_title_1: 'Save your',
+    book_title_2: 'spot here',
+    book_desc:    'Send us a WhatsApp message with the day and time that works best for you, and we\'ll confirm within the hour. Or fill out the form and we\'ll reach out to you.',
     book_wa:      'Message us on WhatsApp',
     book_or:      'Or call us:',
 
-    // Form
+    // Form / step indicator
+    step_1: 'Details',
+    step_2: 'Service',
+    step_3: 'Confirm',
     form_title:               'Book appointment',
     form_name:                'Your name',
     form_name_placeholder:    'e.g. Laura Gómez',
@@ -288,6 +319,8 @@ const TRANSLATIONS = {
     form_date:                'Date',
     form_time:                'Time',
     form_time_placeholder:    'Select time',
+    form_next:                'Next',
+    form_back:                'Back',
     form_submit:              'Confirm booking',
     err_name:    'Please enter your name.',
     err_service: 'Please select a service.',
@@ -299,15 +332,20 @@ const TRANSLATIONS = {
     confirm_text:  "We're redirecting you to WhatsApp to confirm your appointment. See you soon! 🌸",
 
     // Footer
-    footer_tagline: 'Your beauty and wellness space in the heart of Medellín. Where every detail matters.',
+    footer_tagline: 'Five blocks from Parque de Laureles, doors open Tuesday through Saturday. Come in and have a coffee while we take care of you.',
     footer_links:   'Links',
     footer_contact: 'Contact',
-    footer_address_html: 'Calle 10 # 43E-40, El Poblado<br>Medellín, Antioquia',
+    footer_address_html: 'Carrera 70 # 44A-23, Laureles<br>Medellín, Antioquia',
     footer_hours_html:   'Tue – Sat: 9am – 7pm<br>Sun: 10am – 4pm',
     footer_copy:    `© ${new Date().getFullYear()} Lumière Studio. All rights reserved.`,
     footer_made:    'Made with love in Medellín 🌸',
 
     // WhatsApp
     wa_tooltip: 'Message us',
+
+    // Lightbox
+    lightbox_close: 'Close',
+    lightbox_prev:  'Previous image',
+    lightbox_next:  'Next image',
   },
 };

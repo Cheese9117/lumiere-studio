@@ -202,32 +202,27 @@
 /* ──────────────────────────────
    HERO BADGE
 ────────────────────────────── */
-.hero-card-icon {
-  font-size: 5rem;
-  line-height: 1;
-  display: block;
-  margin-bottom: 1rem;
-}
-
 .hero-card-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-full);
   padding: 0.5rem 1.2rem;
   font-size: 0.78rem;
   font-weight: 500;
-  color: var(--text);
+  color: var(--bg);
+  margin-bottom: 1.4rem;
 }
 
 .badge-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--sage);
+  background: var(--sage-lt);
   flex-shrink: 0;
 }
 
@@ -266,14 +261,41 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  transition: transform var(--t-base), box-shadow var(--t-base), border-color var(--t-base);
+  position: relative;
+  overflow: hidden;
+  transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease, opacity 300ms ease;
   border: 1px solid transparent;
 }
 
+.service-card::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--gold);
+  transition: width 300ms ease;
+}
+
 .service-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-rose);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-gold);
   border-color: var(--rose-lt);
+}
+
+.service-card:hover::after {
+  width: 100%;
+}
+
+.service-card.is-hidden {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+
+.service-card.is-hidden-final {
+  display: none;
 }
 
 .service-icon {
@@ -327,10 +349,12 @@
   box-shadow: var(--shadow-rose);
 }
 
-/* Team avatar gradient backgrounds */
-.team-card:nth-child(1) .team-avatar { background: linear-gradient(145deg, #EDD5CE, #C4897A55); }
-.team-card:nth-child(2) .team-avatar { background: linear-gradient(145deg, #C2D0C4, #8A9E8C55); }
-.team-card:nth-child(3) .team-avatar { background: linear-gradient(145deg, #E8D5C4, #B8956A55); }
+.team-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
 
 /* ──────────────────────────────
    CAROUSEL CONTROLS
@@ -386,6 +410,82 @@
 
 .gallery-item:hover .gallery-label {
   color: var(--white);
+}
+
+/* ──────────────────────────────
+   SERVICE FILTER BUTTONS
+────────────────────────────── */
+.filter-btn {
+  background: var(--bg-card);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-full);
+  padding: 0.5rem 1.4rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: background var(--t-fast), color var(--t-fast), border-color var(--t-fast);
+}
+
+.filter-btn:hover {
+  border-color: var(--rose-lt);
+}
+
+.filter-btn.active {
+  background: var(--rose);
+  color: var(--white);
+}
+
+/* ──────────────────────────────
+   STEP INDICATOR
+────────────────────────────── */
+.step-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 500;
+  background: var(--bg-card);
+  color: var(--text-soft);
+  border: 1.5px solid var(--bg-stone);
+  transition: background var(--t-fast), color var(--t-fast), border-color var(--t-fast);
+  flex-shrink: 0;
+}
+
+.form-steps li.active .step-dot,
+.form-steps li.done .step-dot {
+  background: var(--rose);
+  border-color: var(--rose);
+  color: var(--white);
+}
+
+.step-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--text-soft);
+  white-space: nowrap;
+}
+
+.form-steps li.active .step-label {
+  color: var(--rose);
+}
+
+/* ──────────────────────────────
+   RATING SUMMARY STARS
+────────────────────────────── */
+.rating-summary-stars {
+  color: var(--gold);
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+}
+
+.rating-summary-text {
+  font-size: 0.8rem;
+  color: var(--text-soft);
 }
 
 /* ──────────────────────────────

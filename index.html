@@ -4,21 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Security -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://images.unsplash.com data:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'sha256-rBKSBJ2KxK5SuNm+PynonvyE+DZ9kWe+jM0uu7/b4u0='; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';" />
+
   <!-- Primary meta -->
-  <title>Lumière Studio — Salón de Belleza Premium · Medellín</title>
-  <meta name="description" content="Lumière Studio, salón de belleza premium en Medellín. Cortes, color, manicure, maquillaje y más. Reserva tu cita hoy." />
+  <title>Lumière Studio | Salón de Belleza Premium en Medellín — Laureles</title>
+  <meta name="description" content="Salón de belleza premium en Laureles, Medellín. Cortes, color, tratamientos, manicure y maquillaje con 4.9★ en Google. Reservá tu cita por WhatsApp." />
+  <link rel="canonical" href="https://cheese9117.github.io/lumiere-studio/" />
+  <link rel="alternate" hreflang="es" href="https://cheese9117.github.io/lumiere-studio/" />
+  <link rel="alternate" hreflang="en" href="https://cheese9117.github.io/lumiere-studio/" />
+  <link rel="alternate" hreflang="x-default" href="https://cheese9117.github.io/lumiere-studio/" />
 
   <!-- Open Graph -->
   <meta property="og:type"        content="website" />
-  <meta property="og:title"       content="Lumière Studio — Salón de Belleza Premium · Medellín" />
-  <meta property="og:description" content="Un espacio íntimo donde cada visita es un ritual. Reserva tu cita hoy." />
-  <meta property="og:image"       content="assets/og-image.jpg" />
+  <meta property="og:title"       content="Lumière Studio | Salón de Belleza Premium en Medellín — Laureles" />
+  <meta property="og:description" content="Un espacio íntimo en Laureles donde cada visita es un ritual. 4.9★ en Google. Reservá tu cita hoy." />
+  <meta property="og:image"       content="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80" />
   <meta property="og:url"         content="https://cheese9117.github.io/lumiere-studio/" />
+  <meta property="og:locale"      content="es_CO" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content="Lumière Studio" />
-  <meta name="twitter:description" content="Salón de belleza premium en Medellín." />
+  <meta name="twitter:title"       content="Lumière Studio | Salón de Belleza Premium en Medellín" />
+  <meta name="twitter:description" content="Salón de belleza premium en Laureles, Medellín. 4.9★ en Google." />
+  <meta name="twitter:image"       content="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
@@ -36,6 +45,11 @@
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/responsive.css" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BeautySalon","name":"Lumière Studio","image":"https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80","description":"Salón de belleza premium en Laureles, Medellín. Cortes, color, tratamientos capilares, manicure, maquillaje y diseño de cejas.","url":"https://cheese9117.github.io/lumiere-studio/","telephone":"+573001234567","priceRange":"$35.000 - $250.000 COP","address":{"@type":"PostalAddress","streetAddress":"Carrera 70 # 44A-23, Laureles","addressLocality":"Medellín","addressRegion":"Antioquia","addressCountry":"CO"},"geo":{"@type":"GeoCoordinates","latitude":6.2447,"longitude":-75.5916},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"10:00","closes":"16:00"}],"sameAs":["https://instagram.com/lumierestudio","https://facebook.com/lumierestudio"]}
+  </script>
 </head>
 
 <body>
@@ -68,6 +82,7 @@
   </nav>
 
   <!-- Mobile menu -->
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay" aria-hidden="true"></div>
   <div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú de navegación">
     <button id="mobile-close" class="mobile-close" aria-label="Cerrar menú">✕</button>
     <a href="#servicios" data-i18n="nav_servicios">Servicios</a>
@@ -84,35 +99,48 @@
          HERO
     ════════════════════════════════════════════ -->
     <section id="inicio" class="hero-section" aria-label="Inicio">
+      <div class="hero-bg-wrap">
+        <img
+          class="hero-bg"
+          src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1920&q=80"
+          alt="Interior cálido y luminoso de Lumière Studio, salón de belleza en Laureles, Medellín"
+          width="1920"
+          height="1280"
+          fetchpriority="high"
+        />
+        <div class="hero-bg-overlay" aria-hidden="true"></div>
+        <svg class="hero-botanical" viewBox="0 0 220 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M40 310 C 30 240, 60 160, 50 60" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+          <path d="M50 230 C 80 220, 100 195, 110 165" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          <path d="M50 230 C 80 245, 95 270, 95 300" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          <path d="M46 150 C 75 140, 92 118, 100 90" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          <path d="M46 150 C 70 158, 85 178, 88 205" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          <path d="M48 90 C 70 80, 85 60, 90 35" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          <ellipse cx="108" cy="158" rx="22" ry="9" transform="rotate(-32 108 158)" fill="currentColor" opacity="0.6" />
+          <ellipse cx="93" cy="298" rx="24" ry="10" transform="rotate(28 93 298)" fill="currentColor" opacity="0.6" />
+          <ellipse cx="98" cy="86" rx="20" ry="8" transform="rotate(-40 98 86)" fill="currentColor" opacity="0.6" />
+          <ellipse cx="86" cy="202" rx="20" ry="8" transform="rotate(35 86 202)" fill="currentColor" opacity="0.6" />
+          <ellipse cx="88" cy="33" rx="18" ry="7" transform="rotate(-45 88 33)" fill="currentColor" opacity="0.6" />
+        </svg>
+      </div>
+
       <div class="hero">
-        <!-- Left copy -->
         <div class="hero-left">
-          <p class="hero-eyebrow" data-i18n="hero_eyebrow">Salón de Belleza Premium · Medellín</p>
+          <p class="hero-eyebrow" data-i18n="hero_eyebrow">Salón de belleza · Laureles, Medellín</p>
           <h1 class="hero-title">
-            <span data-i18n="hero_title_1">Tu belleza,</span><br />
-            <em data-i18n="hero_title_2">nuestra pasión</em>
+            <span class="hero-title-line" data-i18n="hero_title_1">Acá el tiempo</span><br />
+            <em class="hero-title-line" data-i18n="hero_title_2">se toma con calma</em>
           </h1>
           <p class="hero-sub" data-i18n="hero_sub">
-            Un espacio íntimo donde cada visita es un ritual. Venís como clienta, salís sintiéndote la mejor versión de vos misma.
+            Entrás con el día encima y el pelo cansado, y salís oliendo a aceite de argán, con el cabello liviano y la sensación de que alguien por fin te puso atención de verdad.
           </p>
           <div class="hero-actions">
             <a href="#reservar" class="btn-primary" data-i18n="cta_reservar">Reservar ahora</a>
             <a href="#servicios" class="btn-secondary" data-i18n="cta_servicios">Ver servicios</a>
           </div>
-        </div>
-
-        <!-- Right visual -->
-        <div class="hero-right hero-visual" aria-hidden="true">
-          <div class="hero-card">
-            <div class="hero-card-deco hero-card-deco-1"></div>
-            <div class="hero-card-deco hero-card-deco-2"></div>
-            <div class="hero-card-inner">
-              <span class="hero-card-icon">🌸</span>
-              <div class="hero-card-badge">
-                <span class="badge-dot"></span>
-                <span data-i18n="hero_badge">Disponible hoy</span>
-              </div>
-            </div>
+          <div class="hero-card-badge">
+            <span class="badge-dot" aria-hidden="true"></span>
+            <span data-i18n="hero_badge">Disponible hoy</span>
           </div>
           <div class="hero-float-card">
             <div>
@@ -130,22 +158,25 @@
     <div class="trust-bar" aria-label="Prueba social">
       <div class="trust-bar-inner">
         <div class="trust-item">
-          <span class="trust-item-icon">⭐</span>
-          <strong data-i18n="trust_1_bold">4.9★ en Google</strong>
+          <span class="trust-item-icon" aria-hidden="true">⭐</span>
+          <strong><span class="counter" data-target="4.9" data-decimals="1">0.0</span>★</strong>
+          <span data-i18n="trust_1_label">en Google</span>
         </div>
         <span class="trust-sep" aria-hidden="true">·</span>
         <div class="trust-item">
-          <span class="trust-item-icon">💕</span>
-          <span data-i18n="trust_2">4.000+ clientas felices</span>
+          <span class="trust-item-icon" aria-hidden="true">💕</span>
+          <strong><span class="counter" data-target="4000">0</span>+</strong>
+          <span data-i18n="trust_2_label">clientas felices</span>
         </div>
         <span class="trust-sep" aria-hidden="true">·</span>
         <div class="trust-item">
-          <span class="trust-item-icon">📍</span>
-          <span data-i18n="trust_3">6 años en Medellín</span>
+          <span class="trust-item-icon" aria-hidden="true">📍</span>
+          <strong><span class="counter" data-target="6">0</span></strong>
+          <span data-i18n="trust_3_label">años en Medellín</span>
         </div>
         <span class="trust-sep" aria-hidden="true">·</span>
         <div class="trust-item">
-          <span class="trust-item-icon">🌿</span>
+          <span class="trust-item-icon" aria-hidden="true">🌿</span>
           <span data-i18n="trust_4">Productos libres de crueldad</span>
         </div>
       </div>
@@ -162,57 +193,64 @@
           <em data-i18n="services_title_2">para vos</em>
         </h2>
         <p class="section-desc" data-i18n="services_desc">
-          Cada servicio está diseñado con cuidado, usando los mejores productos y las técnicas más actuales.
+          Cada servicio empieza con una conversación. De ahí salen los detalles que hacen la diferencia.
         </p>
+      </div>
+
+      <div class="filter-row" role="group" aria-label="Filtrar servicios">
+        <button class="filter-btn active" data-filter="all" data-i18n="filter_all">Todos</button>
+        <button class="filter-btn" data-filter="cabello" data-i18n="filter_cabello">Cabello</button>
+        <button class="filter-btn" data-filter="unas" data-i18n="filter_unas">Uñas</button>
+        <button class="filter-btn" data-filter="estetica" data-i18n="filter_estetica">Estética</button>
       </div>
 
       <div class="services-grid">
         <!-- Card 1 -->
-        <article class="service-card reveal reveal-d1">
+        <article class="service-card reveal reveal-d1" data-category="cabello">
           <span class="service-icon" aria-hidden="true">✂️</span>
           <h3 class="service-name" data-i18n="s1_name">Corte y Estilizado</h3>
           <p class="service-price" data-i18n="s1_price">$45.000 – $80.000 COP</p>
-          <p class="service-desc" data-i18n="s1_desc">Corte personalizado según tu rostro y estilo, con secado y estilizado profesional incluido.</p>
+          <p class="service-desc" data-i18n="s1_desc">Cortamos en seco primero, para ver cómo cae tu pelo de verdad antes de definir la línea. Salís con un corte que se peina solo, sin pelear con la plancha todas las mañanas.</p>
           <a href="#reservar" class="service-link" data-i18n="service_book">Reservar →</a>
         </article>
         <!-- Card 2 -->
-        <article class="service-card reveal reveal-d2">
+        <article class="service-card reveal reveal-d2" data-category="cabello">
           <span class="service-icon" aria-hidden="true">🎨</span>
           <h3 class="service-name" data-i18n="s2_name">Coloración y Mechas</h3>
           <p class="service-price" data-i18n="s2_price">$120.000 – $250.000 COP</p>
-          <p class="service-desc" data-i18n="s2_desc">Coloración completa, balayage, mechas y técnicas de color que se adaptan perfectamente a tu cabello.</p>
+          <p class="service-desc" data-i18n="s2_desc">Hacemos siempre una prueba de mechón antes de aplicar el color, para que no haya sorpresas con el tono. El brillo dura semanas porque trabajamos con fórmulas que no resecan.</p>
           <a href="#reservar" class="service-link" data-i18n="service_book">Reservar →</a>
         </article>
         <!-- Card 3 -->
-        <article class="service-card reveal reveal-d3">
+        <article class="service-card reveal reveal-d3" data-category="cabello">
           <span class="service-icon" aria-hidden="true">💆‍♀️</span>
           <h3 class="service-name" data-i18n="s3_name">Tratamientos Capilares</h3>
           <p class="service-price" data-i18n="s3_price">$60.000 – $150.000 COP</p>
-          <p class="service-desc" data-i18n="s3_desc">Keratina, hidratación profunda y nutrición capilar para un cabello suave, brillante y saludable.</p>
+          <p class="service-desc" data-i18n="s3_desc">Si tu pelo quedó como paja después del verano o de tanta plancha, esto lo revive de raíz. Salís con el cabello suave al tacto y sin ese frizz que no hay forma de peinar.</p>
           <a href="#reservar" class="service-link" data-i18n="service_book">Reservar →</a>
         </article>
         <!-- Card 4 -->
-        <article class="service-card reveal reveal-d1">
+        <article class="service-card reveal reveal-d1" data-category="unas">
           <span class="service-icon" aria-hidden="true">💅</span>
           <h3 class="service-name" data-i18n="s4_name">Manicure y Pedicure</h3>
           <p class="service-price" data-i18n="s4_price">$35.000 – $65.000 COP</p>
-          <p class="service-desc" data-i18n="s4_desc">Cuidado completo de manos y pies con esmaltes semipermanentes, nail art y spa de uñas.</p>
+          <p class="service-desc" data-i18n="s4_desc">Empezamos limando en seco para cuidar la cutícula, nada de cortes a lo bruto. El esmaltado semipermanente aguanta hasta tres semanas sin descascararse en las puntas.</p>
           <a href="#reservar" class="service-link" data-i18n="service_book">Reservar →</a>
         </article>
         <!-- Card 5 -->
-        <article class="service-card reveal reveal-d2">
+        <article class="service-card reveal reveal-d2" data-category="estetica">
           <span class="service-icon" aria-hidden="true">✨</span>
           <h3 class="service-name" data-i18n="s5_name">Maquillaje Profesional</h3>
           <p class="service-price" data-i18n="s5_price">$80.000 – $120.000 COP</p>
-          <p class="service-desc" data-i18n="s5_desc">Maquillaje social, de noche o para eventos especiales. Natural o glamuroso, según lo que necesités.</p>
+          <p class="service-desc" data-i18n="s5_desc">Usamos bases que aguantan sudor, abrazos y flash de cámara sin sentirse pesadas. Te vas viéndote vos misma, solo que con mejor luz.</p>
           <a href="#reservar" class="service-link" data-i18n="service_book">Reservar →</a>
         </article>
         <!-- Card 6 -->
-        <article class="service-card reveal reveal-d3">
+        <article class="service-card reveal reveal-d3" data-category="estetica">
           <span class="service-icon" aria-hidden="true">👁️</span>
           <h3 class="service-name" data-i18n="s6_name">Cejas y Pestañas</h3>
           <p class="service-price" data-i18n="s6_price">$40.000 – $70.000 COP</p>
-          <p class="service-desc" data-i18n="s6_desc">Diseño y depilación de cejas, laminado, tinte y extensión de pestañas para una mirada perfecta.</p>
+          <p class="service-desc" data-i18n="s6_desc">Diseñamos la forma según el hueso de tu ceja, no según una plantilla. Te cambia la mirada sin que se note que te hiciste algo.</p>
           <a href="#reservar" class="service-link" data-i18n="service_book">Reservar →</a>
         </article>
       </div>
@@ -221,8 +259,11 @@
     <!-- ═══════════════════════════════════════════
          RITUAL STRIP
     ════════════════════════════════════════════ -->
-    <div class="ritual-strip" aria-hidden="true">
-      <p class="ritual-quote reveal" data-i18n="ritual_1">Cada visita es un momento tuyo</p>
+    <div class="ritual-marquee" aria-hidden="true">
+      <div class="ritual-marquee-track">
+        <p class="ritual-quote" data-i18n="ritual_1">Acá nadie te apura — tu cita es tuya, de principio a fin.</p>
+        <p class="ritual-quote" data-i18n="ritual_1">Acá nadie te apura — tu cita es tuya, de principio a fin.</p>
+      </div>
     </div>
 
     <!-- ═══════════════════════════════════════════
@@ -240,18 +281,18 @@
       <div class="why-grid">
         <div class="why-card reveal reveal-d1">
           <div class="why-icon" aria-hidden="true">💬</div>
-          <h3 class="why-title-text" data-i18n="why1_title">Consulta personalizada</h3>
-          <p class="why-desc" data-i18n="why1_desc">Antes de cualquier servicio, conversamos sobre lo que querés y lo que mejor le va a tu cabello, piel o estilo.</p>
+          <h3 class="why-title-text" data-i18n="why1_title">Antes de tocarte el pelo, hablamos</h3>
+          <p class="why-desc" data-i18n="why1_desc">Nos sentamos con vos, te preguntamos qué te gustó y qué no de tu último corte, y de ahí armamos el plan juntas. Nada de sorpresas cuando ya es tarde para cambiar de opinión.</p>
         </div>
         <div class="why-card reveal reveal-d2">
           <div class="why-icon" aria-hidden="true">🌿</div>
-          <h3 class="why-title-text" data-i18n="why2_title">Productos premium</h3>
-          <p class="why-desc" data-i18n="why2_desc">Solo usamos marcas de alta gama, libres de crueldad y con ingredientes que realmente cuidan tu cabello y piel.</p>
+          <h3 class="why-title-text" data-i18n="why2_title">Lo que usamos en vos, lo usamos en nosotras</h3>
+          <p class="why-desc" data-i18n="why2_desc">Trabajamos con líneas profesionales libres de crueldad animal — del nivel de Olaplex y Kérastase. Tu cabello y tu piel lo notan desde la primera sesión.</p>
         </div>
         <div class="why-card reveal reveal-d3">
           <div class="why-icon" aria-hidden="true">🕯️</div>
-          <h3 class="why-title-text" data-i18n="why3_title">Ambiente íntimo y relajado</h3>
-          <p class="why-desc" data-i18n="why3_desc">Nuestro espacio fue diseñado para que te sientas en casa: tranquila, cómoda y completamente en paz.</p>
+          <h3 class="why-title-text" data-i18n="why3_title">Un espacio que no se siente sala de espera</h3>
+          <p class="why-desc" data-i18n="why3_desc">Somos pocas sillas, música bajita y algo calientico mientras esperás. Nada de filas ni de sentirte un número más en la agenda.</p>
         </div>
       </div>
     </section>
@@ -272,7 +313,7 @@
       <div class="team-grid">
         <article class="team-card reveal reveal-d1">
           <div class="team-avatar">
-            <div class="team-avatar-circle" aria-hidden="true">💁‍♀️</div>
+            <img class="team-photo" src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&q=80" alt="Valentina Ríos, colorista y estilista jefe de Lumière Studio" loading="lazy" width="400" height="400" />
           </div>
           <div class="team-info">
             <h3 class="team-name">Valentina Ríos</h3>
@@ -282,7 +323,7 @@
         </article>
         <article class="team-card reveal reveal-d2">
           <div class="team-avatar">
-            <div class="team-avatar-circle" aria-hidden="true">👩‍🔬</div>
+            <img class="team-photo" src="https://images.unsplash.com/photo-1595959183082-7b570b7e08e4?w=400&q=80" alt="Daniela Montoya, especialista en tratamientos capilares de Lumière Studio" loading="lazy" width="400" height="400" />
           </div>
           <div class="team-info">
             <h3 class="team-name">Daniela Montoya</h3>
@@ -292,7 +333,7 @@
         </article>
         <article class="team-card reveal reveal-d3">
           <div class="team-avatar">
-            <div class="team-avatar-circle" aria-hidden="true">💅</div>
+            <img class="team-photo" src="https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?w=400&q=80" alt="Camila Torres, nail artist y maquilladora de Lumière Studio" loading="lazy" width="400" height="400" />
           </div>
           <div class="team-info">
             <h3 class="team-name">Camila Torres</h3>
@@ -315,6 +356,14 @@
         </h2>
       </div>
 
+      <div class="rating-summary reveal">
+        <span class="rating-summary-score" data-i18n="testi_rating_score">4.9</span>
+        <div>
+          <div class="rating-summary-stars" aria-hidden="true">★★★★★</div>
+          <p class="rating-summary-text" data-i18n="testi_rating_text">basado en +400 reseñas de Google</p>
+        </div>
+      </div>
+
       <div class="carousel-outer reveal">
         <div class="carousel-track-wrap">
           <div class="carousel-track" role="list">
@@ -322,7 +371,7 @@
             <div class="testi-slide" role="listitem">
               <div class="testi-card">
                 <span class="testi-quote-mark" aria-hidden="true">"</span>
-                <p class="testi-text" data-i18n="t1_text">"Valentina me hizo el balayage más lindo que he visto en mi vida. ¡Definitivamente vuelvo!"</p>
+                <p class="testi-text" data-i18n="t1_text">"Le mostré una foto de Pinterest a Valentina y le dije: algo así, pero que no se vea forzado. Me hizo un balayage que parece que el sol me lo hubiera pintado. Llevo meses recibiendo cumplidos y todavía no necesito retoque."</p>
                 <div class="testi-author">
                   <div class="testi-avatar" aria-hidden="true">S</div>
                   <div>
@@ -337,7 +386,7 @@
             <div class="testi-slide" role="listitem">
               <div class="testi-card">
                 <span class="testi-quote-mark" aria-hidden="true">"</span>
-                <p class="testi-text" data-i18n="t2_text">"Llevaba meses con el cabello destruido por el calor. Daniela me hizo una hidratación profunda y quedé con el pelo como nunca."</p>
+                <p class="testi-text" data-i18n="t2_text">"Tenía el pelo frito de tanta plancha y ya ni sabía qué hacer con él. Daniela me hizo el tratamiento de keratina y quedé que ni yo me lo creía: se seca solo y queda liso sin necesidad de plancharlo. Vale cada peso."</p>
                 <div class="testi-author">
                   <div class="testi-avatar" aria-hidden="true">M</div>
                   <div>
@@ -352,7 +401,7 @@
             <div class="testi-slide" role="listitem">
               <div class="testi-card">
                 <span class="testi-quote-mark" aria-hidden="true">"</span>
-                <p class="testi-text" data-i18n="t3_text">"Me hicieron el maquillaje para mi grado y quedé preciosa. El resultado superó todas mis expectativas."</p>
+                <p class="testi-text" data-i18n="t3_text">"Fui para el maquillaje de grado de mi hija con los nervios en el cuello. Camila me preguntó cuánto maquillaje uso normalmente y me dejó natural pero con un brillo que se notó hasta en las fotos. Lloré, pero de la buena."</p>
                 <div class="testi-author">
                   <div class="testi-avatar" aria-hidden="true">V</div>
                   <div>
@@ -367,7 +416,7 @@
             <div class="testi-slide" role="listitem">
               <div class="testi-card">
                 <span class="testi-quote-mark" aria-hidden="true">"</span>
-                <p class="testi-text" data-i18n="t4_text">"Llevo tres años viniendo y no cambio Lumière por nada. ¡Las quiero mucho!"</p>
+                <p class="testi-text" data-i18n="t4_text">"Vivo en Belén pero igual cojo bus hasta Laureles, porque acá sí me conocen: saben que no me gusta el agua muy caliente en el lavado y que prefiero las uñas cortas. Esos detalles son los que a una la hacen volver."</p>
                 <div class="testi-author">
                   <div class="testi-avatar" aria-hidden="true">C</div>
                   <div>
@@ -393,8 +442,11 @@
     <!-- ═══════════════════════════════════════════
          RITUAL STRIP 2
     ════════════════════════════════════════════ -->
-    <div class="ritual-strip" aria-hidden="true">
-      <p class="ritual-quote reveal" data-i18n="ritual_2">Porque merecés sentirte increíble cada día</p>
+    <div class="ritual-marquee" aria-hidden="true">
+      <div class="ritual-marquee-track">
+        <p class="ritual-quote" data-i18n="ritual_2">Porque un buen corte te puede cambiar el ánimo de la semana entera.</p>
+        <p class="ritual-quote" data-i18n="ritual_2">Porque un buen corte te puede cambiar el ánimo de la semana entera.</p>
+      </div>
     </div>
 
     <!-- ═══════════════════════════════════════════
@@ -409,47 +461,47 @@
         </h2>
       </div>
 
-      <div class="gallery-grid reveal">
-        <figure class="gallery-item">
-          <div class="gallery-thumb" role="img" aria-label="Corte y estilizado"></div>
-          <span class="gallery-placeholder-icon" aria-hidden="true">✂️</span>
+      <div class="gallery-grid">
+        <figure class="gallery-item" tabindex="0" role="button" aria-label="Ampliar imagen: interior del salón">
+          <img class="gallery-thumb" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80" alt="Interior cálido del salón Lumière Studio en Laureles" loading="lazy" width="800" height="600" />
+          <div class="gallery-reveal" aria-hidden="true"></div>
           <div class="gallery-overlay">
-            <figcaption class="gallery-label" data-i18n="gl1">Corte & Estilizado</figcaption>
+            <figcaption class="gallery-label" data-i18n="gl1">Interior del salón</figcaption>
           </div>
         </figure>
-        <figure class="gallery-item">
-          <div class="gallery-thumb" role="img" aria-label="Coloración"></div>
-          <span class="gallery-placeholder-icon" aria-hidden="true">🎨</span>
+        <figure class="gallery-item" tabindex="0" role="button" aria-label="Ampliar imagen: coloración y mechas">
+          <img class="gallery-thumb" src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&q=80" alt="Proceso de coloración y mechas en cabello largo" loading="lazy" width="800" height="600" />
+          <div class="gallery-reveal" aria-hidden="true"></div>
           <div class="gallery-overlay">
-            <figcaption class="gallery-label" data-i18n="gl2">Coloración</figcaption>
+            <figcaption class="gallery-label" data-i18n="gl2">Coloración y mechas</figcaption>
           </div>
         </figure>
-        <figure class="gallery-item">
-          <div class="gallery-thumb" role="img" aria-label="Nail art"></div>
-          <span class="gallery-placeholder-icon" aria-hidden="true">💅</span>
+        <figure class="gallery-item" tabindex="0" role="button" aria-label="Ampliar imagen: corte y estilizado">
+          <img class="gallery-thumb" src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=800&q=80" alt="Corte y estilizado profesional en proceso" loading="lazy" width="800" height="600" />
+          <div class="gallery-reveal" aria-hidden="true"></div>
           <div class="gallery-overlay">
-            <figcaption class="gallery-label" data-i18n="gl3">Nail Art</figcaption>
+            <figcaption class="gallery-label" data-i18n="gl3">Corte y Estilizado</figcaption>
           </div>
         </figure>
-        <figure class="gallery-item">
-          <div class="gallery-thumb" role="img" aria-label="Maquillaje"></div>
-          <span class="gallery-placeholder-icon" aria-hidden="true">✨</span>
+        <figure class="gallery-item" tabindex="0" role="button" aria-label="Ampliar imagen: manicure y nail art">
+          <img class="gallery-thumb" src="https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?w=800&q=80" alt="Manicure detallado con nail art" loading="lazy" width="800" height="600" />
+          <div class="gallery-reveal" aria-hidden="true"></div>
           <div class="gallery-overlay">
-            <figcaption class="gallery-label" data-i18n="gl4">Maquillaje</figcaption>
+            <figcaption class="gallery-label" data-i18n="gl4">Manicure y Nail Art</figcaption>
           </div>
         </figure>
-        <figure class="gallery-item">
-          <div class="gallery-thumb" role="img" aria-label="Tratamientos"></div>
-          <span class="gallery-placeholder-icon" aria-hidden="true">💆‍♀️</span>
+        <figure class="gallery-item" tabindex="0" role="button" aria-label="Ampliar imagen: estilizado profesional">
+          <img class="gallery-thumb" src="https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=800&q=80" alt="Estilizado profesional de cabello terminado" loading="lazy" width="800" height="600" />
+          <div class="gallery-reveal" aria-hidden="true"></div>
           <div class="gallery-overlay">
-            <figcaption class="gallery-label" data-i18n="gl5">Tratamientos</figcaption>
+            <figcaption class="gallery-label" data-i18n="gl5">Estilizado profesional</figcaption>
           </div>
         </figure>
-        <figure class="gallery-item">
-          <div class="gallery-thumb" role="img" aria-label="Cejas y pestañas"></div>
-          <span class="gallery-placeholder-icon" aria-hidden="true">👁️</span>
+        <figure class="gallery-item" tabindex="0" role="button" aria-label="Ampliar imagen: brushing y secado">
+          <img class="gallery-thumb" src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&q=80" alt="Brushing y secado profesional con cepillo redondo" loading="lazy" width="800" height="600" />
+          <div class="gallery-reveal" aria-hidden="true"></div>
           <div class="gallery-overlay">
-            <figcaption class="gallery-label" data-i18n="gl6">Cejas & Pestañas</figcaption>
+            <figcaption class="gallery-label" data-i18n="gl6">Brushing y secado</figcaption>
           </div>
         </figure>
       </div>
@@ -464,11 +516,11 @@
         <div class="booking-left reveal">
           <p class="section-label" data-i18n="book_label">Agendá tu cita</p>
           <h2 id="booking-heading" class="section-title">
-            <span data-i18n="book_title_1">¿Lista para</span><br />
-            <em data-i18n="book_title_2">tu transformación?</em>
+            <span data-i18n="book_title_1">Separá tu</span><br />
+            <em data-i18n="book_title_2">espacio acá</em>
           </h2>
           <p class="section-desc" data-i18n="book_desc">
-            Escribinos por WhatsApp y te confirmamos la cita en menos de una hora. También podés completar el formulario y te contactamos nosotras.
+            Mandanos un mensaje por WhatsApp con el día y la hora que te quede mejor, y te confirmamos en menos de una hora. Si preferís, llená el formulario y nosotras te escribimos.
           </p>
           <a id="wa-book" href="#" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
             <span aria-hidden="true">💬</span>
@@ -485,38 +537,59 @@
           <h3 class="form-title" data-i18n="form_title">Reservar cita</h3>
 
           <form id="booking-form" novalidate>
-            <!-- Name -->
-            <div class="form-group">
-              <label for="f-nombre" data-i18n="form_name">Tu nombre</label>
-              <input
-                type="text"
-                id="f-nombre"
-                name="nombre"
-                autocomplete="name"
-                data-i18n-placeholder="form_name_placeholder"
-                placeholder="Ej: Laura Gómez"
-              />
-            </div>
+            <ol class="form-steps">
+              <li class="active" data-step="1">
+                <span class="step-dot">1</span>
+                <span class="step-label" data-i18n="step_1">Datos</span>
+              </li>
+              <li class="form-step-line" aria-hidden="true"></li>
+              <li data-step="2">
+                <span class="step-dot">2</span>
+                <span class="step-label" data-i18n="step_2">Servicio</span>
+              </li>
+              <li class="form-step-line" aria-hidden="true"></li>
+              <li data-step="3">
+                <span class="step-dot">3</span>
+                <span class="step-label" data-i18n="step_3">Confirmar</span>
+              </li>
+            </ol>
 
-            <!-- Service -->
-            <div class="form-group">
-              <label for="f-servicio" data-i18n="form_service">Servicio</label>
-              <select id="f-servicio" name="servicio">
-                <option value="" data-i18n="form_service_placeholder">Selecciona un servicio</option>
-                <option data-i18n="s1_name">Corte y Estilizado</option>
-                <option data-i18n="s2_name">Coloración y Mechas</option>
-                <option data-i18n="s3_name">Tratamientos Capilares</option>
-                <option data-i18n="s4_name">Manicure y Pedicure</option>
-                <option data-i18n="s5_name">Maquillaje Profesional</option>
-                <option data-i18n="s6_name">Cejas y Pestañas</option>
-              </select>
-            </div>
-
-            <!-- Date + Time -->
-            <div class="form-row">
+            <!-- Step 1: Datos -->
+            <div class="form-step active" data-step-panel="1">
+              <div class="form-group">
+                <label for="f-nombre" data-i18n="form_name">Tu nombre</label>
+                <input
+                  type="text"
+                  id="f-nombre"
+                  name="nombre"
+                  autocomplete="name"
+                  maxlength="60"
+                  data-i18n-placeholder="form_name_placeholder"
+                  placeholder="Ej: Laura Gómez"
+                />
+              </div>
               <div class="form-group">
                 <label for="f-fecha" data-i18n="form_date">Fecha</label>
                 <input type="date" id="f-fecha" name="fecha" />
+              </div>
+              <div class="form-nav">
+                <button type="button" class="btn-secondary form-next" data-i18n="form_next">Siguiente</button>
+              </div>
+            </div>
+
+            <!-- Step 2: Servicio -->
+            <div class="form-step" data-step-panel="2">
+              <div class="form-group">
+                <label for="f-servicio" data-i18n="form_service">Servicio</label>
+                <select id="f-servicio" name="servicio">
+                  <option value="" data-i18n="form_service_placeholder">Selecciona un servicio</option>
+                  <option data-i18n="s1_name">Corte y Estilizado</option>
+                  <option data-i18n="s2_name">Coloración y Mechas</option>
+                  <option data-i18n="s3_name">Tratamientos Capilares</option>
+                  <option data-i18n="s4_name">Manicure y Pedicure</option>
+                  <option data-i18n="s5_name">Maquillaje Profesional</option>
+                  <option data-i18n="s6_name">Cejas y Pestañas</option>
+                </select>
               </div>
               <div class="form-group">
                 <label for="f-hora" data-i18n="form_time">Hora</label>
@@ -534,9 +607,20 @@
                   <option>6:00 pm</option>
                 </select>
               </div>
+              <div class="form-nav">
+                <button type="button" class="btn-secondary form-back" data-i18n="form_back">Atrás</button>
+                <button type="button" class="btn-secondary form-next" data-i18n="form_next">Siguiente</button>
+              </div>
             </div>
 
-            <button type="submit" class="form-submit" data-i18n="form_submit">Confirmar reserva</button>
+            <!-- Step 3: Confirmar -->
+            <div class="form-step" data-step-panel="3">
+              <div id="booking-summary" class="booking-summary"></div>
+              <div class="form-nav">
+                <button type="button" class="btn-secondary form-back" data-i18n="form_back">Atrás</button>
+                <button type="submit" class="form-submit" data-i18n="form_submit">Confirmar reserva</button>
+              </div>
+            </div>
           </form>
 
           <!-- Confirmation screen (hidden until form submitted) -->
@@ -560,7 +644,7 @@
       <div class="footer-brand">
         <a href="#inicio" class="footer-logo">Lumière<span>.</span></a>
         <p class="footer-tagline" data-i18n="footer_tagline">
-          Tu espacio de belleza y bienestar en el corazón de Medellín. Donde cada detalle importa.
+          A cinco cuadras del parque de Laureles, con la puerta abierta de martes a sábado. Vení y tomate un café mientras te consentimos.
         </p>
         <div class="footer-socials" aria-label="Redes sociales">
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Instagram">IG</a>
@@ -588,7 +672,7 @@
         <address>
           <div class="footer-contact-item">
             <span class="footer-contact-icon" aria-hidden="true">📍</span>
-            <span data-i18n="footer_address_html">Calle 10 # 43E-40, El Poblado<br>Medellín, Antioquia</span>
+            <span data-i18n="footer_address_html">Carrera 70 # 44A-23, Laureles<br>Medellín, Antioquia</span>
           </div>
           <div class="footer-contact-item">
             <span class="footer-contact-icon" aria-hidden="true">🕐</span>
@@ -609,6 +693,19 @@
   </footer>
 
   <!-- ═══════════════════════════════════════════
+       LIGHTBOX
+  ════════════════════════════════════════════ -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+    <button class="lightbox-close" data-i18n-aria="lightbox_close" aria-label="Cerrar">✕</button>
+    <button class="lightbox-prev" data-i18n-aria="lightbox_prev" aria-label="Imagen anterior">‹</button>
+    <figure class="lightbox-figure">
+      <img class="lightbox-img" src="" alt="" width="800" height="600" />
+      <figcaption class="lightbox-caption"></figcaption>
+    </figure>
+    <button class="lightbox-next" data-i18n-aria="lightbox_next" aria-label="Imagen siguiente">›</button>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
        FLOATING ELEMENTS
   ════════════════════════════════════════════ -->
   <!-- WhatsApp float button -->
@@ -625,12 +722,19 @@
   <!-- ═══════════════════════════════════════════
        SCRIPTS (deferred, in dependency order)
   ════════════════════════════════════════════ -->
-  <script src="js/config.js"    defer></script>
-  <script src="js/language.js"  defer></script>
-  <script src="js/animations.js" defer></script>
-  <script src="js/carousel.js"  defer></script>
-  <script src="js/booking.js"   defer></script>
-  <script src="js/main.js"      defer></script>
+  <script src="js/config.js"          defer></script>
+  <script src="js/language.js"        defer></script>
+  <script src="js/hero-reveal.js"     defer></script>
+  <script src="js/animations.js"      defer></script>
+  <script src="js/carousel.js"        defer></script>
+  <script src="js/booking.js"         defer></script>
+  <script src="js/cursor.js"          defer></script>
+  <script src="js/scroll-progress.js" defer></script>
+  <script src="js/counters.js"        defer></script>
+  <script src="js/lightbox.js"        defer></script>
+  <script src="js/filter.js"          defer></script>
+  <script src="js/particles.js"       defer></script>
+  <script src="js/main.js"            defer></script>
 
 </body>
 </html>
