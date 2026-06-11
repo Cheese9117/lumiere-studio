@@ -8,6 +8,8 @@
  * redirect on submit. No backend required — works on any static host.
  */
 
+const MAX_NAME_LEN = 80;
+
 function initBooking() {
   const form    = document.getElementById('booking-form');
   const confirm = document.getElementById('booking-confirm');
@@ -24,13 +26,12 @@ function initBooking() {
     return form.querySelector(`#${id}`);
   }
 
-  function setError(field, show) {
-    if (!field) return;
-    field.classList.toggle('invalid', show);
+  function markInvalid(field, invalid) {
+    field?.classList.toggle('invalid', invalid);
   }
 
   function clearErrors() {
-    form.querySelectorAll('.invalid').forEach((el) => el.classList.remove('invalid'));
+    form.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
   }
 
   // ─── Step navigation ──────────────────────────────────────────────────────
@@ -57,13 +58,14 @@ function initBooking() {
     if (step === 1) {
       const nombre = getField('f-nombre');
       const fecha = getField('f-fecha');
+      const nameVal = nombre?.value.trim() ?? '';
 
-      if (!nombre || !nombre.value.trim()) {
-        setError(nombre, true);
+      if (!nameVal || nameVal.length > MAX_NAME_LEN) {
+        markInvalid(nombre, true);
         valid = false;
       }
       if (!fecha || !fecha.value) {
-        setError(fecha, true);
+        markInvalid(fecha, true);
         valid = false;
       }
     }
@@ -73,11 +75,11 @@ function initBooking() {
       const hora = getField('f-hora');
 
       if (!servicio || !servicio.value) {
-        setError(servicio, true);
+        markInvalid(servicio, true);
         valid = false;
       }
       if (!hora || !hora.value) {
-        setError(hora, true);
+        markInvalid(hora, true);
         valid = false;
       }
     }
@@ -122,11 +124,11 @@ function initBooking() {
   // ─── Build WhatsApp URL ───────────────────────────────────────────────────
   function buildWhatsAppURL(nombre, servicio, fecha, hora) {
     const lang = document.documentElement.lang || CONFIG.DEFAULT_LANG;
+    const safeName = Sanitize.sanitizeText(nombre, MAX_NAME_LEN);
 
-    const message =
-      lang === 'en'
-        ? `Hi! I'd like to book an appointment at Lumière Studio.\n\n📋 *Name:* ${nombre}\n✂️ *Service:* ${servicio}\n📅 *Date:* ${fecha}\n🕐 *Time:* ${hora}\n\nThank you!`
-        : `¡Hola! Quiero reservar una cita en Lumière Studio.\n\n📋 *Nombre:* ${nombre}\n✂️ *Servicio:* ${servicio}\n📅 *Fecha:* ${fecha}\n🕐 *Hora:* ${hora}\n\n¡Gracias!`;
+    const message = lang === 'en'
+      ? `Hi! I'd like to book an appointment at Lumière Studio.\n\n📋 *Name:* ${safeName}\n✂️ *Service:* ${servicio}\n📅 *Date:* ${fecha}\n🕐 *Time:* ${hora}\n\nThank you!`
+      : `¡Hola! Quiero reservar una cita en Lumière Studio.\n\n📋 *Nombre:* ${safeName}\n✂️ *Servicio:* ${servicio}\n📅 *Fecha:* ${fecha}\n🕐 *Hora:* ${hora}\n\n¡Gracias!`;
 
     return `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
   }
@@ -164,17 +166,15 @@ function initBooking() {
     }, 800);
   });
 
-  // ─── Clear invalid state on input ─────────────────────────────────────────
-  form.querySelectorAll('input, select').forEach((el) => {
-    el.addEventListener('input', () => setError(el, false));
-    el.addEventListener('change', () => setError(el, false));
+  form.querySelectorAll('input, select').forEach(el => {
+    el.addEventListener('input',  () => markInvalid(el, false));
+    el.addEventListener('change', () => markInvalid(el, false));
   });
 
   // ─── Set minimum date to today ────────────────────────────────────────────
   const fechaField = getField('f-fecha');
   if (fechaField) {
-    const today = new Date().toISOString().split('T')[0];
-    fechaField.min = today;
+    fechaField.min = new Date().toISOString().split('T')[0];
   }
 
   goToStep(1);

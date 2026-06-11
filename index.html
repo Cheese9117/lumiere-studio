@@ -5,11 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Security -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://images.unsplash.com data:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'sha256-rBKSBJ2KxK5SuNm+PynonvyE+DZ9kWe+jM0uu7/b4u0='; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' https://images.unsplash.com data:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'sha256-rBKSBJ2KxK5SuNm+PynonvyE+DZ9kWe+jM0uu7/b4u0='; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <!-- Primary meta -->
   <title>Lumière Studio | Salón de Belleza Premium en Medellín — Laureles</title>
   <meta name="description" content="Salón de belleza premium en Laureles, Medellín. Cortes, color, tratamientos, manicure y maquillaje con 4.9★ en Google. Reservá tu cita por WhatsApp." />
+  <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://cheese9117.github.io/lumiere-studio/" />
   <link rel="alternate" hreflang="es" href="https://cheese9117.github.io/lumiere-studio/" />
   <link rel="alternate" hreflang="en" href="https://cheese9117.github.io/lumiere-studio/" />
@@ -563,7 +566,9 @@
                   id="f-nombre"
                   name="nombre"
                   autocomplete="name"
-                  maxlength="60"
+                  maxlength="80"
+                  spellcheck="false"
+                  autocorrect="off"
                   data-i18n-placeholder="form_name_placeholder"
                   placeholder="Ej: Laura Gómez"
                 />
@@ -722,6 +727,7 @@
   <!-- ═══════════════════════════════════════════
        SCRIPTS (deferred, in dependency order)
   ════════════════════════════════════════════ -->
+  <script src="utils/sanitize.js"     defer></script>
   <script src="js/config.js"          defer></script>
   <script src="js/language.js"        defer></script>
   <script src="js/hero-reveal.js"     defer></script>

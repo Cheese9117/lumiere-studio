@@ -1,20 +1,9 @@
 'use strict';
 
-/**
- * config.js — Lumière Studio
- *
- * Central configuration: WhatsApp number, site settings,
- * and all i18n string content for ES / EN language toggle.
- *
- * To update text: find the key and edit the value in both `es` and `en`.
- * To change the WhatsApp number: update WHATSAPP_NUMBER below.
- */
-
-// --- Site-wide settings ---
 const CONFIG = {
-  WHATSAPP_NUMBER: '573001234567',
-  CAROUSEL_INTERVAL_MS: 5500,
-  BACK_TOP_THRESHOLD_PX: 300,
+  WHATSAPP_NUMBER:         '573001234567',
+  CAROUSEL_INTERVAL_MS:    5500,
+  BACK_TOP_THRESHOLD_PX:   300,
   NAV_SCROLL_THRESHOLD_PX: 50,
   REVEAL_THRESHOLD: 0.1,
   STORAGE_KEY: 'lumiere_lang',
@@ -23,10 +12,8 @@ const CONFIG = {
   PARTICLE_COUNT: 20,
 };
 
-// --- Bilingual content (ES / EN) ---
 const TRANSLATIONS = {
   es: {
-    // Nav
     nav_servicios:  'Servicios',
     nav_nosotras:   'Nosotras',
     nav_equipo:     'Equipo',
@@ -51,7 +38,6 @@ const TRANSLATIONS = {
     trust_3_label: 'años en Medellín',
     trust_4:       'Productos libres de crueldad',
 
-    // Services section
     services_label:   'Nuestros servicios',
     services_title_1: 'Lo que hacemos',
     services_title_2: 'para vos',
@@ -63,7 +49,6 @@ const TRANSLATIONS = {
     filter_unas:     'Uñas',
     filter_estetica: 'Estética',
 
-    // Service cards
     s1_name:  'Corte y Estilizado',
     s1_price: '$45.000 – $80.000 COP',
     s1_desc:  'Cortamos en seco primero, para ver cómo cae tu pelo de verdad antes de definir la línea. Salís con un corte que se peina solo, sin pelear con la plancha todas las mañanas.',
@@ -88,7 +73,6 @@ const TRANSLATIONS = {
     ritual_1: 'Acá nadie te apura — tu cita es tuya, de principio a fin.',
     ritual_2: 'Porque un buen corte te puede cambiar el ánimo de la semana entera.',
 
-    // Why us
     why_label:   '¿Por qué Lumière?',
     why_title_1: 'Más que un salón,',
     why_title_2: 'una experiencia',
@@ -99,19 +83,17 @@ const TRANSLATIONS = {
     why3_title:  'Un espacio que no se siente sala de espera',
     why3_desc:   'Somos pocas sillas, música bajita y algo calientico mientras esperás. Nada de filas ni de sentirte un número más en la agenda.',
 
-    // Team
     team_label:   'Conocé al equipo',
     team_title_1: 'Las artistas',
     team_title_2: 'detrás de tu look',
     team_desc:    'Mujeres apasionadas, expertas en su arte y con ganas de hacer que cada clienta salga feliz.',
-    t1_role:  'Colorista & Estilista Jefe',
-    t1_exp:   '10 años de experiencia · Certificada en París',
-    t2_role:  'Especialista en Tratamientos',
-    t2_exp:   '7 años de experiencia · Experta en queratina',
-    t3_role:  'Nail Artist & Maquilladora',
-    t3_exp:   '5 años de experiencia · Especialista en nail art',
+    t1_role: 'Colorista & Estilista Jefe',
+    t1_exp:  '10 años de experiencia · Certificada en París',
+    t2_role: 'Especialista en Tratamientos',
+    t2_exp:  '7 años de experiencia · Experta en queratina',
+    t3_role: 'Nail Artist & Maquilladora',
+    t3_exp:  '5 años de experiencia · Especialista en nail art',
 
-    // Testimonials
     testi_label:   'Lo que dicen ellas',
     testi_title_1: 'Clientas que',
     testi_title_2: 'volvieron a brillar',
@@ -126,7 +108,6 @@ const TRANSLATIONS = {
     t4_text:    '"Vivo en Belén pero igual cojo bus hasta Laureles, porque acá sí me conocen: saben que no me gusta el agua muy caliente en el lavado y que prefiero las uñas cortas. Esos detalles son los que a una la hacen volver."',
     t4_service: 'Clienta frecuente',
 
-    // Gallery
     gallery_label:   'Nuestro trabajo',
     gallery_title_1: 'Galería',
     gallery_title_2: 'de transformaciones',
@@ -137,7 +118,6 @@ const TRANSLATIONS = {
     gl5: 'Estilizado profesional',
     gl6: 'Brushing y secado',
 
-    // Booking
     book_label:   'Agendá tu cita',
     book_title_1: 'Separá tu',
     book_title_2: 'espacio acá',
@@ -165,7 +145,6 @@ const TRANSLATIONS = {
     err_date:    'Selecciona una fecha.',
     err_time:    'Selecciona una hora.',
 
-    // Confirmation
     confirm_title: '¡Cita enviada!',
     confirm_text:  'Te redirigimos a WhatsApp para confirmar tu cita. ¡Nos vemos pronto! 🌸',
 
@@ -175,10 +154,9 @@ const TRANSLATIONS = {
     footer_contact: 'Contacto',
     footer_address_html: 'Carrera 70 # 44A-23, Laureles<br>Medellín, Antioquia',
     footer_hours_html:   'Mar – Sáb: 9am – 7pm<br>Dom: 10am – 4pm',
-    footer_copy:    `© ${new Date().getFullYear()} Lumière Studio. Todos los derechos reservados.`,
-    footer_made:    'Hecho con amor en Medellín 🌸',
+    footer_copy:         `© ${new Date().getFullYear()} Lumière Studio. Todos los derechos reservados.`,
+    footer_made:         'Hecho con amor en Medellín 🌸',
 
-    // WhatsApp
     wa_tooltip: 'Escríbenos',
 
     // Lightbox
@@ -188,7 +166,6 @@ const TRANSLATIONS = {
   },
 
   en: {
-    // Nav
     nav_servicios:  'Services',
     nav_nosotras:   'About',
     nav_equipo:     'Team',
@@ -213,7 +190,6 @@ const TRANSLATIONS = {
     trust_3_label: 'years in Medellín',
     trust_4:       'Cruelty-free products',
 
-    // Services section
     services_label:   'Our services',
     services_title_1: 'What we do',
     services_title_2: 'for you',
@@ -225,7 +201,6 @@ const TRANSLATIONS = {
     filter_unas:     'Nails',
     filter_estetica: 'Beauty',
 
-    // Service cards
     s1_name:  'Cut & Styling',
     s1_price: '$45,000 – $80,000 COP',
     s1_desc:  'We cut on dry hair first, to see how it really falls before shaping the line. You leave with a cut that styles itself, no fighting the flat iron every morning.',
@@ -250,7 +225,6 @@ const TRANSLATIONS = {
     ritual_1: 'No one rushes you here — your appointment is yours, start to finish.',
     ritual_2: 'Because a good haircut can change the mood of your whole week.',
 
-    // Why us
     why_label:   'Why Lumière?',
     why_title_1: 'More than a salon,',
     why_title_2: 'an experience',
@@ -261,19 +235,17 @@ const TRANSLATIONS = {
     why3_title:  'A space that doesn\'t feel like a waiting room',
     why3_desc:   'A handful of chairs, low music, and something warm to drink while you wait. No lines, no feeling like just another slot in the schedule.',
 
-    // Team
     team_label:   'Meet the team',
     team_title_1: 'The artists',
     team_title_2: 'behind your look',
     team_desc:    'Passionate women, experts in their craft, dedicated to making every client leave happy.',
-    t1_role:  'Lead Colorist & Stylist',
-    t1_exp:   '10 years experience · Certified in Paris',
-    t2_role:  'Hair Treatment Specialist',
-    t2_exp:   '7 years experience · Keratin expert',
-    t3_role:  'Nail Artist & Makeup Artist',
-    t3_exp:   '5 years experience · Nail art specialist',
+    t1_role: 'Lead Colorist & Stylist',
+    t1_exp:  '10 years experience · Certified in Paris',
+    t2_role: 'Hair Treatment Specialist',
+    t2_exp:  '7 years experience · Keratin expert',
+    t3_role: 'Nail Artist & Makeup Artist',
+    t3_exp:  '5 years experience · Nail art specialist',
 
-    // Testimonials
     testi_label:   'What they say',
     testi_title_1: 'Clients who',
     testi_title_2: 'found their glow',
@@ -288,7 +260,6 @@ const TRANSLATIONS = {
     t4_text:    '"I live across town but I still take the bus to Laureles, because here they actually know me — they know I don\'t like the water too hot during a wash and that I keep my nails short. Little things like that are what bring you back."',
     t4_service: 'Loyal client',
 
-    // Gallery
     gallery_label:   'Our work',
     gallery_title_1: 'Gallery',
     gallery_title_2: 'of transformations',
@@ -327,7 +298,6 @@ const TRANSLATIONS = {
     err_date:    'Please select a date.',
     err_time:    'Please select a time.',
 
-    // Confirmation
     confirm_title: 'Booking sent!',
     confirm_text:  "We're redirecting you to WhatsApp to confirm your appointment. See you soon! 🌸",
 
@@ -337,10 +307,9 @@ const TRANSLATIONS = {
     footer_contact: 'Contact',
     footer_address_html: 'Carrera 70 # 44A-23, Laureles<br>Medellín, Antioquia',
     footer_hours_html:   'Tue – Sat: 9am – 7pm<br>Sun: 10am – 4pm',
-    footer_copy:    `© ${new Date().getFullYear()} Lumière Studio. All rights reserved.`,
-    footer_made:    'Made with love in Medellín 🌸',
+    footer_copy:         `© ${new Date().getFullYear()} Lumière Studio. All rights reserved.`,
+    footer_made:         'Made with love in Medellín 🌸',
 
-    // WhatsApp
     wa_tooltip: 'Message us',
 
     // Lightbox
