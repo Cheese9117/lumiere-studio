@@ -1,6 +1,6 @@
 /* =============================================================
    RESET — Lumière Studio
-   Minimal reset for consistent cross-browser rendering.
+   Minimal modern reset for consistent cross-browser rendering.
    ============================================================= */
 
 *, *::before, *::after {
@@ -9,12 +9,10 @@
   padding: 0;
 }
 
-/* address used for contact info — remove italic browser default */
 address { font-style: normal; }
 
 html {
   font-size: 16px;
-  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -51,12 +49,21 @@ ul, ol {
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar          { width: 5px; }
-::-webkit-scrollbar-track    { background: var(--bg); }
-::-webkit-scrollbar-thumb    { background: var(--rose-lt); border-radius: 3px; }
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--lumiere); border-radius: 3px; }
 
 /* Selection color */
 ::selection {
-  background: var(--rose-lt);
-  color: var(--text);
+  background: var(--lumiere);
+  color: var(--void);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

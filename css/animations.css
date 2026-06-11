@@ -3,151 +3,117 @@
    All keyframes, transitions, and scroll-triggered reveal classes.
    ============================================================= */
 
-/* ──────────────────────────────
-   HERO ENTRANCE (CSS-only, fires once on load)
-────────────────────────────── */
-.hero-left {
-  animation: heroSlideLeft 0.9s 0.2s both ease-out;
+/* ─────────────────────────────────────────────────────────────
+   LOADER
+   ───────────────────────────────────────────────────────────── */
+@keyframes loaderType {
+  to { width: 6ch; }
 }
 
-@keyframes heroSlideLeft {
-  from { opacity: 0; transform: translateX(-28px); }
-  to   { opacity: 1; transform: none; }
+@keyframes loaderSweep {
+  to { transform: scaleX(1); }
 }
 
-/* ──────────────────────────────
-   HERO TEXT REVEAL
-   Words are wrapped in spans by hero-reveal.js after the language
-   is applied. Each word clips in from the bottom, staggered by --i.
-────────────────────────────── */
-.reveal-word {
-  display: inline-block;
-  clip-path: inset(0 0 100% 0);
-  opacity: 0;
-  animation: wordReveal 0.7s ease forwards;
-  animation-delay: calc(var(--i, 0) * 100ms);
-}
-
-@keyframes wordReveal {
+/* ─────────────────────────────────────────────────────────────
+   HERO
+   ───────────────────────────────────────────────────────────── */
+@keyframes heroLineReveal {
   to {
-    clip-path: inset(0 0 0% 0);
-    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: translateY(0);
   }
 }
 
-/* ──────────────────────────────
-   FLOATING RATING CARD
-────────────────────────────── */
-.hero-float-card {
-  animation: floatCard 5s ease-in-out infinite;
+/* ─────────────────────────────────────────────────────────────
+   SCROLL INDICATOR
+   ───────────────────────────────────────────────────────────── */
+@keyframes scrollDotBounce {
+  0%, 100% { top: 0; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { top: calc(100% - 4px); opacity: 0; }
 }
 
-@keyframes floatCard {
+/* ─────────────────────────────────────────────────────────────
+   MARQUEE
+   ───────────────────────────────────────────────────────────── */
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   TESTIMONIAL FLOAT
+   ───────────────────────────────────────────────────────────── */
+@keyframes cardFloat {
   0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-6px); }
+  50% { transform: translateY(-12px); }
 }
 
-/* ──────────────────────────────
-   AVAILABILITY DOT PULSE
-────────────────────────────── */
-.badge-dot {
-  animation: pulseDot 2s ease-in-out infinite;
+/* ─────────────────────────────────────────────────────────────
+   SPARKLE BURST
+   ───────────────────────────────────────────────────────────── */
+@keyframes sparkleBurst {
+  0% { opacity: 0; transform: scale(0.4) rotate(-15deg); }
+  40% { opacity: 1; transform: scale(1.15) rotate(0deg); }
+  100% { opacity: 0; transform: scale(1.4) rotate(15deg); }
 }
 
-@keyframes pulseDot {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50%       { transform: scale(1.4); opacity: 0.7; }
+/* ─────────────────────────────────────────────────────────────
+   COUNTER MORPH
+   ───────────────────────────────────────────────────────────── */
+@keyframes counterMorph {
+  0% { filter: blur(6px); opacity: 0.4; }
+  60% { filter: blur(2px); opacity: 0.8; }
+  100% { filter: blur(0); opacity: 1; }
 }
 
-/* ──────────────────────────────
-   WHATSAPP BUTTON PULSE
-────────────────────────────── */
-.wa-float {
-  transition: transform 0.25s ease;
-  animation: waPulse 3s ease-in-out infinite;
+.counter.is-counting {
+  animation: counterMorph 1.2s var(--ease-smooth) forwards;
 }
 
-.wa-float:hover {
-  transform: scale(1.1);
-  animation: none;
-}
-
-@keyframes waPulse {
-  0%, 100% { box-shadow: 0 4px 18px rgba(37, 211, 102, 0.45); }
-  50%       { box-shadow: 0 4px 28px rgba(37, 211, 102, 0.7); }
-}
-
-/* ──────────────────────────────
-   BOOKING CONFIRMATION CHECK
-────────────────────────────── */
-.booking-confirm.show .confirm-check {
-  animation: checkPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes checkPop {
-  from { transform: scale(0); opacity: 0; }
-  to   { transform: scale(1); opacity: 1; }
-}
-
-/* ──────────────────────────────
-   SCROLL REVEAL
-   Applied via IntersectionObserver in animations.js.
-   Elements start invisible; .visible class triggers transition.
-────────────────────────────── */
+/* ─────────────────────────────────────────────────────────────
+   SCROLL-TRIGGERED SECTION REVEALS
+   Each variant fades + transforms; .is-visible plays the reveal.
+   ───────────────────────────────────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+  transition: opacity var(--duration-slow) var(--ease-liquid),
+              transform var(--duration-slow) var(--ease-liquid);
 }
 
-.reveal.visible {
+.reveal.is-visible {
   opacity: 1;
   transform: none;
 }
 
-/* Staggered delays for sibling reveals */
-.reveal-d1 { transition-delay: 0.1s; }
-.reveal-d2 { transition-delay: 0.2s; }
-.reveal-d3 { transition-delay: 0.3s; }
-.reveal-d4 { transition-delay: 0.4s; }
-
-/* ──────────────────────────────
-   MOBILE MENU SLIDE
-────────────────────────────── */
-/* Handled in layout.css via transform; transition defined here for clarity */
-.mobile-menu {
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+/* Services — slide from right */
+.reveal--right {
+  transform: translateX(60px);
 }
 
-/* ──────────────────────────────
-   CAROUSEL SLIDE
-   Transition on the track itself, controlled by JS transform.
-────────────────────────────── */
-.carousel-track {
-  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+/* Gallery — scale from 0.95 */
+.reveal--scale {
+  transform: scale(0.95);
 }
 
-/* ──────────────────────────────
-   EASTER EGG — GOLDEN PARTICLE BURST
-   Particles are created by particles.js with random --dx / --dy
-   custom properties, then removed after the animation ends.
-────────────────────────────── */
-.particle {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--gold);
-  pointer-events: none;
-  z-index: 9998;
-  animation: particleBurst 1s ease-out forwards;
+/* Team — slide from left */
+.reveal--left {
+  transform: translateX(-60px);
 }
 
-@keyframes particleBurst {
-  to {
-    transform: translate(var(--dx), var(--dy)) scale(0);
-    opacity: 0;
-  }
+/* Testimonials — rotate from -3deg */
+.reveal--rotate {
+  transform: rotate(-3deg) translateY(24px);
+  transform-origin: top left;
+}
+
+/* Generic rise */
+.reveal--up {
+  transform: translateY(32px);
+}
+
+/* Staggered children delay (set via inline custom property --d in JS) */
+.reveal {
+  transition-delay: var(--d, 0s);
 }

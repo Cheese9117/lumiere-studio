@@ -1,70 +1,75 @@
 /* =============================================================
-   DESIGN TOKENS — Lumière Studio
-   All CSS custom properties: colors, typography, spacing, shadows.
+   DESIGN TOKENS — Lumière Studio · "Liquid Beauty"
+   All CSS custom properties: colors, typography, spacing, motion.
    Change values here to retheme the entire site.
    ============================================================= */
 
 :root {
-  /* --- Color palette --- */
-  --bg:          #FAF7F4;   /* Warm off-white — main background */
-  --bg-card:     #F0EAE4;   /* Slightly darker — card surfaces */
-  --bg-stone:    #EDE5DC;   /* Stone — ritual strips, borders */
+  /* --- Color system --- */
+  --void: #050505;
+  --surface: #0e0e0e;
+  --cream: #faf6f0;
+  --nude: #e8ddd4;
+  --lumiere: #c8a882;
+  --lumiere-light: #e2c9a8;
+  --ink: #1a1410;
+  --fog: #6b6560;
+  --white: #ffffff;
 
-  --text:        #1E1410;   /* Deep espresso — primary text */
-  --text-mid:    #5C4A3F;   /* Mid-brown — secondary text */
-  --text-soft:   #8C7A70;   /* Muted — captions, placeholders */
+  --lumiere-rgb: 200, 168, 130;
+  --void-rgb: 5, 5, 5;
 
-  --rose:        #C4897A;   /* Dusty rose — primary accent */
-  --rose-lt:     #E8C4BB;   /* Light rose — hover states, selection */
-  --rose-dk:     #A86E60;   /* Dark rose — hover on rose elements */
+  /* --- Typography --- */
+  --font-display: 'Bodoni Moda', serif;
+  --font-body: 'Instrument Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
 
-  --sage:        #8A9E8C;   /* Sage green — secondary accent */
-  --sage-lt:     #C2D0C4;   /* Light sage — backgrounds, confirmations */
+  --weight-thin: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-bold: 600;
 
-  --gold:        #B8956A;   /* Warm gold — prices, star ratings */
-
-  --white:       #FFFFFF;
-  --wa-green:    #25D366;   /* WhatsApp brand green */
-  --error:       #d97066;   /* Form validation errors */
-
-  /* --- RGB channels (for rgba() overlays) --- */
-  --text-rgb:    30, 20, 16;
-
-  /* --- Cursor & motion --- */
-  --cursor-size:    20px;
-  --cursor-lag:     0.08s;
-  --marquee-speed:  32s;
-
-  /* --- Border radius --- */
-  --radius:      14px;
-  --radius-sm:   8px;
-  --radius-full: 999px;
-
-  /* --- Shadows --- */
-  --shadow-sm:   0 4px 16px rgba(30, 20, 16, 0.08);
-  --shadow-rose: 0 12px 36px rgba(196, 137, 122, 0.22);
-  --shadow-gold: 0 16px 40px rgba(184, 149, 106, 0.35);
+  --size-hero: clamp(4rem, 10vw, 12rem);
+  --size-display: clamp(2.75rem, 6vw, 6rem);
+  --size-h2: clamp(2.25rem, 5vw, 4rem);
+  --size-h3: clamp(1.5rem, 3vw, 2.25rem);
+  --size-lead: clamp(1.05rem, 1.6vw, 1.35rem);
+  --size-body: 1rem;
+  --size-small: 0.875rem;
+  --size-mono: 0.85rem;
 
   /* --- Spacing scale --- */
-  --space-xs:    0.4rem;
-  --space-sm:    0.8rem;
-  --space-md:    1.2rem;
-  --space-lg:    2rem;
-  --space-xl:    3rem;
-  --space-2xl:   5rem;
-  --space-3xl:   7rem;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+  --space-2xl: 12rem;
 
   /* --- Container --- */
-  --container-max: 1140px;
-  --container-pad: 5%;
+  --container-width: 1440px;
+  --container-pad: clamp(1.25rem, 5vw, 4rem);
+
+  /* --- Motion --- */
+  --ease-liquid: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 200ms;
+  --duration-base: 400ms;
+  --duration-slow: 800ms;
+
+  --cursor-size: 40px;
+  --cursor-size-active: 80px;
+  --marquee-speed: 40s;
+
+  /* --- Radius & borders --- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-full: 999px;
+  --border-hairline: 1px solid rgba(var(--lumiere-rgb), 0.25);
 
   /* --- Z-index layers --- */
-  --z-float:   150;
-  --z-menu:    190;
-  --z-nav:     200;
-
-  /* --- Transitions --- */
-  --t-fast:    0.2s ease;
-  --t-base:    0.3s ease;
-  --t-slow:    0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  --z-cursor: 300;
+  --z-menu: 250;
+  --z-nav: 200;
+  --z-loader: 400;
 }

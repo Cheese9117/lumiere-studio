@@ -1,0 +1,30 @@
+/* =============================================================
+   UTILITIES — Lumière Studio
+   Small helper classes used across sections.
+   ============================================================= */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+
+.mt-lg { margin-top: var(--space-lg); }
+
+.is-hidden {
+  display: none !important;
+}

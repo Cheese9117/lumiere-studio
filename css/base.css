@@ -1,0 +1,71 @@
+/* =============================================================
+   BASE — Lumière Studio · "Liquid Beauty"
+   Core typography: Bodoni Moda (display), Instrument Sans (body),
+   DM Mono (accents/numbers).
+   ============================================================= */
+
+body {
+  font-family: var(--font-body);
+  font-weight: var(--weight-regular);
+  font-size: var(--size-body);
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--cream);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-thin);
+  line-height: 1.05;
+  color: inherit;
+  letter-spacing: -0.01em;
+}
+
+em {
+  font-style: italic;
+}
+
+a {
+  transition: color var(--duration-fast) var(--ease-smooth);
+}
+
+/* --- Shared text utilities --- */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--size-mono);
+  font-weight: var(--weight-regular);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--lumiere);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.lead {
+  font-size: var(--size-lead);
+  line-height: 1.7;
+  color: var(--fog);
+  max-width: 46ch;
+}
+
+.display-massive {
+  font-family: var(--font-display);
+  font-weight: var(--weight-thin);
+  font-size: var(--size-hero);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.display-title {
+  font-family: var(--font-display);
+  font-weight: var(--weight-thin);
+  font-size: var(--size-display);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.text-bronze {
+  color: var(--lumiere);
+}

@@ -1,162 +1,131 @@
 /* =============================================================
    RESPONSIVE — Lumière Studio
-   All media queries. Base styles are mobile-first (in other files).
-   This file only adds/overrides styles for larger screens.
+   Breakpoints: 1024px (tablet), 768px (mobile), 480px (small).
    ============================================================= */
 
-/* ──────────────────────────────
-   TABLET — 600px+
-────────────────────────────── */
-@media (min-width: 600px) {
-  .section {
-    padding: 6rem var(--container-pad);
+/* ─────────────────────────────────────────────────────────────
+   ≤ 1024px — TABLET
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: 1fr;
   }
 
-  .trust-sep {
-    display: block;
+  .hero-visual {
+    height: 40vh;
+    order: -1;
   }
 
-  .trust-bar-inner {
-    gap: 1rem 2.5rem;
+  .hero-content {
+    padding-top: var(--space-lg);
   }
 
-  .services-grid {
+  .split,
+  .booking-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .grid-3,
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonial-card:nth-child(n) {
+    margin-top: 0;
+  }
+
+  .footer-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .gallery-grid {
-    columns: 2;
+    column-count: 2;
   }
 
-  .testi-card {
-    padding: 2.5rem 2.8rem;
-  }
-
-  .form-row {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .booking-form {
-    padding: 2.2rem;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .footer-bottom {
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: left;
+  .stat-bar {
+    grid-template-columns: 160px 1fr;
   }
 }
 
-/* ──────────────────────────────
-   DESKTOP — 900px+
-────────────────────────────── */
-@media (min-width: 900px) {
-  /* Nav — show center links, hide hamburger */
-  .nav-center {
-    display: flex;
+/* ─────────────────────────────────────────────────────────────
+   ≤ 768px — MOBILE
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .nav-links,
+  .lang-toggle {
+    display: none;
   }
 
   .hamburger {
+    display: flex;
+  }
+
+  .hero-visual {
+    height: 32vh;
+  }
+
+  .hero-content {
+    padding-inline: var(--container-pad);
+  }
+
+  .scroll-indicator {
     display: none;
   }
 
-  /* Hero — wide image background, copy constrained for readability */
-  .hero {
-    padding: 7rem var(--container-pad) 4rem;
+  .section {
+    padding-block: var(--space-lg);
   }
 
-  .hero-left {
-    max-width: 640px;
-  }
-
-  /* Layout grids */
-  .why-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-
-  .team-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  .team-avatar {
-    height: 220px;
-  }
-
-  .booking-inner {
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-  }
-
+  .grid-3,
+  .testimonials-grid,
   .footer-grid {
-    grid-template-columns: 2fr 1fr 1.5fr;
-    gap: 3rem;
+    grid-template-columns: 1fr;
   }
 
   .gallery-grid {
-    columns: 3;
+    column-count: 1;
   }
 
-  /* Section padding */
-  .section {
-    padding: 6rem var(--container-pad);
-  }
-}
-
-/* ──────────────────────────────
-   TOUCH DEVICES — hide custom cursor
-────────────────────────────── */
-@media (pointer: coarse), (max-width: 899px) {
-  .custom-cursor {
-    display: none;
-  }
-}
-
-/* ──────────────────────────────
-   REDUCED MOTION — respect user preference
-────────────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  .reveal-word,
-  .hero-left,
-  .ritual-marquee-track,
-  .hero-bg,
-  .badge-dot,
-  .wa-float,
-  .particle {
-    animation: none !important;
+  .service-card {
+    flex: 0 0 300px;
+    height: 420px;
   }
 
-  .reveal-word {
-    clip-path: none;
-    opacity: 1;
+  .team-card {
+    height: 60vh;
   }
 
-  .reveal,
-  .gallery-reveal,
-  .service-card,
-  .scroll-progress,
-  .custom-cursor {
-    transition: none !important;
+  .booking-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-bar {
+    grid-template-columns: 1fr;
+    gap: var(--space-xs);
+  }
+
+  .marquee-item {
+    font-size: var(--size-h3);
   }
 }
 
-/* ──────────────────────────────
-   SMALL SCREENS — lightbox controls
-────────────────────────────── */
-@media (max-width: 599px) {
-  .lightbox-prev,
-  .lightbox-next {
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
+/* ─────────────────────────────────────────────────────────────
+   ≤ 480px — SMALL MOBILE
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .section-head--row {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .form-steps .step-label {
-    display: none;
+  .service-card {
+    flex: 0 0 84vw;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: var(--space-xs);
+    align-items: flex-start;
   }
 }
