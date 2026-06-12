@@ -38,6 +38,11 @@
 | 7 | Marquee infinito | `js/marquee.js` |
 | 8 | Barra de progreso superior + loading screen | `js/app.js` |
 | 9 | Sparkle burst al confirmar reserva | `js/booking.js` |
+| 10 | Cotizador inteligente (3 pasos, precio + duración + CTA WhatsApp) | `js/quote.js` |
+| 11 | Slider antes/después táctil con teclado | `js/compare.js` |
+| 12 | Shimmer degradado en énfasis del hero | `css/animations.css` |
+| 13 | Nav flotante compacto al bajar scroll | `js/scroll.js` |
+| 14 | Simulador de iluminación ambiental (3 paletas) | `js/ambient.js` |
 
 ---
 
@@ -65,6 +70,9 @@
 │   ├── counter.js          # Contadores con blur morph
 │   ├── marquee.js          # Duplicado del marquee infinito
 │   ├── gallery.js          # Lightbox de la galería
+│   ├── compare.js          # Slider antes/después
+│   ├── quote.js            # Cotizador inteligente (3 pasos)
+│   ├── ambient.js          # Simulador de iluminación ambiental
 │   ├── booking.js          # Validación + redirect a WhatsApp
 │   └── app.js              # Loader, menú móvil, bootstrap general
 ├── utils/
