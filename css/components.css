@@ -130,8 +130,7 @@
   background: rgba(250, 246, 240, 0.75);
 }
 
-.nav.is-compact .nav-links,
-.nav.is-compact .lang-toggle {
+.nav.is-compact .nav-links {
   display: none;
 }
 
@@ -189,6 +188,10 @@
 }
 
 .lang-toggle {
+  position: fixed;
+  top: var(--space-md);
+  right: var(--container-pad);
+  z-index: var(--z-nav);
   display: flex;
   align-items: center;
   gap: 0.4rem;
