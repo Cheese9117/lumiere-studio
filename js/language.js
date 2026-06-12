@@ -15,6 +15,7 @@ const TRANSLATIONS = {
     nav_galeria: 'Galería',
     nav_equipo: 'Equipo',
     nav_reservar: 'Reservar',
+    nav_faq: 'Preguntas frecuentes',
 
     hero_badge: 'Laureles · Medellín',
     hero_line_1: 'Donde el',
@@ -134,6 +135,18 @@ const TRANSLATIONS = {
     err_date: 'Seleccioná una fecha.',
     err_time: 'Seleccioná una hora.',
 
+    faq_eyebrow: 'Preguntas frecuentes',
+    faq_title: '¿Tenés dudas?',
+    faq_lead: 'Todo lo que necesitás saber antes de tu primera visita.',
+    faq_q1: '¿Qué marcas de productos utilizan?',
+    faq_a1: "Trabajamos exclusivamente con líneas premium internacionales como Olaplex, L'Oréal Professionnel y Kérastase para garantizar la máxima protección de tu fibra capilar.",
+    faq_q2: '¿El salón cuenta con parqueadero?',
+    faq_a2: 'Sí, disponemos de celdas de parqueadero exclusivas y vigiladas para nuestros clientes, eliminando las preocupaciones comunes de la zona de Laureles.',
+    faq_q3: '¿Es necesario agendar con anticipación?',
+    faq_a3: 'Recomendamos agendar con al menos 2 o 3 días de anticipación para asegurar tu espacio con tu estilista de preferencia, especialmente para servicios de color de alta complejidad.',
+    faq_q4: '¿Qué métodos de pago aceptan?',
+    faq_a4: 'Aceptamos todas las tarjetas de crédito y débito (Visa, Mastercard, Amex), transferencias Bancolombia/Nequi y efectivo.',
+
     footer_tagline: 'Salón de belleza premium en Laureles, Medellín. Donde cada visita es un ritual.',
     footer_links_title: 'Navegación',
     footer_contact_title: 'Contacto',
@@ -149,6 +162,7 @@ const TRANSLATIONS = {
     nav_galeria: 'Gallery',
     nav_equipo: 'Team',
     nav_reservar: 'Book',
+    nav_faq: 'FAQ',
 
     hero_badge: 'Laureles · Medellín',
     hero_line_1: 'Where',
@@ -267,6 +281,18 @@ const TRANSLATIONS = {
     err_service: 'Select a service.',
     err_date: 'Select a date.',
     err_time: 'Select a time.',
+
+    faq_eyebrow: 'FAQ',
+    faq_title: 'Got questions?',
+    faq_lead: 'Everything you need to know before your first visit.',
+    faq_q1: 'Which product brands do you use?',
+    faq_a1: "We work exclusively with premium international lines such as Olaplex, L'Oréal Professionnel and Kérastase to guarantee maximum protection for your hair fiber.",
+    faq_q2: 'Does the salon have parking?',
+    faq_a2: 'Yes, we offer exclusive, monitored parking spaces for our clients, removing the usual parking concerns in the Laureles area.',
+    faq_q3: 'Do I need to book in advance?',
+    faq_a3: 'We recommend booking at least 2 to 3 days ahead to secure your slot with your preferred stylist, especially for high-complexity color services.',
+    faq_q4: 'What payment methods do you accept?',
+    faq_a4: 'We accept all credit and debit cards (Visa, Mastercard, Amex), Bancolombia/Nequi transfers and cash.',
 
     footer_tagline: 'Premium beauty salon in Laureles, Medellín. Where every visit is a ritual.',
     footer_links_title: 'Navigation',

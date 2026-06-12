@@ -38,7 +38,7 @@ const QUOTE_LARGO_LABEL = {
 const TOTAL_QUOTE_STEPS = 3;
 
 function formatCOP(value) {
-  return `${new Intl.NumberFormat('es-CO').format(value)} COP`;
+  return `$${new Intl.NumberFormat('es-CO').format(value)} COP`;
 }
 
 function initQuoteWizard() {

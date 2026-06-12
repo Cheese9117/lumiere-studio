@@ -751,6 +751,61 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
+   FAQ — accordion
+   ───────────────────────────────────────────────────────────── */
+.faq-list {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-item {
+  border-bottom: var(--border-hairline);
+}
+
+.faq-item:first-child {
+  border-top: var(--border-hairline);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  font-family: var(--font-display);
+  font-size: var(--size-h3);
+  font-weight: var(--weight-thin);
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-question::after {
+  content: '+';
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  color: var(--lumiere);
+  transition: transform var(--duration-base) var(--ease-smooth);
+}
+
+.faq-item[open] .faq-question::after {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  max-width: 60ch;
+  padding-bottom: var(--space-md);
+  color: var(--fog);
+  line-height: 1.7;
+}
+
+/* ─────────────────────────────────────────────────────────────
    FOOTER
    ───────────────────────────────────────────────────────────── */
 .footer {
