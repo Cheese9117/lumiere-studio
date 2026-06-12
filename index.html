@@ -78,6 +78,7 @@
 
     <ul class="nav-links" role="list">
       <li><a href="#servicios" data-i18n="nav_servicios">Servicios</a></li>
+      <li><a href="#cotizador" data-i18n="nav_cotizar">Cotizar</a></li>
       <li><a href="#galeria" data-i18n="nav_galeria">Galería</a></li>
       <li><a href="#equipo" data-i18n="nav_equipo">Equipo</a></li>
       <li><a href="#reservar" data-i18n="nav_reservar">Reservar</a></li>
@@ -99,6 +100,7 @@
   <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú de navegación">
     <button class="mobile-close" type="button" aria-label="Cerrar menú">&times;</button>
     <a href="#servicios" data-i18n="nav_servicios">Servicios</a>
+    <a href="#cotizador" data-i18n="nav_cotizar">Cotizar</a>
     <a href="#galeria" data-i18n="nav_galeria">Galería</a>
     <a href="#equipo" data-i18n="nav_equipo">Equipo</a>
     <a href="#reservar" data-i18n="nav_reservar">Reservar</a>
@@ -166,7 +168,7 @@
     <section id="nosotras" class="section section--cream" data-nav-theme="light">
       <div class="container split">
         <div class="reveal reveal--left">
-          <p class="philosophy-number" data-counter="18">0</p>
+          <p class="philosophy-number" data-counter="18">18</p>
           <p class="philosophy-number-label" data-i18n="philo_label">años transformando looks en Laureles</p>
         </div>
 
@@ -261,6 +263,88 @@
     </section>
 
     <!-- ═══════════════════════════════════════════
+         4B. SMART QUOTE WIZARD
+    ════════════════════════════════════════════ -->
+    <section id="cotizador" class="section section--nude quote" data-nav-theme="light">
+      <div class="container section-head">
+        <span class="eyebrow" data-i18n="quote_eyebrow">Cotizador</span>
+        <h2 class="display-title" data-i18n="quote_title">Tu look, tu precio.</h2>
+        <p class="lead" data-i18n="quote_lead">Tres pasos para saber cuánto cuesta y cuánto dura tu próxima cita.</p>
+      </div>
+
+      <div class="container">
+        <form id="quote-wizard" class="quote-wizard" novalidate>
+          <ol class="quote-steps" aria-hidden="true">
+            <li class="quote-step-dot is-active" data-step-dot="1"><span>1</span></li>
+            <li class="quote-step-dot" data-step-dot="2"><span>2</span></li>
+            <li class="quote-step-dot" data-step-dot="3"><span>3</span></li>
+          </ol>
+
+          <div class="quote-panel is-active" data-quote-panel="1">
+            <fieldset class="quote-question">
+              <legend data-i18n="quote_q1">¿Cuál es el largo de tu cabello?</legend>
+              <div class="quote-options" role="radiogroup">
+                <label class="quote-option">
+                  <input type="radio" name="largo" value="corto" />
+                  <span data-i18n="quote_largo_corto">Corto</span>
+                </label>
+                <label class="quote-option">
+                  <input type="radio" name="largo" value="medio" />
+                  <span data-i18n="quote_largo_medio">Medio</span>
+                </label>
+                <label class="quote-option">
+                  <input type="radio" name="largo" value="largo" />
+                  <span data-i18n="quote_largo_largo">Largo / Extra largo</span>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="quote-panel" data-quote-panel="2">
+            <fieldset class="quote-question">
+              <legend data-i18n="quote_q2">¿Qué servicio te interesa?</legend>
+              <div class="quote-options" role="radiogroup">
+                <label class="quote-option">
+                  <input type="radio" name="servicio" value="corte" />
+                  <span data-i18n="quote_servicio_corte">Corte y Estilizado</span>
+                </label>
+                <label class="quote-option">
+                  <input type="radio" name="servicio" value="color" />
+                  <span data-i18n="quote_servicio_color">Coloración y Mechas</span>
+                </label>
+                <label class="quote-option">
+                  <input type="radio" name="servicio" value="hidratacion" />
+                  <span data-i18n="quote_servicio_hidratacion">Tratamiento e Hidratación</span>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="quote-panel" data-quote-panel="3">
+            <div class="quote-result">
+              <h3 data-i18n="quote_result_title">Tu estimado</h3>
+              <p class="quote-result-row">
+                <span data-i18n="quote_result_price_label">Precio aproximado</span>
+                <strong class="quote-result-price mono">—</strong>
+              </p>
+              <p class="quote-result-row">
+                <span data-i18n="quote_result_duration_label">Duración aproximada</span>
+                <strong class="quote-result-duration mono">—</strong>
+              </p>
+              <a class="btn btn-bronze quote-cta" href="https://wa.me/" target="_blank" rel="noopener noreferrer" data-i18n="quote_cta">Reservar este servicio por WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="quote-nav">
+            <button type="button" class="btn btn-outline quote-back is-hidden" data-i18n="quote_back">Atrás</button>
+            <button type="button" class="btn btn-bronze quote-next" data-i18n="quote_next">Siguiente</button>
+            <button type="button" class="btn btn-outline quote-restart is-hidden" data-i18n="quote_restart">Empezar de nuevo</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
          5. TRANSFORMATION GALLERY
     ════════════════════════════════════════════ -->
     <section id="galeria" class="section gallery" data-nav-theme="light">
@@ -345,8 +429,8 @@
           <h2 class="display-title">Lo que dicen</h2>
         </div>
         <p class="mono">
-          <span data-counter="4.9" data-counter-suffix="★">0★</span> ·
-          <span data-counter="400" data-counter-suffix="+"> 0+</span> reseñas
+          <span data-counter="4.9" data-counter-suffix="★">4.9★</span> ·
+          <span data-counter="400" data-counter-suffix="+">400+</span> reseñas
         </p>
       </div>
 
@@ -457,6 +541,7 @@
         <div class="footer-col">
           <p class="footer-heading" data-i18n="footer_links_title">Navegación</p>
           <a href="#servicios" data-i18n="nav_servicios">Servicios</a>
+          <a href="#cotizador" data-i18n="nav_cotizar">Cotizar</a>
           <a href="#galeria" data-i18n="nav_galeria">Galería</a>
           <a href="#equipo" data-i18n="nav_equipo">Equipo</a>
           <a href="#reservar" data-i18n="nav_reservar">Reservar</a>
@@ -493,6 +578,7 @@
   <script src="js/marquee.js" defer></script>
   <script src="js/gallery.js" defer></script>
   <script src="js/booking.js" defer></script>
+  <script src="js/quote.js" defer></script>
   <script src="js/app.js" defer></script>
 </body>
 </html>

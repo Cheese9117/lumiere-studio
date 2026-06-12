@@ -281,6 +281,160 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
+   QUOTE WIZARD — 3-step price estimator
+   ───────────────────────────────────────────────────────────── */
+.quote-wizard {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.quote-steps {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  list-style: none;
+}
+
+.quote-step-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  border: var(--border-hairline);
+  font-family: var(--font-mono);
+  font-size: var(--size-mono);
+  color: var(--fog);
+  transition: border-color var(--duration-base) var(--ease-smooth),
+              color var(--duration-base) var(--ease-smooth),
+              background var(--duration-base) var(--ease-smooth);
+}
+
+.quote-step-dot.is-active {
+  border-color: var(--lumiere);
+  color: var(--ink);
+  background: var(--lumiere);
+}
+
+.quote-step-dot.is-done {
+  border-color: var(--lumiere);
+  color: var(--lumiere);
+}
+
+.quote-panel {
+  display: none;
+  animation: quote-fade-in var(--duration-slow) var(--ease-liquid);
+}
+
+.quote-panel.is-active {
+  display: block;
+}
+
+@keyframes quote-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quote-question {
+  border: none;
+  text-align: center;
+}
+
+.quote-question legend {
+  font-family: var(--font-display);
+  font-size: var(--size-h3);
+  font-weight: var(--weight-thin);
+  margin-bottom: var(--space-md);
+  width: 100%;
+}
+
+.quote-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.quote-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.1rem var(--space-md);
+  border: var(--border-hairline);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: var(--size-body);
+  transition: border-color var(--duration-fast) var(--ease-smooth),
+              background var(--duration-fast) var(--ease-smooth),
+              color var(--duration-fast) var(--ease-smooth);
+}
+
+.quote-option:hover {
+  border-color: var(--lumiere);
+}
+
+.quote-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.quote-option:has(input:checked) {
+  border-color: var(--lumiere);
+  background: var(--lumiere);
+  color: var(--void);
+}
+
+.quote-option:has(input:focus-visible) {
+  outline: 2px solid var(--lumiere);
+  outline-offset: 2px;
+}
+
+.quote-result {
+  text-align: center;
+}
+
+.quote-result h3 {
+  font-family: var(--font-display);
+  font-size: var(--size-h3);
+  font-weight: var(--weight-thin);
+  margin-bottom: var(--space-md);
+}
+
+.quote-result-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: var(--space-sm) 0;
+  border-bottom: var(--border-hairline);
+}
+
+.quote-result-row strong {
+  font-size: var(--size-lead);
+  color: var(--lumiere);
+}
+
+.quote-cta {
+  display: flex;
+  margin: var(--space-lg) auto 0;
+  width: fit-content;
+}
+
+.quote-nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+/* ─────────────────────────────────────────────────────────────
    GALLERY — masonry + parallax
    ───────────────────────────────────────────────────────────── */
 .gallery {

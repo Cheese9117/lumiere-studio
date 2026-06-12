@@ -11,6 +11,7 @@ const CONFIG = {
 const TRANSLATIONS = {
   es: {
     nav_servicios: 'Servicios',
+    nav_cotizar: 'Cotizar',
     nav_galeria: 'Galería',
     nav_equipo: 'Equipo',
     nav_reservar: 'Reservar',
@@ -55,6 +56,28 @@ const TRANSLATIONS = {
     s6_name: 'Cejas y Pestañas',
     s6_price: '$40.000 – $70.000 COP',
     s6_desc: 'Diseño según el hueso de tu ceja, no una plantilla. Cambia la mirada sin que se note.',
+
+    quote_eyebrow: 'Cotizador',
+    quote_title: 'Tu look, tu precio.',
+    quote_lead: 'Tres pasos para saber cuánto cuesta y cuánto dura tu próxima cita.',
+    quote_step_label: 'Paso',
+    quote_q1: '¿Cuál es el largo de tu cabello?',
+    quote_largo_corto: 'Corto',
+    quote_largo_medio: 'Medio',
+    quote_largo_largo: 'Largo / Extra largo',
+    quote_q2: '¿Qué servicio te interesa?',
+    quote_servicio_corte: 'Corte y Estilizado',
+    quote_servicio_color: 'Coloración y Mechas',
+    quote_servicio_hidratacion: 'Tratamiento e Hidratación',
+    quote_result_title: 'Tu estimado',
+    quote_result_price_label: 'Precio aproximado',
+    quote_result_duration_label: 'Duración aproximada',
+    quote_duration_unit: 'min',
+    quote_cta: 'Reservar este servicio por WhatsApp',
+    quote_back: 'Atrás',
+    quote_next: 'Siguiente',
+    quote_restart: 'Empezar de nuevo',
+    quote_wa_message: 'Hola, hice la cotización en la página y me interesa: {servicio}, cabello {largo}. Estimado: {precio} ({duracion} min). ¿Tienen disponibilidad?',
 
     gallery_title: 'Transformaciones',
     gl1: 'Interior del salón',
@@ -106,6 +129,7 @@ const TRANSLATIONS = {
 
   en: {
     nav_servicios: 'Services',
+    nav_cotizar: 'Quote',
     nav_galeria: 'Gallery',
     nav_equipo: 'Team',
     nav_reservar: 'Book',
@@ -150,6 +174,28 @@ const TRANSLATIONS = {
     s6_name: 'Brows & Lashes',
     s6_price: '$40,000 – $70,000 COP',
     s6_desc: 'Shaped to your own brow bone, never a template. Changes your look without anyone noticing.',
+
+    quote_eyebrow: 'Quote',
+    quote_title: 'Your look, your price.',
+    quote_lead: 'Three steps to find out how much your next appointment costs and how long it takes.',
+    quote_step_label: 'Step',
+    quote_q1: 'How long is your hair?',
+    quote_largo_corto: 'Short',
+    quote_largo_medio: 'Medium',
+    quote_largo_largo: 'Long / Extra long',
+    quote_q2: 'Which service are you after?',
+    quote_servicio_corte: 'Cut & Styling',
+    quote_servicio_color: 'Color & Highlights',
+    quote_servicio_hidratacion: 'Treatment & Hydration',
+    quote_result_title: 'Your estimate',
+    quote_result_price_label: 'Estimated price',
+    quote_result_duration_label: 'Estimated duration',
+    quote_duration_unit: 'min',
+    quote_cta: 'Book this service on WhatsApp',
+    quote_back: 'Back',
+    quote_next: 'Next',
+    quote_restart: 'Start over',
+    quote_wa_message: 'Hi, I used the quote tool on your site and I\'m interested in: {servicio}, {largo} hair. Estimate: {precio} ({duracion} min). Do you have availability?',
 
     gallery_title: 'Transformations',
     gl1: 'Salon interior',
@@ -221,6 +267,8 @@ function applyLang(lang) {
   document.querySelectorAll('.lang-opt').forEach((opt) => {
     opt.classList.toggle('is-active', opt.dataset.lang === lang);
   });
+
+  document.dispatchEvent(new CustomEvent('langchange', { detail: { lang } }));
 }
 
 function toggleLang() {
