@@ -285,13 +285,18 @@
   justify-content: center;
   gap: var(--space-sm);
   padding: calc(var(--space-md) * 3) var(--container-pad) var(--space-lg);
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height var(--duration-slow) var(--ease-liquid);
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform var(--duration-slow) var(--ease-liquid),
+              opacity var(--duration-base) var(--ease-smooth),
+              visibility var(--duration-base) var(--ease-smooth);
 }
 
 .mobile-menu.is-open {
-  max-height: 100vh;
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
 }
 
 .mobile-menu a {
