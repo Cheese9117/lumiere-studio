@@ -252,42 +252,52 @@
   height: 1px;
   width: 100%;
   background: currentColor;
+  transform-origin: center;
   transition: transform var(--duration-base) var(--ease-smooth),
               opacity var(--duration-base) var(--ease-smooth);
 }
 
-/* --- Mobile menu --- */
+.hamburger.is-open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.is-open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* --- Mobile menu (dropdown panel) --- */
 .mobile-menu {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: var(--z-menu);
-  background: var(--void);
+  background: rgba(var(--void-rgb), 0.92);
+  backdrop-filter: blur(16px);
   color: var(--cream);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-md);
-  transform: translateY(-100%);
-  transition: transform var(--duration-slow) var(--ease-liquid);
+  gap: var(--space-sm);
+  padding: calc(var(--space-md) * 3) var(--container-pad) var(--space-lg);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--duration-slow) var(--ease-liquid);
 }
 
 .mobile-menu.is-open {
-  transform: translateY(0);
+  max-height: 100vh;
 }
 
 .mobile-menu a {
   font-family: var(--font-display);
-  font-size: 2.5rem;
+  font-size: 1.75rem;
   font-weight: var(--weight-thin);
-}
-
-.mobile-close {
-  position: absolute;
-  top: var(--space-md);
-  right: var(--container-pad);
-  font-size: 1.5rem;
-  color: var(--cream);
 }
 
 /* ─────────────────────────────────────────────────────────────

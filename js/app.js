@@ -35,15 +35,25 @@ function initMobileMenu() {
 
   function closeMenu() {
     menu.classList.remove('is-open');
+    hamburger.classList.remove('is-open');
+    hamburger.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('no-scroll');
   }
 
-  hamburger.addEventListener('click', () => {
+  function openMenu() {
     menu.classList.add('is-open');
+    hamburger.classList.add('is-open');
+    hamburger.setAttribute('aria-expanded', 'true');
     document.body.classList.add('no-scroll');
-  });
+  }
 
-  menu.querySelector('.mobile-close')?.addEventListener('click', closeMenu);
+  hamburger.addEventListener('click', () => {
+    if (menu.classList.contains('is-open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
 
   menu.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', closeMenu);
