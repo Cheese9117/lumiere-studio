@@ -8,43 +8,51 @@
  * and gallery parallax.
  */
 
+const SMOOTH_SCROLL_EASE = 0.085;
+
 let smoothScrollTarget = window.scrollY;
+let smoothScrollCurrent = window.scrollY;
+let smoothScrollRafId = null;
+let smoothScrollEnabled = false;
+
+function smoothScrollMaxScroll() {
+  return document.documentElement.scrollHeight - window.innerHeight;
+}
+
+function smoothScrollLoop() {
+  smoothScrollCurrent += (smoothScrollTarget - smoothScrollCurrent) * SMOOTH_SCROLL_EASE;
+
+  if (Math.abs(smoothScrollTarget - smoothScrollCurrent) < 0.5) {
+    smoothScrollCurrent = smoothScrollTarget;
+    window.scrollTo(0, smoothScrollCurrent);
+    smoothScrollRafId = null;
+    return;
+  }
+
+  window.scrollTo(0, smoothScrollCurrent);
+  smoothScrollRafId = requestAnimationFrame(smoothScrollLoop);
+}
+
+function startSmoothScrollLoop() {
+  if (!smoothScrollRafId) smoothScrollRafId = requestAnimationFrame(smoothScrollLoop);
+}
 
 function initSmoothScroll() {
   if (window.matchMedia('(pointer: coarse)').matches) return;
 
-  const EASE = 0.085;
-  let current = window.scrollY;
+  smoothScrollEnabled = true;
+  smoothScrollCurrent = window.scrollY;
   smoothScrollTarget = window.scrollY;
-  let rafId = null;
-
-  function maxScroll() {
-    return document.documentElement.scrollHeight - window.innerHeight;
-  }
-
-  function loop() {
-    current += (smoothScrollTarget - current) * EASE;
-
-    if (Math.abs(smoothScrollTarget - current) < 0.5) {
-      current = smoothScrollTarget;
-      window.scrollTo(0, current);
-      rafId = null;
-      return;
-    }
-
-    window.scrollTo(0, current);
-    rafId = requestAnimationFrame(loop);
-  }
 
   function onWheel(e) {
     e.preventDefault();
-    smoothScrollTarget = Math.max(0, Math.min(smoothScrollTarget + e.deltaY, maxScroll()));
-    if (!rafId) rafId = requestAnimationFrame(loop);
+    smoothScrollTarget = Math.max(0, Math.min(smoothScrollTarget + e.deltaY, smoothScrollMaxScroll()));
+    startSmoothScrollLoop();
   }
 
   function onScroll() {
-    if (!rafId) {
-      current = window.scrollY;
+    if (!smoothScrollRafId) {
+      smoothScrollCurrent = window.scrollY;
       smoothScrollTarget = window.scrollY;
     }
   }
@@ -52,7 +60,7 @@ function initSmoothScroll() {
   window.addEventListener('wheel', onWheel, { passive: false });
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', () => {
-    smoothScrollTarget = Math.min(smoothScrollTarget, maxScroll());
+    smoothScrollTarget = Math.min(smoothScrollTarget, smoothScrollMaxScroll());
   });
 }
 
@@ -61,12 +69,24 @@ function smoothScrollToElement(el) {
   const navHeight = document.querySelector('.nav')?.offsetHeight ?? 0;
   const top = el.getBoundingClientRect().top + window.scrollY - navHeight;
 
-  if (window.matchMedia('(pointer: coarse)').matches) {
+  if (!smoothScrollEnabled) {
     window.scrollTo({ top, behavior: 'smooth' });
     return;
   }
 
-  smoothScrollTarget = Math.max(0, top);
+  smoothScrollTarget = Math.max(0, Math.min(top, smoothScrollMaxScroll()));
+  startSmoothScrollLoop();
+}
+
+/** Smoothly scrolls back to the top of the page. */
+function smoothScrollToTop() {
+  if (!smoothScrollEnabled) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
+
+  smoothScrollTarget = 0;
+  startSmoothScrollLoop();
 }
 
 /** Toggles nav background + light/dark theme based on the section in view. */
@@ -169,4 +189,18 @@ function initParallax() {
   window.addEventListener('scroll', update, { passive: true });
   window.addEventListener('resize', update);
   update();
+}
+
+/** Shows a "back to top" button once the page has been scrolled down. */
+function initBackToTop() {
+  const button = document.querySelector('.back-to-top');
+  if (!button) return;
+
+  window.addEventListener('scroll', () => {
+    button.classList.toggle('is-visible', window.scrollY > 600);
+  }, { passive: true });
+
+  button.addEventListener('click', () => {
+    smoothScrollToTop();
+  });
 }

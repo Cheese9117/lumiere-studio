@@ -82,4 +82,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initQuoteWizard();
   initMobileMenu();
   initNavLinks();
+  initBackToTop();
 });

@@ -101,6 +101,7 @@ const TRANSLATIONS = {
     ambient_morning: 'Luz de mañana',
     ambient_golden: 'Hora dorada',
     ambient_night: 'Estudio nocturno',
+    back_to_top: 'Volver arriba',
 
     team_title: 'El equipo',
     t1_name: 'Valentina Ríos',
@@ -234,6 +235,7 @@ const TRANSLATIONS = {
     ambient_morning: 'Morning light',
     ambient_golden: 'Golden hour',
     ambient_night: 'Studio Nocturno',
+    back_to_top: 'Back to top',
 
     team_title: 'The team',
     t1_name: 'Valentina Ríos',

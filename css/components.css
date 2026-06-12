@@ -678,3 +678,45 @@
   background: linear-gradient(135deg, #1a1410, #050505);
   box-shadow: inset 0 0 6px rgba(127, 231, 255, 0.6);
 }
+
+/* ─────────────────────────────────────────────────────────────
+   BACK TO TOP
+   ───────────────────────────────────────────────────────────── */
+.back-to-top {
+  position: fixed;
+  right: var(--space-md);
+  bottom: var(--space-md);
+  z-index: var(--z-ambient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-full);
+  background: var(--lumiere);
+  color: var(--void);
+  font-size: 1.25rem;
+  line-height: 1;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0.75rem);
+  transition: opacity var(--duration-base) var(--ease-smooth),
+              transform var(--duration-base) var(--ease-smooth),
+              visibility var(--duration-base) var(--ease-smooth),
+              background var(--duration-base) var(--ease-smooth);
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--lumiere-light);
+}
+
+.back-to-top:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: 3px;
+}
