@@ -204,13 +204,21 @@
   background: rgba(var(--void-rgb), 0.35);
   backdrop-filter: blur(8px);
   transition: border-color var(--duration-fast) var(--ease-smooth),
-              background var(--duration-fast) var(--ease-smooth);
+              background var(--duration-fast) var(--ease-smooth),
+              opacity var(--duration-base) var(--ease-smooth),
+              visibility var(--duration-base) var(--ease-smooth);
 }
 
 .lang-toggle:hover,
 .lang-toggle:focus-visible {
   border-color: var(--lumiere);
   outline: none;
+}
+
+.nav.is-scrolled .lang-toggle {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .nav.is-light .lang-toggle {
