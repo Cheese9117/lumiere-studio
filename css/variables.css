@@ -57,8 +57,6 @@
   --duration-base: 400ms;
   --duration-slow: 800ms;
 
-  --cursor-size: 40px;
-  --cursor-size-active: 80px;
   --marquee-speed: 40s;
 
   /* --- Radius & borders --- */
@@ -68,7 +66,6 @@
   --border-hairline: 1px solid rgba(var(--lumiere-rgb), 0.25);
 
   /* --- Z-index layers --- */
-  --z-cursor: 300;
   --z-menu: 250;
   --z-ambient: 240;
   --z-nav: 200;

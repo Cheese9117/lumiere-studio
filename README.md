@@ -29,20 +29,19 @@
 
 | # | Efecto | Archivo |
 |---|---|---|
-| 1 | Cursor magnético bronce (40px → 80px) | `js/cursor.js` |
-| 2 | Smooth-scroll estilo Lenis, sin librerías | `js/scroll.js` |
-| 3 | Scramble de texto en hover (servicios) | `js/distortion.js` |
-| 4 | Botones magnéticos (proximidad 80px) | `js/magnetic.js` |
-| 5 | Reveals escalonados por sección (`IntersectionObserver`) | `js/scroll.js` + `css/animations.css` |
-| 6 | Contadores con morph de blur | `js/counter.js` |
-| 7 | Marquee infinito | `js/marquee.js` |
-| 8 | Barra de progreso superior + loading screen | `js/app.js` |
-| 9 | Sparkle burst al confirmar reserva | `js/booking.js` |
-| 10 | Cotizador inteligente (3 pasos, precio + duración + CTA WhatsApp) | `js/quote.js` |
-| 11 | Slider antes/después táctil con teclado | `js/compare.js` |
-| 12 | Shimmer degradado en énfasis del hero | `css/animations.css` |
-| 13 | Nav flotante compacto al bajar scroll | `js/scroll.js` |
-| 14 | Simulador de iluminación ambiental (3 paletas) | `js/ambient.js` |
+| 1 | Smooth-scroll estilo Lenis, sin librerías | `js/scroll.js` |
+| 2 | Scramble de texto en hover (servicios) | `js/distortion.js` |
+| 3 | Botones magnéticos (proximidad 80px) | `js/magnetic.js` |
+| 4 | Reveals escalonados por sección (`IntersectionObserver`) | `js/scroll.js` + `css/animations.css` |
+| 5 | Contadores con morph de blur | `js/counter.js` |
+| 6 | Marquee infinito | `js/marquee.js` |
+| 7 | Barra de progreso superior + loading screen | `js/app.js` |
+| 8 | Sparkle burst al confirmar reserva | `js/booking.js` |
+| 9 | Cotizador inteligente (3 pasos, precio + duración + CTA WhatsApp) | `js/quote.js` |
+| 10 | Slider antes/después táctil con teclado | `js/compare.js` |
+| 11 | Shimmer degradado en énfasis del hero | `css/animations.css` |
+| 12 | Nav flotante compacto al bajar scroll | `js/scroll.js` |
+| 13 | Simulador de iluminación ambiental (3 paletas) | `js/ambient.js` |
 
 ---
 
@@ -56,14 +55,13 @@
 │   ├── reset.css        # Reset moderno + prefers-reduced-motion
 │   ├── base.css         # Tipografía base y utilidades de texto
 │   ├── layout.css        # Contenedores, grids, secciones
-│   ├── components.css   # Loader, nav, botones, forms, cursor, lightbox
+│   ├── components.css   # Loader, nav, botones, forms, lightbox
 │   ├── sections.css     # Estilos de las 9 secciones
 │   ├── animations.css   # Keyframes y sistema de reveal
 │   ├── responsive.css   # Breakpoints 1024 / 768 / 480
 │   └── utilities.css    # Helpers puntuales
 ├── js/
 │   ├── language.js      # CONFIG + TRANSLATIONS (ES/EN) + i18n
-│   ├── cursor.js         # Cursor magnético
 │   ├── scroll.js          # Smooth-scroll, reveals, parallax, stat bars
 │   ├── magnetic.js        # Botones magnéticos
 │   ├── distortion.js      # Scramble de texto
