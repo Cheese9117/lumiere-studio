@@ -106,6 +106,21 @@
     <a href="#reservar" data-i18n="nav_reservar">Reservar</a>
   </div>
 
+  <!-- Ambient lighting simulator -->
+  <div class="ambient-overlay" aria-hidden="true"></div>
+
+  <div class="ambient-switch" role="radiogroup" data-i18n-aria-label="ambient_label" aria-label="Simulador de iluminación ambiental">
+    <button type="button" class="ambient-option" data-ambient="morning" role="radio" aria-checked="false" data-i18n-aria-label="ambient_morning" aria-label="Luz de mañana">
+      <span class="ambient-swatch ambient-swatch--morning" aria-hidden="true"></span>
+    </button>
+    <button type="button" class="ambient-option" data-ambient="golden" role="radio" aria-checked="true" data-i18n-aria-label="ambient_golden" aria-label="Hora dorada">
+      <span class="ambient-swatch ambient-swatch--golden" aria-hidden="true"></span>
+    </button>
+    <button type="button" class="ambient-option" data-ambient="night" role="radio" aria-checked="false" data-i18n-aria-label="ambient_night" aria-label="Estudio nocturno">
+      <span class="ambient-swatch ambient-swatch--night" aria-hidden="true"></span>
+    </button>
+  </div>
+
   <main>
 
     <!-- ═══════════════════════════════════════════
@@ -659,6 +674,7 @@
   <!-- Scripts (order matters) -->
   <script src="utils/sanitize.js" defer></script>
   <script src="js/language.js" defer></script>
+  <script src="js/ambient.js" defer></script>
   <script src="js/cursor.js" defer></script>
   <script src="js/scroll.js" defer></script>
   <script src="js/magnetic.js" defer></script>

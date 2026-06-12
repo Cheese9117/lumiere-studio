@@ -70,6 +70,7 @@
   /* --- Z-index layers --- */
   --z-cursor: 300;
   --z-menu: 250;
+  --z-ambient: 240;
   --z-nav: 200;
   --z-loader: 400;
 }

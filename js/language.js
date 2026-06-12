@@ -97,6 +97,11 @@ const TRANSLATIONS = {
     compare_2_alt_before: 'Cabello antes de la coloración',
     compare_2_alt_after: 'Cabello después de la coloración y mechas',
 
+    ambient_label: 'Simulador de iluminación ambiental',
+    ambient_morning: 'Luz de mañana',
+    ambient_golden: 'Hora dorada',
+    ambient_night: 'Estudio nocturno',
+
     team_title: 'El equipo',
     t1_name: 'Valentina Ríos',
     t1_role: 'Colorista & Estilista Jefe',
@@ -225,6 +230,11 @@ const TRANSLATIONS = {
     compare_2_alt_before: 'Hair before coloring',
     compare_2_alt_after: 'Hair after coloring and highlights',
 
+    ambient_label: 'Ambient lighting simulator',
+    ambient_morning: 'Morning light',
+    ambient_golden: 'Golden hour',
+    ambient_night: 'Studio Nocturno',
+
     team_title: 'The team',
     t1_name: 'Valentina Ríos',
     t1_role: 'Lead Colorist & Stylist',
@@ -285,6 +295,11 @@ function applyLang(lang) {
   document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
     const key = el.dataset.i18nAlt;
     if (key in dict) el.alt = dict[key];
+  });
+
+  document.querySelectorAll('[data-i18n-aria-label]').forEach((el) => {
+    const key = el.dataset.i18nAriaLabel;
+    if (key in dict) el.setAttribute('aria-label', dict[key]);
   });
 
   document.documentElement.lang = lang;

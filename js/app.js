@@ -65,6 +65,7 @@ function initNavLinks() {
 document.addEventListener('DOMContentLoaded', () => {
   initLoader();
   initLanguage();
+  initAmbientSwitch();
   initCursor();
   initSmoothScroll();
   initNavTheme();

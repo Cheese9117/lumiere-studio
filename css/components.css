@@ -572,3 +572,109 @@
 .lightbox-close:hover {
   color: var(--lumiere);
 }
+
+/* ─────────────────────────────────────────────────────────────
+   AMBIENT LIGHTING SIMULATOR
+   ───────────────────────────────────────────────────────────── */
+.ambient-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-ambient);
+  pointer-events: none;
+  opacity: 0;
+  background: transparent;
+  mix-blend-mode: soft-light;
+  transition: opacity var(--duration-slow) var(--ease-liquid),
+              background var(--duration-slow) var(--ease-liquid);
+}
+
+[data-ambient="morning"] .ambient-overlay {
+  opacity: 0.55;
+  background: radial-gradient(circle at 25% 15%, rgba(255, 252, 245, 0.95), transparent 65%);
+}
+
+[data-ambient="golden"] .ambient-overlay {
+  opacity: 0.4;
+  mix-blend-mode: overlay;
+  background: radial-gradient(circle at 75% 20%, rgba(255, 183, 94, 0.55), transparent 65%);
+}
+
+[data-ambient="night"] .ambient-overlay {
+  opacity: 0.7;
+  mix-blend-mode: multiply;
+  background:
+    radial-gradient(circle at 12% 88%, rgba(110, 231, 255, 0.3), transparent 55%),
+    radial-gradient(circle at 88% 12%, rgba(255, 110, 214, 0.22), transparent 55%),
+    rgba(0, 0, 0, 0.35);
+}
+
+[data-ambient="morning"] {
+  --lumiere: #c9a880;
+  --lumiere-light: #ecd8bf;
+  --lumiere-rgb: 201, 168, 128;
+}
+
+[data-ambient="night"] {
+  --lumiere: #7fe7ff;
+  --lumiere-light: #c2f5ff;
+  --lumiere-rgb: 127, 231, 255;
+}
+
+.ambient-switch {
+  position: fixed;
+  left: var(--space-md);
+  bottom: var(--space-md);
+  z-index: var(--z-ambient);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0.6rem;
+  border-radius: var(--radius-full);
+  background: rgba(var(--void-rgb), 0.5);
+  backdrop-filter: blur(12px);
+  border: var(--border-hairline);
+}
+
+.ambient-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-full);
+  transition: transform var(--duration-fast) var(--ease-smooth),
+              box-shadow var(--duration-fast) var(--ease-smooth);
+}
+
+.ambient-option:hover {
+  transform: scale(1.1);
+}
+
+.ambient-option.is-active {
+  box-shadow: 0 0 0 2px var(--cream);
+}
+
+.ambient-option:focus-visible {
+  outline: 2px solid var(--lumiere);
+  outline-offset: 2px;
+}
+
+.ambient-swatch {
+  display: block;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: var(--radius-full);
+}
+
+.ambient-swatch--morning {
+  background: linear-gradient(135deg, #fffaf2, #e8ddd4);
+}
+
+.ambient-swatch--golden {
+  background: linear-gradient(135deg, #ffcf8a, #c8a882);
+}
+
+.ambient-swatch--night {
+  background: linear-gradient(135deg, #1a1410, #050505);
+  box-shadow: inset 0 0 6px rgba(127, 231, 255, 0.6);
+}
