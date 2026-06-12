@@ -204,3 +204,21 @@ function initBackToTop() {
     smoothScrollToTop();
   });
 }
+
+function initServicesNav() {
+  const track = document.querySelector('[data-services-track]');
+  const prevBtn = document.querySelector('[data-services-prev]');
+  const nextBtn = document.querySelector('[data-services-next]');
+  if (!track || !prevBtn || !nextBtn) return;
+
+  function scrollByCard(direction) {
+    const card = track.querySelector('.service-card');
+    if (!card) return;
+
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    track.scrollBy({ left: direction * (card.offsetWidth + gap), behavior: 'smooth' });
+  }
+
+  prevBtn.addEventListener('click', () => scrollByCard(-1));
+  nextBtn.addEventListener('click', () => scrollByCard(1));
+}

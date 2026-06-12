@@ -104,6 +104,12 @@
     <a href="#galeria" data-i18n="nav_galeria">Galería</a>
     <a href="#equipo" data-i18n="nav_equipo">Equipo</a>
     <a href="#reservar" data-i18n="nav_reservar">Reservar</a>
+
+    <button id="lang-toggle-mobile" class="lang-toggle lang-toggle--mobile" type="button" aria-label="Cambiar idioma">
+      <span class="lang-opt is-active" data-lang="es">ES</span>
+      <span class="lang-divider">/</span>
+      <span class="lang-opt" data-lang="en">EN</span>
+    </button>
   </div>
 
   <!-- Ambient lighting simulator -->
@@ -223,8 +229,8 @@
         <h2 class="display-title" data-i18n="services_title">Lo que hacemos</h2>
       </div>
 
-      <div class="container">
-        <div class="services-track">
+      <div class="container services-wrap">
+        <div class="services-track" data-services-track>
           <article class="service-card reveal reveal--right">
             <div class="service-card-bg"></div>
             <div class="service-card-content">
@@ -279,6 +285,13 @@
             </div>
           </article>
         </div>
+
+        <button type="button" class="services-arrow services-arrow--prev" data-services-prev data-i18n-aria-label="services_prev" aria-label="Servicio anterior">
+          <span aria-hidden="true">&larr;</span>
+        </button>
+        <button type="button" class="services-arrow services-arrow--next" data-services-next data-i18n-aria-label="services_next" aria-label="Siguiente servicio">
+          <span aria-hidden="true">&rarr;</span>
+        </button>
       </div>
     </section>
 

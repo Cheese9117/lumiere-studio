@@ -195,10 +195,27 @@
   font-family: var(--font-mono);
   font-size: var(--size-small);
   letter-spacing: 0.1em;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid rgba(var(--lumiere-rgb), 0.35);
+  border-radius: var(--radius-full);
+  background: rgba(var(--void-rgb), 0.35);
+  backdrop-filter: blur(8px);
+  transition: border-color var(--duration-fast) var(--ease-smooth),
+              background var(--duration-fast) var(--ease-smooth);
+}
+
+.lang-toggle:hover,
+.lang-toggle:focus-visible {
+  border-color: var(--lumiere);
+  outline: none;
+}
+
+.nav.is-light .lang-toggle {
+  background: rgba(var(--cream-rgb), 0.5);
 }
 
 .lang-opt {
-  opacity: 0.4;
+  opacity: 0.6;
   transition: opacity var(--duration-fast) var(--ease-smooth);
 }
 
@@ -208,7 +225,7 @@
 }
 
 .lang-divider {
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
 /* --- Hamburger --- */

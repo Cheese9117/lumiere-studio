@@ -57,6 +57,12 @@
     display: none;
   }
 
+  .mobile-menu .lang-toggle--mobile {
+    display: flex;
+    margin-top: var(--space-sm);
+    font-size: 1rem;
+  }
+
   .hamburger {
     display: flex;
   }
@@ -91,6 +97,34 @@
   .service-card {
     flex: 0 0 300px;
     height: 420px;
+  }
+
+  .services-wrap::before,
+  .services-wrap::after {
+    width: var(--space-lg);
+  }
+
+  .services-arrow {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+
+  .services-arrow--prev {
+    left: 0;
+    transform: translateY(-50%);
+  }
+
+  .services-arrow--next {
+    right: 0;
+    transform: translateY(-50%);
+  }
+
+  .services-arrow--prev:hover,
+  .services-arrow--prev:focus-visible,
+  .services-arrow--next:hover,
+  .services-arrow--next:focus-visible {
+    transform: translateY(-50%);
   }
 
   .team-card {

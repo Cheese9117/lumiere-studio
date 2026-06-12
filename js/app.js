@@ -82,4 +82,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initNavLinks();
   initBackToTop();
+  initServicesNav();
 });

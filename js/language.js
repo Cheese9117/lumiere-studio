@@ -39,6 +39,8 @@ const TRANSLATIONS = {
     stat_3_label: 'Productos premium',
 
     services_title: 'Lo que hacemos',
+    services_prev: 'Servicio anterior',
+    services_next: 'Siguiente servicio',
     s1_name: 'Corte y Estilizado',
     s1_price: '$45.000 – $80.000 COP',
     s1_desc: 'Cortamos en seco primero, para ver cómo cae tu pelo de verdad. Salís con un corte que se peina solo.',
@@ -186,6 +188,8 @@ const TRANSLATIONS = {
     stat_3_label: 'Premium products',
 
     services_title: 'What we do',
+    services_prev: 'Previous service',
+    services_next: 'Next service',
     s1_name: 'Cut & Styling',
     s1_price: '$45,000 – $80,000 COP',
     s1_desc: 'We cut on dry hair first, to see how it really falls. You leave with a cut that styles itself.',
@@ -348,4 +352,5 @@ function toggleLang() {
 function initLanguage() {
   applyLang(currentLang);
   document.getElementById('lang-toggle')?.addEventListener('click', toggleLang);
+  document.getElementById('lang-toggle-mobile')?.addEventListener('click', toggleLang);
 }
