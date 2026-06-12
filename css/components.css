@@ -145,6 +145,39 @@
   background: rgba(250, 246, 240, 0.75);
 }
 
+.nav.is-compact {
+  left: auto;
+  right: var(--container-pad);
+  top: var(--space-sm);
+  padding: 0.6rem 0.6rem 0.6rem 1.4rem;
+  border-radius: var(--radius-full);
+  background: rgba(5, 5, 5, 0.7);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(var(--void-rgb), 0.25);
+  transition: background var(--duration-base) var(--ease-smooth),
+              padding var(--duration-base) var(--ease-smooth),
+              right var(--duration-base) var(--ease-liquid),
+              top var(--duration-base) var(--ease-liquid),
+              border-radius var(--duration-base) var(--ease-liquid);
+}
+
+.nav.is-compact.is-light {
+  background: rgba(250, 246, 240, 0.75);
+}
+
+.nav.is-compact .nav-links,
+.nav.is-compact .lang-toggle {
+  display: none;
+}
+
+.nav.is-compact .nav-right {
+  gap: 0;
+}
+
+.nav.is-compact .hamburger {
+  display: flex;
+}
+
 .nav-logo {
   font-family: var(--font-display);
   font-weight: var(--weight-thin);

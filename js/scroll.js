@@ -74,8 +74,17 @@ function initNavTheme() {
   const nav = document.querySelector('.nav');
   if (!nav) return;
 
+  let lastScrollY = window.scrollY;
+
   window.addEventListener('scroll', () => {
-    nav.classList.toggle('is-scrolled', window.scrollY > 40);
+    const currentScrollY = window.scrollY;
+
+    nav.classList.toggle('is-scrolled', currentScrollY > 40);
+
+    const scrollingDown = currentScrollY > lastScrollY;
+    nav.classList.toggle('is-compact', scrollingDown && currentScrollY > 240);
+
+    lastScrollY = currentScrollY;
   }, { passive: true });
 
   const sections = document.querySelectorAll('[data-nav-theme]');

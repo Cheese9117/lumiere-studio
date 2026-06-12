@@ -52,7 +52,23 @@
 }
 
 .hero-title em {
-  color: var(--lumiere);
+  background: linear-gradient(
+    100deg,
+    var(--lumiere) 35%,
+    var(--lumiere-light) 47%,
+    var(--white) 50%,
+    var(--lumiere-light) 53%,
+    var(--lumiere) 65%
+  );
+  background-size: 200% 100%;
+  background-position: 0% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation:
+    heroLineReveal var(--duration-slow) var(--ease-liquid) forwards,
+    emShimmer 5s linear infinite;
+  animation-delay: calc(var(--i, 0) * 150ms + 0.4s), 2s;
 }
 
 .hero-visual {
