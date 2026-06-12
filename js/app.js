@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   initMarquee();
   initGallery();
+  initCompareSliders();
   initBooking();
   initQuoteWizard();
   initMobileMenu();

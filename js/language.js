@@ -87,6 +87,16 @@ const TRANSLATIONS = {
     gl5: 'Estilizado profesional',
     gl6: 'Brushing y secado',
 
+    compare_eyebrow: 'Antes / Después',
+    compare_title: 'La diferencia, en un deslizo.',
+    compare_lead: 'Arrastrá el control para ver la transformación completa.',
+    compare_before: 'Antes',
+    compare_after: 'Después',
+    compare_1_alt_before: 'Cabello antes del tratamiento de hidratación',
+    compare_1_alt_after: 'Cabello después del tratamiento de hidratación, con brillo y movimiento',
+    compare_2_alt_before: 'Cabello antes de la coloración',
+    compare_2_alt_after: 'Cabello después de la coloración y mechas',
+
     team_title: 'El equipo',
     t1_name: 'Valentina Ríos',
     t1_role: 'Colorista & Estilista Jefe',
@@ -205,6 +215,16 @@ const TRANSLATIONS = {
     gl5: 'Professional styling',
     gl6: 'Blow-dry finish',
 
+    compare_eyebrow: 'Before / After',
+    compare_title: 'The difference, in one swipe.',
+    compare_lead: 'Drag the handle to see the full transformation.',
+    compare_before: 'Before',
+    compare_after: 'After',
+    compare_1_alt_before: 'Hair before the hydration treatment',
+    compare_1_alt_after: 'Hair after the hydration treatment, with shine and movement',
+    compare_2_alt_before: 'Hair before coloring',
+    compare_2_alt_after: 'Hair after coloring and highlights',
+
     team_title: 'The team',
     t1_name: 'Valentina Ríos',
     t1_role: 'Lead Colorist & Stylist',
@@ -260,6 +280,11 @@ function applyLang(lang) {
   document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
     const key = el.dataset.i18nPlaceholder;
     if (key in dict) el.placeholder = dict[key];
+  });
+
+  document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+    const key = el.dataset.i18nAlt;
+    if (key in dict) el.alt = dict[key];
   });
 
   document.documentElement.lang = lang;

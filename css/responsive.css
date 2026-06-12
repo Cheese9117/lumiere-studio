@@ -79,7 +79,8 @@
 
   .grid-3,
   .testimonials-grid,
-  .footer-grid {
+  .footer-grid,
+  .compare-grid {
     grid-template-columns: 1fr;
   }
 

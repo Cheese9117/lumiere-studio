@@ -384,6 +384,95 @@
     </section>
 
     <!-- ═══════════════════════════════════════════
+         5B. BEFORE / AFTER COMPARISON
+    ════════════════════════════════════════════ -->
+    <section id="transformaciones" class="section section--nude compare-section" data-nav-theme="light">
+      <div class="container section-head">
+        <span class="eyebrow" data-i18n="compare_eyebrow">Antes / Después</span>
+        <h2 class="display-title" data-i18n="compare_title">La diferencia, en un deslizo.</h2>
+        <p class="lead" data-i18n="compare_lead">Arrastrá el control para ver la transformación completa.</p>
+      </div>
+
+      <div class="container compare-grid" data-stagger>
+        <div class="compare reveal reveal--scale" data-compare style="--position: 50%">
+          <div class="compare-media compare-media--after">
+            <img
+              src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80"
+              data-i18n-alt="compare_1_alt_after"
+              alt="Cabello después del tratamiento de hidratación, con brillo y movimiento"
+              loading="lazy"
+              width="800"
+              height="1000"
+            />
+          </div>
+          <div class="compare-media compare-media--before">
+            <img
+              src="https://images.unsplash.com/photo-1595959183082-7b570b7e08e4?w=800&q=80"
+              data-i18n-alt="compare_1_alt_before"
+              alt="Cabello antes del tratamiento de hidratación"
+              loading="lazy"
+              width="800"
+              height="1000"
+            />
+          </div>
+          <div class="compare-divider" aria-hidden="true"></div>
+          <button
+            type="button"
+            class="compare-handle"
+            role="slider"
+            aria-orientation="horizontal"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="50"
+            aria-label="Comparar antes y después: tratamiento de hidratación"
+          >
+            <span class="compare-handle-icon" aria-hidden="true">↔</span>
+          </button>
+          <span class="compare-tag compare-tag--before" data-i18n="compare_before">Antes</span>
+          <span class="compare-tag compare-tag--after" data-i18n="compare_after">Después</span>
+        </div>
+
+        <div class="compare reveal reveal--scale" data-compare style="--position: 50%">
+          <div class="compare-media compare-media--after">
+            <img
+              src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&q=80"
+              data-i18n-alt="compare_2_alt_after"
+              alt="Cabello después de la coloración y mechas"
+              loading="lazy"
+              width="800"
+              height="1000"
+            />
+          </div>
+          <div class="compare-media compare-media--before">
+            <img
+              src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&q=80"
+              data-i18n-alt="compare_2_alt_before"
+              alt="Cabello antes de la coloración"
+              loading="lazy"
+              width="800"
+              height="1000"
+            />
+          </div>
+          <div class="compare-divider" aria-hidden="true"></div>
+          <button
+            type="button"
+            class="compare-handle"
+            role="slider"
+            aria-orientation="horizontal"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="50"
+            aria-label="Comparar antes y después: coloración y mechas"
+          >
+            <span class="compare-handle-icon" aria-hidden="true">↔</span>
+          </button>
+          <span class="compare-tag compare-tag--before" data-i18n="compare_before">Antes</span>
+          <span class="compare-tag compare-tag--after" data-i18n="compare_after">Después</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
          6. TEAM
     ════════════════════════════════════════════ -->
     <section id="equipo" class="section team" data-nav-theme="dark">
@@ -577,6 +666,7 @@
   <script src="js/counter.js" defer></script>
   <script src="js/marquee.js" defer></script>
   <script src="js/gallery.js" defer></script>
+  <script src="js/compare.js" defer></script>
   <script src="js/booking.js" defer></script>
   <script src="js/quote.js" defer></script>
   <script src="js/app.js" defer></script>
