@@ -69,6 +69,6 @@
   /* --- Z-index layers --- */
   --z-menu: 250;
   --z-ambient: 240;
-  --z-nav: 200;
+  --z-nav: 260;
   --z-loader: 400;
 }

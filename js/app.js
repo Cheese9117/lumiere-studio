@@ -47,7 +47,8 @@ function initMobileMenu() {
     document.body.classList.add('no-scroll');
   }
 
-  hamburger.addEventListener('click', () => {
+  hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
     if (menu.classList.contains('is-open')) {
       closeMenu();
     } else {
@@ -57,6 +58,16 @@ function initMobileMenu() {
 
   menu.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!menu.classList.contains('is-open')) return;
+    if (menu.contains(e.target) || hamburger.contains(e.target)) return;
+    closeMenu();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('is-open')) closeMenu();
   });
 }
 

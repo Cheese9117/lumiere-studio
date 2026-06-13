@@ -226,7 +226,7 @@
 }
 
 .lang-opt {
-  opacity: 0.6;
+  opacity: 0.75;
   transition: opacity var(--duration-fast) var(--ease-smooth);
 }
 
@@ -236,7 +236,7 @@
 }
 
 .lang-divider {
-  opacity: 0.4;
+  opacity: 0.5;
 }
 
 /* --- Hamburger --- */
@@ -303,6 +303,12 @@
   font-family: var(--font-display);
   font-size: 1.75rem;
   font-weight: var(--weight-thin);
+}
+
+.lang-toggle--mobile {
+  position: static;
+  top: auto;
+  right: auto;
 }
 
 /* ─────────────────────────────────────────────────────────────
