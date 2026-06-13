@@ -5,6 +5,7 @@
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![License: MIT](https://img.shields.io/badge/License-MIT-C8A882?style=flat-square)](LICENSE)
 [![Live](https://img.shields.io/badge/Ver_sitio_en_vivo-C8A882?style=flat-square&logo=googlechrome&logoColor=white)](https://cheese9117.github.io/lumiere-studio/)
 
 ---
@@ -104,6 +105,18 @@ npx serve .
 ```
 
 O visitá la demo en vivo: **[cheese9117.github.io/lumiere-studio](https://cheese9117.github.io/lumiere-studio/)**
+
+---
+
+## Mantenimiento
+
+Checklist de mantenimiento, cómo agregar servicios y rotar credenciales: ver [`MAINTENANCE.md`](MAINTENANCE.md).
+
+---
+
+## Licencia
+
+[MIT](LICENSE) © 2026 Juan Sebastián Henao
 
 ---
 
