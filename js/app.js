@@ -69,6 +69,10 @@ function initMobileMenu() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && menu.classList.contains('is-open')) closeMenu();
   });
+
+  window.addEventListener('scroll', () => {
+    if (menu.classList.contains('is-open')) closeMenu();
+  }, { passive: true });
 }
 
 function initNavLinks() {
